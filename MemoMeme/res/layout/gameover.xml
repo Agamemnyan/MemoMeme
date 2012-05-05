@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:isScrollContainer="true"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/gameoverImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/imgGameOver" />
+
+        <TextView
+            android:id="@+id/textGameOver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gameOver"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/textWinLose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36dp" />
+
+        <Button
+            android:id="@+id/restartButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buttonRestart" />
+
+        <Button
+            android:id="@+id/exitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buttonExit" />
+
+    </LinearLayout>
+
+</ScrollView>

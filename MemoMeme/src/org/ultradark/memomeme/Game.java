@@ -21,6 +21,8 @@ public class Game extends Activity {
 	int turnedCardsCount;
 
 	int[] currentTurnedCards;
+	
+	long ms = 30000;
 
 	ArrayList<Integer> currentSet;
 	ArrayList<Integer> positions;
@@ -31,6 +33,8 @@ public class Game extends Activity {
 	Card turnedCard1;
 	Card turnedCard2;
 
+	CountDownTimer cdt;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -97,6 +101,7 @@ public class Game extends Activity {
 			positions = savedInstanceState.getIntegerArrayList("positions");
 			turnedPos = savedInstanceState.getIntegerArrayList("turnedPos");
 			pulledPos = savedInstanceState.getIntegerArrayList("pulledPos");
+			ms = savedInstanceState.getLong("ms");
 		}
 
 		setScoreText(scoreText, score);
@@ -206,9 +211,10 @@ public class Game extends Activity {
 			card.getImage().setOnClickListener(ocl);
 		}
 		
-		new CountDownTimer(30000, 1000) {
+		cdt = new CountDownTimer(ms, 1000) {
 
 		     public void onTick(long millisUntilFinished) {
+		    	 ms = millisUntilFinished;
 		         mTextField.setText("00:" + (millisUntilFinished / 1000 >= 10 ? (millisUntilFinished / 1000) : ("0" + millisUntilFinished / 1000)));
 		     }
 
@@ -223,7 +229,8 @@ public class Game extends Activity {
 					startActivity(go);
 					finish();
 		     }
-		  }.start();
+		  };
+		  cdt.start();
 	}
 
 	protected void setScoreText(View v, int sc) {
@@ -286,6 +293,8 @@ public class Game extends Activity {
 		savedInstanceState.putInt("score", score);
 		savedInstanceState.putInt("pairFound", pairFound);
 		savedInstanceState.putInt("turnedCardsCount", turnedCardsCount);
+		
+		savedInstanceState.putLong("ms", ms);
 
 		savedInstanceState.putIntegerArrayList("currentSet", currentSet);
 		savedInstanceState.putIntegerArrayList("positions", positions);
@@ -293,5 +302,17 @@ public class Game extends Activity {
 		savedInstanceState.putIntegerArrayList("pulledPos", pulledPos);
 
 		super.onSaveInstanceState(savedInstanceState);
+	}
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+		cdt.cancel();
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		cdt.start();
 	}
 }

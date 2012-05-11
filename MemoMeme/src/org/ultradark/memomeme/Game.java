@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageSwitcher;
@@ -44,6 +45,8 @@ public class Game extends Activity {
 
 		final TextView scoreText = (TextView) findViewById(R.id.textScore);
 		cards = new Card[16];
+		
+		final TextView mTextField = (TextView) findViewById(R.id.textTimer);
 
 		ImageSwitcher[] slots = new ImageSwitcher[] {
 				(ImageSwitcher) findViewById(R.id.imageView1),
@@ -202,6 +205,25 @@ public class Game extends Activity {
 		for (Card card : cards) {
 			card.getImage().setOnClickListener(ocl);
 		}
+		
+		new CountDownTimer(30000, 1000) {
+
+		     public void onTick(long millisUntilFinished) {
+		         mTextField.setText("00:" + (millisUntilFinished / 1000 >= 10 ? (millisUntilFinished / 1000) : ("0" + millisUntilFinished / 1000)));
+		     }
+
+		     public void onFinish() {
+		    	 Intent go = new Intent(Game.this,
+							org.ultradark.memomeme.GameOver.class);
+					if (Integer.parseInt((String) scoreText.getText()) >= 0) {
+						go.putExtra("isWin", true);
+					} else {
+						go.putExtra("isWin", false);
+					}
+					startActivity(go);
+					finish();
+		     }
+		  }.start();
 	}
 
 	protected void setScoreText(View v, int sc) {
@@ -240,6 +262,7 @@ public class Game extends Activity {
 				go.putExtra("isWin", false);
 			}
 			startActivity(go);
+			finish();
 		}
 	}
 

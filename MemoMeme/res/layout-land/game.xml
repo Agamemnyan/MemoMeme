@@ -4,16 +4,30 @@
     android:layout_height="fill_parent"
     android:layout_gravity="center"
     android:gravity="center"
-    android:orientation="horizontal" >
+    android:orientation="horizontal" 
+    android:baselineAligned="false">
 
-    <TextView
-        android:id="@+id/textScore"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_gravity="center"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_weight="0.8"
-        android:gravity="center"
-        android:textSize="48dp" />
+        android:orientation="vertical" android:gravity="center">
+
+        <TextView
+            android:id="@+id/textScore"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="48sp" />
+
+        <TextView
+            android:id="@+id/textTimer"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center" android:textSize="32sp"/>
+    </LinearLayout>
 
     <TableLayout
         android:layout_width="fill_parent"

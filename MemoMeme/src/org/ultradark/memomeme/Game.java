@@ -49,8 +49,6 @@ public class Game extends Activity {
 
 		final TextView scoreText = (TextView) findViewById(R.id.textScore);
 		cards = new Card[16];
-		
-		final TextView mTextField = (TextView) findViewById(R.id.textTimer);
 
 		ImageSwitcher[] slots = new ImageSwitcher[] {
 				(ImageSwitcher) findViewById(R.id.imageView1),
@@ -212,6 +210,14 @@ public class Game extends Activity {
 			card.getImage().setOnClickListener(ocl);
 		}
 		
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		
+		final TextView mTextField = (TextView) findViewById(R.id.textTimer);
+
 		cdt = new CountDownTimer(ms, 1000) {
 
 		     public void onTick(long millisUntilFinished) {
@@ -222,7 +228,7 @@ public class Game extends Activity {
 		     public void onFinish() {
 		    	 Intent go = new Intent(Game.this,
 							org.ultradark.memomeme.GameOver.class);
-					if (Integer.parseInt((String) scoreText.getText()) >= 0) {
+					if (score >= 0) {
 						go.putExtra("isWin", true);
 					} else {
 						go.putExtra("isWin", false);
@@ -310,11 +316,5 @@ public class Game extends Activity {
 	protected void onPause() {
 		super.onPause();
 		cdt.cancel();
-	}
-	
-	@Override
-	protected void onResume() {
-		super.onResume();
-		cdt.start();
 	}
 }

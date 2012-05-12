@@ -96,12 +96,13 @@ public class Game extends Activity {
 			score = savedInstanceState.getInt("score");
 			pairFound = savedInstanceState.getInt("pairFound");
 			turnedCardsCount = savedInstanceState.getInt("turnedCardsCount");
+			
+			ms = savedInstanceState.getLong("ms");
 
 			currentSet = savedInstanceState.getIntegerArrayList("currentSet");
 			positions = savedInstanceState.getIntegerArrayList("positions");
 			turnedPos = savedInstanceState.getIntegerArrayList("turnedPos");
 			pulledPos = savedInstanceState.getIntegerArrayList("pulledPos");
-			ms = savedInstanceState.getLong("ms");
 		}
 
 		setScoreText(scoreText, score);
@@ -295,6 +296,7 @@ public class Game extends Activity {
 		savedInstanceState.putInt("turnedCardsCount", turnedCardsCount);
 		
 		savedInstanceState.putLong("ms", ms);
+		cdt.cancel();
 
 		savedInstanceState.putIntegerArrayList("currentSet", currentSet);
 		savedInstanceState.putIntegerArrayList("positions", positions);

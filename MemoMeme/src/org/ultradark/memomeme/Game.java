@@ -19,10 +19,13 @@ public class Game extends Activity {
 	int score;
 	int pairFound;
 	int turnedCardsCount;
+	int isShowing;
 
 	int[] currentTurnedCards;
-	
-	long ms = 30000;
+
+	long ms = 59000;
+	long msshow1 = 2000;
+	long msshow2 = 5000;
 
 	ArrayList<Integer> currentSet;
 	ArrayList<Integer> positions;
@@ -32,22 +35,21 @@ public class Game extends Activity {
 	Card cards[];
 	Card turnedCard1;
 	Card turnedCard2;
-
-	CountDownTimer cdt;
 	
+	private int combo;
+	private CountDownTimer cdt;
+	private CountDownTimer cd1;
+	private CountDownTimer cd2;
+	
+	OnClickListener ocl;
+	TextView scoreText;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game);
-		
-		if (getIntent().getExtras() != null && getIntent().getBooleanExtra("isExit", false)) {
-			Intent go = new Intent(this.getBaseContext(), org.ultradark.memomeme.Main.class);
-			go.putExtra("isExit", true);
-			startActivity(go);
-			finish();
-		}
 
-		final TextView scoreText = (TextView) findViewById(R.id.textScore);
+		scoreText = (TextView) findViewById(R.id.textScore);
 		cards = new Card[16];
 
 		ImageSwitcher[] slots = new ImageSwitcher[] {
@@ -88,14 +90,19 @@ public class Game extends Activity {
 			currentSet = new ArrayList<Integer>(cardInts.subList(0, 8));
 
 		} else {
+			
 			currentTurnedCards = savedInstanceState
 					.getIntArray("currentTurnedCards");
 
 			score = savedInstanceState.getInt("score");
 			pairFound = savedInstanceState.getInt("pairFound");
 			turnedCardsCount = savedInstanceState.getInt("turnedCardsCount");
-			
+			combo = savedInstanceState.getInt("combo");
+			isShowing = savedInstanceState.getInt("isShowing");
+
 			ms = savedInstanceState.getLong("ms");
+			msshow1 = savedInstanceState.getLong("msshow1");
+			msshow2 = savedInstanceState.getLong("msshow2");
 
 			currentSet = savedInstanceState.getIntegerArrayList("currentSet");
 			positions = savedInstanceState.getIntegerArrayList("positions");
@@ -141,7 +148,15 @@ public class Game extends Activity {
 			}
 		}
 
-		OnClickListener ocl = new OnClickListener() {
+		
+
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		ocl = new OnClickListener() {
 
 			public void onClick(View v) {
 
@@ -206,38 +221,70 @@ public class Game extends Activity {
 			}
 		};
 
-		for (Card card : cards) {
-			card.getImage().setOnClickListener(ocl);
+		if (isShowing != 2) {
+			if (isShowing == 0) {
+				cd1 = new CountDownTimer(msshow1, 2000) {
+					public void onTick(long millisUntilFinished) {
+					}
+
+					public void onFinish() {
+						for (Card card : cards) {
+							card.turnCard();
+						}
+						isShowing = 1;
+					}
+				};
+				cd1.start();
+			}			
+
+			cd2 = new CountDownTimer(msshow2, 5000) {
+
+				public void onTick(long millisUntilFinished) {
+				}
+
+				public void onFinish() {
+					for (Card card : cards) {
+						card.turnCard();
+					}
+					for (Card card : cards) {
+						card.getImage().setOnClickListener(ocl);
+					}
+					isShowing = 2;
+				}
+			};
+			cd2.start();
+		} else {
+			for (Card card : cards) {
+				card.getImage().setOnClickListener(ocl);
+			}
 		}
-		
-	}
-	
-	@Override
-	protected void onResume() {
-		super.onResume();
-		
 		final TextView mTextField = (TextView) findViewById(R.id.textTimer);
 
 		cdt = new CountDownTimer(ms, 1000) {
 
-		     public void onTick(long millisUntilFinished) {
-		    	 ms = millisUntilFinished;
-		         mTextField.setText("00:" + (millisUntilFinished / 1000 >= 10 ? (millisUntilFinished / 1000) : ("0" + millisUntilFinished / 1000)));
-		     }
+			public void onTick(long millisUntilFinished) {
+				ms = millisUntilFinished;
+				
+				if (ms > 52000) {
+					mTextField.setText("ready!");
+				} else {
+					mTextField
+					.setText("00:"
+							+ (millisUntilFinished / 1000 >= 10 ? (millisUntilFinished / 1000)
+									: ("0" + millisUntilFinished / 1000)));
+				}				
+			}
 
-		     public void onFinish() {
-		    	 Intent go = new Intent(Game.this,
-							org.ultradark.memomeme.GameOver.class);
-					if (score >= 0) {
-						go.putExtra("isWin", true);
-					} else {
-						go.putExtra("isWin", false);
-					}
-					startActivity(go);
-					finish();
-		     }
-		  };
-		  cdt.start();
+			public void onFinish() {
+				Intent go = new Intent(Game.this,
+						org.ultradark.memomeme.GameOver.class);
+				go.putExtra("isWin", false);
+				startActivity(go);
+				finish();
+			}
+		};
+
+		cdt.start();
 	}
 
 	protected void setScoreText(View v, int sc) {
@@ -255,26 +302,20 @@ public class Game extends Activity {
 	}
 
 	protected void proceedScore(View v, boolean exact) {
-		int sc = 0;
 
 		if (exact) {
 			pairFound++;
-			score += 2;
-			sc = score;
+			score += 100 * combo;
+			combo++;
+			setScoreText(v, score);
 		} else {
-			sc = --score;
+			combo = 1;
 		}
 
-		setScoreText(v, sc);
-
-		if (pairFound == 8 || sc < (pairFound * 2 - 16)) {
+		if (pairFound == 8) {
 			Intent go = new Intent(v.getContext(),
 					org.ultradark.memomeme.GameOver.class);
-			if (sc >= 0) {
-				go.putExtra("isWin", true);
-			} else {
-				go.putExtra("isWin", false);
-			}
+			go.putExtra("isWin", true);
 			startActivity(go);
 			finish();
 		}
@@ -282,7 +323,7 @@ public class Game extends Activity {
 
 	@Override
 	public void onSaveInstanceState(Bundle savedInstanceState) {
-		
+
 		turnedPos.clear();
 		pulledPos.clear();
 
@@ -300,9 +341,12 @@ public class Game extends Activity {
 		savedInstanceState.putInt("score", score);
 		savedInstanceState.putInt("pairFound", pairFound);
 		savedInstanceState.putInt("turnedCardsCount", turnedCardsCount);
-		
+		savedInstanceState.putInt("combo", combo);
+		savedInstanceState.putInt("isShowing", isShowing);
+
 		savedInstanceState.putLong("ms", ms);
-		cdt.cancel();
+		savedInstanceState.putLong("msshow1", msshow1);
+		savedInstanceState.putLong("msshow2", msshow2);
 
 		savedInstanceState.putIntegerArrayList("currentSet", currentSet);
 		savedInstanceState.putIntegerArrayList("positions", positions);
@@ -311,10 +355,15 @@ public class Game extends Activity {
 
 		super.onSaveInstanceState(savedInstanceState);
 	}
-	
+
 	@Override
 	protected void onPause() {
 		super.onPause();
 		cdt.cancel();
+		if (isShowing != 2) {
+			if (isShowing == 0)
+				cd1.cancel();
+			cd2.cancel();
+		}		
 	}
 }

@@ -1,6 +1,7 @@
-package org.ultradark.memomeme;
+package com.memomeme.activities;
 
-import ultradark.memomeme.R;
+import com.memomeme.activities.R;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,9 +24,15 @@ public class Main extends Activity {
         b.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
-				Intent go = new Intent(v.getContext(), org.ultradark.memomeme.Game.class);
-				startActivity(go);				
+				Intent go = new Intent(v.getContext(), com.memomeme.activities.Game.class);
+				startActivityForResult(go, 13);			
 			}
 		});
+    }
+    
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    	super.onActivityResult(requestCode, resultCode, data);
+    	finish();
     }
 }

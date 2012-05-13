@@ -1,6 +1,6 @@
-package org.ultradark.memomeme;
+package com.memomeme.utils;
 
-import ultradark.memomeme.R;
+import com.memomeme.activities.R;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;

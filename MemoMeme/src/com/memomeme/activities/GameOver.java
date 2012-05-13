@@ -1,8 +1,8 @@
-package org.ultradark.memomeme;
+package com.memomeme.activities;
 
 import java.util.Random;
 
-import ultradark.memomeme.R;
+import com.memomeme.activities.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,24 +36,25 @@ public class GameOver extends Activity {
 			imgWl.setImageResource(losePics[rand.nextInt(losePics.length)]);
 		}
 
-		Button b = (Button) findViewById(R.id.restartButton);
-		Button exit = (Button) findViewById(R.id.exitButton);
+		Button restartButton = (Button) findViewById(R.id.restartButton);
+		Button exitButton = (Button) findViewById(R.id.exitButton);
 		
-		b.setOnClickListener(new OnClickListener() {
+		restartButton.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 				Intent go = new Intent(v.getContext(),
-						org.ultradark.memomeme.Game.class);
+						com.memomeme.activities.Game.class);
 				startActivity(go);
 			}
 		});
 		
-		exit.setOnClickListener(new OnClickListener() {
+		exitButton.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				Intent go = new Intent(v.getContext(),	org.ultradark.memomeme.Game.class);
-				go.putExtra("isExit", true);
-				startActivity(go);
+//				Intent go = new Intent(v.getContext(),	org.ultradark.memomeme.Game.class);
+//				go.putExtra("isExit", true);
+//				startActivity(go);
+				setResult(15);
 				finish();
 			}
 		});

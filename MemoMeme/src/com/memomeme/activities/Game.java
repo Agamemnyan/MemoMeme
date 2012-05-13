@@ -1,9 +1,12 @@
-package org.ultradark.memomeme;
+package com.memomeme.activities;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import ultradark.memomeme.R;
+
+import com.memomeme.utils.Card;
+
+import com.memomeme.activities.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -23,9 +26,9 @@ public class Game extends Activity {
 
 	int[] currentTurnedCards;
 
-	long ms = 59000;
-	long msshow1 = 2000;
-	long msshow2 = 5000;
+	long ms = 68000;
+	long msshow1 = 1000;
+	long msshow2 = 7000;
 
 	ArrayList<Integer> currentSet;
 	ArrayList<Integer> positions;
@@ -265,7 +268,7 @@ public class Game extends Activity {
 			public void onTick(long millisUntilFinished) {
 				ms = millisUntilFinished;
 				
-				if (ms > 52000) {
+				if (ms > 60000) {
 					mTextField.setText("ready!");
 				} else {
 					mTextField
@@ -277,9 +280,9 @@ public class Game extends Activity {
 
 			public void onFinish() {
 				Intent go = new Intent(Game.this,
-						org.ultradark.memomeme.GameOver.class);
+						com.memomeme.activities.GameOver.class);
 				go.putExtra("isWin", false);
-				startActivity(go);
+				startActivityForResult(go, 13);
 				finish();
 			}
 		};
@@ -314,9 +317,9 @@ public class Game extends Activity {
 
 		if (pairFound == 8) {
 			Intent go = new Intent(v.getContext(),
-					org.ultradark.memomeme.GameOver.class);
+					com.memomeme.activities.GameOver.class);
 			go.putExtra("isWin", true);
-			startActivity(go);
+			startActivityForResult(go, 13);
 			finish();
 		}
 	}
@@ -365,5 +368,12 @@ public class Game extends Activity {
 				cd1.cancel();
 			cd2.cancel();
 		}		
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		setResult(15);
+		finish();
 	}
 }

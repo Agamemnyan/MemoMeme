@@ -54,6 +54,8 @@ public class Game extends Activity {
 
 		scoreText = (TextView) findViewById(R.id.textScore);
 		cards = new Card[16];
+		
+		combo = 1;
 
 		ImageSwitcher[] slots = new ImageSwitcher[] {
 				(ImageSwitcher) findViewById(R.id.imageView1),

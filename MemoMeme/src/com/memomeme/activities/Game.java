@@ -375,7 +375,10 @@ public class Game extends Activity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		setResult(15);
-		finish();
+		if (resultCode == 15)
+		{
+			setResult(15);
+			finish();
+		}		
 	}
 }

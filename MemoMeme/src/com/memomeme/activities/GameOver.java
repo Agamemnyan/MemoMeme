@@ -51,12 +51,16 @@ public class GameOver extends Activity {
 		exitButton.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-//				Intent go = new Intent(v.getContext(),	org.ultradark.memomeme.Game.class);
-//				go.putExtra("isExit", true);
-//				startActivity(go);
 				setResult(15);
 				finish();
 			}
 		});
+	}
+	
+	@Override
+	public void onBackPressed() {
+		Intent go = new Intent(this,
+				com.memomeme.activities.Game.class);
+		startActivity(go);
 	}
 }

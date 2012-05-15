@@ -3,7 +3,9 @@
     <string name="app_name">MemoMeme</string>
     <string name="textWelcome">Добро Пожаловать в</string>
     <string name="textGameName">MemoMeme</string>
-    <string name="buttonGo">Начать!</string>
+    <string name="buttonGo">Начать новую игру</string>
+    <string name="buttonResume">Продолжить последнюю</string>
+    <string name="buttonLoad">Загрузить игру</string>
     <string name="imgSlot">Troll</string>
     <string name="imgGameOver">Game Over Meme</string>
     <string name="buttonRestart">Начать Заново!</string>

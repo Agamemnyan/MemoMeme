@@ -3,7 +3,9 @@
     <string name="app_name">MemoMeme</string>
     <string name="textWelcome">Welcome to</string>
     <string name="textGameName">MemoMeme</string>
-    <string name="buttonGo">GO!</string>
+    <string name="buttonGo">New Game</string>
+    <string name="buttonResume">Continue</string>
+    <string name="buttonLoad">Load Game</string>
     <string name="imgSlot">Troll</string>
     <string name="imgGameOver">Game Over Meme</string>
     <string name="buttonRestart">Restart Game!</string>

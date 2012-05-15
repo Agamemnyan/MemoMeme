@@ -271,7 +271,7 @@ public class Game extends Activity {
 				ms = millisUntilFinished;
 				
 				if (ms > 60000) {
-					mTextField.setText("ready!");
+					mTextField.setText("01:00");
 				} else {
 					mTextField
 					.setText("00:"
@@ -372,13 +372,13 @@ public class Game extends Activity {
 		}		
 	}
 	
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
-		if (resultCode == 15)
-		{
-			setResult(15);
-			finish();
-		}		
-	}
+//	@Override
+//	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//		super.onActivityResult(requestCode, resultCode, data);
+//		if (resultCode == 15)
+//		{
+//			setResult(15);
+//			finish();
+//		}		
+//	}
 }

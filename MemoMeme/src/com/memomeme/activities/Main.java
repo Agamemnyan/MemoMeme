@@ -20,22 +20,21 @@ public class Main extends Activity {
 			finish();
 		}
 
-        Button b = (Button) findViewById(R.id.buttonGo);
-        b.setOnClickListener(new OnClickListener() {
+        Button buttonNewGame = (Button) findViewById(R.id.buttonGo);
+        buttonNewGame.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
 				Intent go = new Intent(v.getContext(), com.memomeme.activities.Game.class);
-				startActivityForResult(go, 13);			
+				startActivity(go);			
 			}
 		});
-    }
-    
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    	super.onActivityResult(requestCode, resultCode, data);
-    	if (resultCode == 15)
-		{
-			finish();
-		}
+        
+        Button buttonExit = (Button) findViewById(R.id.buttonExit);
+        buttonExit.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				finish();
+			}
+		});        
     }
 }

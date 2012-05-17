@@ -13,6 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class GameOver extends Activity {
+
+	Intent go;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -20,11 +23,12 @@ public class GameOver extends Activity {
 
 		final Random rand = new Random();
 
+		go = new Intent(this, com.memomeme.activities.Game.class);
+
 		TextView textWL = (TextView) findViewById(R.id.textWinLose);
 		ImageView imgWl = (ImageView) findViewById(R.id.gameoverImage);
 
-		Integer[] winPics = new Integer[] { R.drawable.win01,
-				R.drawable.win02 };
+		Integer[] winPics = new Integer[] { R.drawable.win01, R.drawable.win02 };
 		Integer[] losePics = new Integer[] { R.drawable.lose01,
 				R.drawable.lose02 };
 
@@ -37,30 +41,26 @@ public class GameOver extends Activity {
 		}
 
 		Button restartButton = (Button) findViewById(R.id.restartButton);
-		Button exitButton = (Button) findViewById(R.id.exitButton);
-		
+		Button mainMenuButton = (Button) findViewById(R.id.buttonMainMenu);
+
 		restartButton.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				Intent go = new Intent(v.getContext(),
-						com.memomeme.activities.Game.class);
 				startActivity(go);
+				finish();
 			}
 		});
-		
-		exitButton.setOnClickListener(new OnClickListener() {
 
+		mainMenuButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				setResult(15);
 				finish();
 			}
 		});
 	}
-	
+
 	@Override
 	public void onBackPressed() {
-		Intent go = new Intent(this,
-				com.memomeme.activities.Game.class);
 		startActivity(go);
+		finish();
 	}
 }

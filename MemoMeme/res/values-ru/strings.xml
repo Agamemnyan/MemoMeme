@@ -13,4 +13,5 @@
     <string name="youLose">Ты проиграл</string>
     <string name="gameOver">Конец игры</string>
     <string name="buttonExit">Выход</string>
+    <string name="buttonMainMenu">Главное Меню</string>
 </resources>

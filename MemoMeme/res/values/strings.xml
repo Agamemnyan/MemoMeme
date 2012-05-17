@@ -13,4 +13,5 @@
     <string name="youLose">You Lose</string>
     <string name="gameOver">Game Over</string>
     <string name="buttonExit">Exit</string>
+    <string name="buttonMainMenu">Main Menu</string>
 </resources>

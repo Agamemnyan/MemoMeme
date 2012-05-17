@@ -38,12 +38,12 @@ public class Game extends Activity {
 	Card cards[];
 	Card turnedCard1;
 	Card turnedCard2;
-	
+
 	private int combo;
 	private CountDownTimer cdt;
 	private CountDownTimer cd1;
 	private CountDownTimer cd2;
-	
+
 	OnClickListener ocl;
 	TextView scoreText;
 
@@ -54,7 +54,7 @@ public class Game extends Activity {
 
 		scoreText = (TextView) findViewById(R.id.textScore);
 		cards = new Card[16];
-		
+
 		combo = 1;
 
 		ImageSwitcher[] slots = new ImageSwitcher[] {
@@ -95,7 +95,7 @@ public class Game extends Activity {
 			currentSet = new ArrayList<Integer>(cardInts.subList(0, 8));
 
 		} else {
-			
+
 			currentTurnedCards = savedInstanceState
 					.getIntArray("currentTurnedCards");
 
@@ -152,8 +152,6 @@ public class Game extends Activity {
 				break;
 			}
 		}
-
-		
 
 	}
 
@@ -228,8 +226,9 @@ public class Game extends Activity {
 
 		if (isShowing != 2) {
 			if (isShowing == 0) {
-				cd1 = new CountDownTimer(msshow1, 2000) {
+				cd1 = new CountDownTimer(msshow1, 100) {
 					public void onTick(long millisUntilFinished) {
+						msshow1 -= 100;
 					}
 
 					public void onFinish() {
@@ -240,11 +239,12 @@ public class Game extends Activity {
 					}
 				};
 				cd1.start();
-			}			
+			}
 
-			cd2 = new CountDownTimer(msshow2, 5000) {
+			cd2 = new CountDownTimer(msshow2, 100) {
 
 				public void onTick(long millisUntilFinished) {
+					msshow2 -= 100;
 				}
 
 				public void onFinish() {
@@ -269,22 +269,22 @@ public class Game extends Activity {
 
 			public void onTick(long millisUntilFinished) {
 				ms = millisUntilFinished;
-				
+
 				if (ms > 60000) {
 					mTextField.setText("01:00");
 				} else {
 					mTextField
-					.setText("00:"
-							+ (millisUntilFinished / 1000 >= 10 ? (millisUntilFinished / 1000)
-									: ("0" + millisUntilFinished / 1000)));
-				}				
+							.setText("00:"
+									+ (millisUntilFinished / 1000 >= 10 ? (millisUntilFinished / 1000)
+											: ("0" + millisUntilFinished / 1000)));
+				}
 			}
 
 			public void onFinish() {
 				Intent go = new Intent(Game.this,
 						com.memomeme.activities.GameOver.class);
 				go.putExtra("isWin", false);
-				startActivityForResult(go, 13);
+				startActivity(go);
 				finish();
 			}
 		};
@@ -321,7 +321,7 @@ public class Game extends Activity {
 			Intent go = new Intent(v.getContext(),
 					com.memomeme.activities.GameOver.class);
 			go.putExtra("isWin", true);
-			startActivityForResult(go, 13);
+			startActivity(go);
 			finish();
 		}
 	}
@@ -369,16 +369,6 @@ public class Game extends Activity {
 			if (isShowing == 0)
 				cd1.cancel();
 			cd2.cancel();
-		}		
+		}
 	}
-	
-//	@Override
-//	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//		super.onActivityResult(requestCode, resultCode, data);
-//		if (resultCode == 15)
-//		{
-//			setResult(15);
-//			finish();
-//		}		
-//	}
 }

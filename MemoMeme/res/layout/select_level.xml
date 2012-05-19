@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    
+
+    <TextView
+        android:id="@+id/textSLTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/lvTitle"
+        android:textSize="32dp"
+        android:textStyle="bold" android:layout_margin="20dp"/>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true" >
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textSLTitle"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textLV1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lv1"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/textLV2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lv2"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/textLV3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lv3"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/textLV4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lv4"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/textLV5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lv5"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/textLV6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lv6"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/textLV7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lv7"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/textLV8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lv8"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/textLV9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lv9"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/textLV10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lv10"
+            android:textSize="24dp" />
+    </LinearLayout>
+    
+</RelativeLayout>

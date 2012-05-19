@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">MemoMeme</string>
     <string name="textWelcome">Добро Пожаловать в</string>
     <string name="textGameName">MemoMeme</string>
@@ -14,4 +15,19 @@
     <string name="gameOver">Конец игры</string>
     <string name="buttonExit">Выход</string>
     <string name="buttonMainMenu">Главное Меню</string>
+    <string name="enterUserTitle">Введите свое имя</string>
+    <string name="fieldUserName">имя пользователья</string>
+    <string name="submitUserName">Ввод</string>
+    <string name="lvTitle">Выберите уровень</string>
+    <string name="lv1">Уровень 1</string>
+    <string name="lv2">Уровень 2</string>
+    <string name="lv3">Уровень 3</string>
+    <string name="lv4">Уровень 4</string>
+    <string name="lv5">Уровень 5</string>
+    <string name="lv6">Уровень 6</string>
+    <string name="lv7">Уровень 7</string>
+    <string name="lv8">Уровень 8</string>
+    <string name="lv9">Уровень 9</string>
+    <string name="lv10">Уровень 10</string>
+
 </resources>

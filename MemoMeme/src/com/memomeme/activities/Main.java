@@ -24,7 +24,7 @@ public class Main extends Activity {
         buttonNewGame.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
-				Intent go = new Intent(v.getContext(), com.memomeme.activities.Game.class);
+				Intent go = new Intent(v.getContext(), NewUser.class);
 				startActivity(go);			
 			}
 		});

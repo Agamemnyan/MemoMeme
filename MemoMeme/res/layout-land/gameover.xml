@@ -41,6 +41,6 @@
         android:id="@+id/gameoverImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/imgGameOver" />
+        android:contentDescription="@string/imgGameOver" android:layout_marginLeft="50dp"/>
 
 </LinearLayout>

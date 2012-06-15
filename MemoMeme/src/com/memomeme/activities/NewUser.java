@@ -33,6 +33,7 @@ public class NewUser extends Activity {
 			public void onClick(View v) {
 				// TODO creating db user
 				startActivity(new Intent(v.getContext(), Game.class));
+				finish();
 			}
 		});
 	}

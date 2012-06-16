@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
-
     <string name="app_name">MemoMeme</string>
     <string name="textWelcome">Добро Пожаловать в</string>
     <string name="textGameName">MemoMeme</string>
@@ -29,5 +28,5 @@
     <string name="lv8">Уровень 8</string>
     <string name="lv9">Уровень 9</string>
     <string name="lv10">Уровень 10</string>
-
+    <string name="next_button">Дальше</string>
 </resources>

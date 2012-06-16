@@ -3,7 +3,6 @@ package com.memomeme.utils;
 import com.memomeme.activities.R;
 import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
@@ -17,14 +16,14 @@ public class Card {
 	private final int memeFace;
 	private final int pos;
 	
-	public Card(final ImageSwitcher card, int memeFace, int pos, final Context context) {
+	public Card(final ImageSwitcher card, int memeFace, int pos, final Context context, final int width, final int height) {
+		
 		card.setFactory(new ViewFactory() {
 			
 			public View makeView() {
 				ImageView iView = new ImageView(context);
-				iView.setScaleType(ImageView.ScaleType.CENTER);
-				iView.setLayoutParams(new ImageSwitcher.LayoutParams(
-						LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+				iView.setScaleType(ImageView.ScaleType.FIT_XY);
+				iView.setLayoutParams(new ImageSwitcher.LayoutParams(width, height));
 				iView.setBackgroundColor(0xFF000000);
 				return iView;
 			}

@@ -7,6 +7,7 @@
     android:orientation="horizontal" >
 
     <LinearLayout
+        android:id="@+id/game_over_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
@@ -25,6 +26,12 @@
             android:textSize="36dp" />
 
         <Button
+            android:id="@+id/nextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/next_button" />
+
+        <Button
             android:id="@+id/restartButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,6 +48,7 @@
         android:id="@+id/gameoverImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/imgGameOver" android:layout_marginLeft="50dp"/>
+        android:layout_marginLeft="50dp"
+        android:contentDescription="@string/imgGameOver" />
 
 </LinearLayout>

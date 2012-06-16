@@ -5,10 +5,12 @@ import java.util.Arrays;
 import java.util.Collections;
 
 import com.memomeme.utils.Card;
+import com.memomeme.utils.MemeSettings;
 
 import com.memomeme.activities.R;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -17,7 +19,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageSwitcher;
 import android.widget.TextView;
 
-public class Game extends Activity {
+public class Level02 extends Activity {
 	/** Called when the activity is first created. */
 	int score;
 	int pairFound;
@@ -44,16 +46,27 @@ public class Game extends Activity {
 	private CountDownTimer cd1;
 	private CountDownTimer cd2;
 
+	private int cWidth;
+	private int cHeight;
+
 	OnClickListener ocl;
 	TextView scoreText;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.game);
+		setContentView(R.layout.level_02);
+
+		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+			cWidth = MemeSettings.dWidth * 108 / 1280;
+			cHeight = MemeSettings.dHeight * 108 / 768;
+		} else {
+			cWidth = MemeSettings.dHeight * 108 / 768;
+			cHeight = MemeSettings.dWidth * 108 / 1280;
+		}
 
 		scoreText = (TextView) findViewById(R.id.textScore);
-		cards = new Card[16];
+		cards = new Card[36];
 
 		combo = 1;
 
@@ -73,7 +86,27 @@ public class Game extends Activity {
 				(ImageSwitcher) findViewById(R.id.imageView13),
 				(ImageSwitcher) findViewById(R.id.imageView14),
 				(ImageSwitcher) findViewById(R.id.imageView15),
-				(ImageSwitcher) findViewById(R.id.imageView16) };
+				(ImageSwitcher) findViewById(R.id.imageView16),
+				(ImageSwitcher) findViewById(R.id.imageView17),
+				(ImageSwitcher) findViewById(R.id.imageView18),
+				(ImageSwitcher) findViewById(R.id.imageView19),
+				(ImageSwitcher) findViewById(R.id.imageView20),
+				(ImageSwitcher) findViewById(R.id.imageView21),
+				(ImageSwitcher) findViewById(R.id.imageView22),
+				(ImageSwitcher) findViewById(R.id.imageView23),
+				(ImageSwitcher) findViewById(R.id.imageView24),
+				(ImageSwitcher) findViewById(R.id.imageView25),
+				(ImageSwitcher) findViewById(R.id.imageView26),
+				(ImageSwitcher) findViewById(R.id.imageView27),
+				(ImageSwitcher) findViewById(R.id.imageView28),
+				(ImageSwitcher) findViewById(R.id.imageView29),
+				(ImageSwitcher) findViewById(R.id.imageView30),
+				(ImageSwitcher) findViewById(R.id.imageView31),
+				(ImageSwitcher) findViewById(R.id.imageView32),
+				(ImageSwitcher) findViewById(R.id.imageView33),
+				(ImageSwitcher) findViewById(R.id.imageView34),
+				(ImageSwitcher) findViewById(R.id.imageView35),
+				(ImageSwitcher) findViewById(R.id.imageView36) };
 
 		if (savedInstanceState == null) {
 
@@ -85,14 +118,19 @@ public class Game extends Activity {
 			ArrayList<Integer> cardInts = new ArrayList<Integer>(Arrays.asList(
 					R.drawable.troll01, R.drawable.troll02, R.drawable.troll03,
 					R.drawable.troll04, R.drawable.troll05, R.drawable.troll06,
-					R.drawable.troll07, R.drawable.troll08, R.drawable.troll09));
+					R.drawable.troll07, R.drawable.troll08, R.drawable.troll09,
+					R.drawable.troll10, R.drawable.troll11, R.drawable.troll12,
+					R.drawable.troll13, R.drawable.troll14, R.drawable.troll15,
+					R.drawable.troll16, R.drawable.troll17, R.drawable.troll18,
+					R.drawable.troll19, R.drawable.troll20));
 
 			positions = new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 4, 5,
-					6, 7, 8, 9, 10, 11, 12, 13, 14, 15));
+					6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+					22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35));
 
 			Collections.shuffle(cardInts);
 			Collections.shuffle(positions);
-			currentSet = new ArrayList<Integer>(cardInts.subList(0, 8));
+			currentSet = new ArrayList<Integer>(cardInts.subList(0, 18));
 
 		} else {
 
@@ -121,7 +159,7 @@ public class Game extends Activity {
 		for (Integer i : currentSet) {
 			for (int t = 0; t < 2; t++) {
 				cards[j] = new Card(slots[positions.get(j)], i,
-						positions.get(j), this);
+						positions.get(j), this, cWidth, cHeight);
 				j++;
 			}
 		}
@@ -281,9 +319,10 @@ public class Game extends Activity {
 			}
 
 			public void onFinish() {
-				Intent go = new Intent(Game.this,
+				Intent go = new Intent(Level02.this,
 						com.memomeme.activities.GameOver.class);
 				go.putExtra("isWin", false);
+				go.putExtra("lastLevel", 2);
 				startActivity(go);
 				finish();
 			}
@@ -317,10 +356,11 @@ public class Game extends Activity {
 			combo = 1;
 		}
 
-		if (pairFound == 8) {
+		if (pairFound == 18) {
 			Intent go = new Intent(v.getContext(),
 					com.memomeme.activities.GameOver.class);
 			go.putExtra("isWin", true);
+			go.putExtra("lastLevel", 2);
 			startActivity(go);
 			finish();
 		}

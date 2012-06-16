@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
-
     <string name="app_name">MemoMeme</string>
     <string name="textWelcome">Welcome to</string>
     <string name="textGameName">MemoMeme</string>
@@ -29,5 +28,5 @@
     <string name="lv8">Level 8</string>
     <string name="lv9">Level 9</string>
     <string name="lv10">Level 10</string>
-
+    <string name="next_button">Next</string>
 </resources>

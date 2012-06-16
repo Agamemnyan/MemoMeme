@@ -349,7 +349,7 @@ public class Level02 extends Activity {
 
 		if (exact) {
 			pairFound++;
-			score += 100 * combo;
+			score += 100 * combo * 2;
 			combo++;
 			setScoreText(v, score);
 		} else {

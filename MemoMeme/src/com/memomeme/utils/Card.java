@@ -24,7 +24,7 @@ public class Card {
 				ImageView iView = new ImageView(context);
 				iView.setScaleType(ImageView.ScaleType.FIT_XY);
 				iView.setLayoutParams(new ImageSwitcher.LayoutParams(width, height));
-				iView.setBackgroundColor(0xFF000000);
+				iView.setBackgroundColor(0xFF000077);
 				return iView;
 			}
 		});

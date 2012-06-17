@@ -10,6 +10,7 @@ import com.memomeme.utils.MemeSettings;
 import com.memomeme.activities.R;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -17,6 +18,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TableLayout;
 import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
 
@@ -53,18 +56,36 @@ public class Level01 extends Activity {
 	TextView scoreText;
 
 	private LayoutParams lp0;
+	private RelativeLayout.LayoutParams lpBoard;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.level_01);
 
-		cHeight = MemeSettings.dHeight * 216 / 768;
+		cHeight = MemeSettings.dHeight * 207 / 768;
 
 		lp0 = new LayoutParams(cHeight, cHeight);
 		ImageView iv0 = (ImageView) findViewById(R.id.imageView0);
 		iv0.setLayoutParams(lp0);
 		iv0.setScaleType(ImageView.ScaleType.FIT_XY);
+
+		lpBoard = new RelativeLayout.LayoutParams(
+				MemeSettings.dHeight * 660 / 768,
+				MemeSettings.dHeight * 660 / 768);
+		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+			lpBoard.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+			lpBoard.addRule(RelativeLayout.CENTER_HORIZONTAL);
+			lpBoard.bottomMargin = 5;
+		} else {
+			lpBoard.addRule(RelativeLayout.CENTER_IN_PARENT);
+		}
+
+		TableLayout iBoard = (TableLayout) findViewById(R.id.tableBoard);
+		ImageView imgBoard = (ImageView) findViewById(R.id.imageBoard);
+		iBoard.setLayoutParams(lpBoard);
+		imgBoard.setLayoutParams(lpBoard);
+		imgBoard.setScaleType(ImageView.ScaleType.FIT_XY);
 
 		scoreText = (TextView) findViewById(R.id.textScore);
 		cards = new Card[8];

@@ -292,7 +292,7 @@ public class Level01 extends Activity {
 
 			public void onFinish() {
 				Intent go = new Intent(Level01.this,
-						com.memomeme.activities.GameOver.class);
+						com.memomeme.activities.EndLevel.class);
 				go.putExtra("isWin", false);
 				go.putExtra("lastLevel", 1);
 				startActivity(go);
@@ -330,7 +330,7 @@ public class Level01 extends Activity {
 
 		if (pairFound == 4) {
 			Intent go = new Intent(v.getContext(),
-					com.memomeme.activities.GameOver.class);
+					com.memomeme.activities.EndLevel.class);
 			go.putExtra("isWin", true);
 			go.putExtra("lastLevel", 1);
 			startActivity(go);

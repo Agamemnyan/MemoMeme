@@ -14,12 +14,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class GameOver extends Activity {
+public class EndLevel extends Activity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.gameover);
+		setContentView(R.layout.end_level);
 
 		final Random rand = new Random();
 
@@ -39,16 +39,16 @@ public class GameOver extends Activity {
 			public void onClick(View v) {
 				switch (getIntent().getIntExtra("lastLevel", 13)) {
 				case 1:
-					startActivity(new Intent(GameOver.this, Level02.class));
+					startActivity(new Intent(EndLevel.this, Level02.class));
 					break;
 				case 2:
-					startActivity(new Intent(GameOver.this, Level03.class));
+					startActivity(new Intent(EndLevel.this, Level03.class));
 					break;
 				case 3:
-					startActivity(new Intent(GameOver.this, Level04.class));
+					startActivity(new Intent(EndLevel.this, Level04.class));
 					break;
 				case 4:
-					startActivity(new Intent(GameOver.this, Level04.class));
+					startActivity(new Intent(EndLevel.this, Level04.class));
 					break;
 				}
 
@@ -61,16 +61,16 @@ public class GameOver extends Activity {
 			public void onClick(View v) {
 				switch (getIntent().getIntExtra("lastLevel", 13)) {
 				case 1:
-					startActivity(new Intent(GameOver.this, Level01.class));
+					startActivity(new Intent(EndLevel.this, Level01.class));
 					break;
 				case 2:
-					startActivity(new Intent(GameOver.this, Level02.class));
+					startActivity(new Intent(EndLevel.this, Level02.class));
 					break;
 				case 3:
-					startActivity(new Intent(GameOver.this, Level03.class));
+					startActivity(new Intent(EndLevel.this, Level03.class));
 					break;
 				case 4:
-					startActivity(new Intent(GameOver.this, Level04.class));
+					startActivity(new Intent(EndLevel.this, Level04.class));
 					break;
 				}
 				finish();

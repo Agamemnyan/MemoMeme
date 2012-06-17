@@ -3,7 +3,7 @@
     package="com.memomeme.activities"
     android:installLocation="preferExternal"
     android:versionCode="1"
-    android:versionName="0.4.0" >
+    android:versionName="0.4.1" >
 
     <uses-sdk
         android:minSdkVersion="7"
@@ -38,7 +38,7 @@
             android:name=".Level04"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
         <activity
-            android:name=".GameOver"
+            android:name=".EndLevel"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
         <activity
             android:name=".NewUser"

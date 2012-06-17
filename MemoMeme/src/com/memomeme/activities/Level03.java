@@ -17,10 +17,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
-import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
+import android.widget.TableRow.LayoutParams;
 
-public class Level01 extends Activity {
+public class Level03 extends Activity {
 	/** Called when the activity is first created. */
 	int score;
 	int pairFound;
@@ -51,23 +51,23 @@ public class Level01 extends Activity {
 
 	OnClickListener ocl;
 	TextView scoreText;
-
+	
 	private LayoutParams lp0;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.level_01);
+		setContentView(R.layout.level_03);
 
-		cHeight = MemeSettings.dHeight * 216 / 768;
-
+		cHeight = MemeSettings.dHeight * 130 / 768;
+		
 		lp0 = new LayoutParams(cHeight, cHeight);
 		ImageView iv0 = (ImageView) findViewById(R.id.imageView0);
 		iv0.setLayoutParams(lp0);
 		iv0.setScaleType(ImageView.ScaleType.FIT_XY);
 
 		scoreText = (TextView) findViewById(R.id.textScore);
-		cards = new Card[8];
+		cards = new Card[24];
 
 		combo = 1;
 
@@ -79,7 +79,23 @@ public class Level01 extends Activity {
 				(ImageSwitcher) findViewById(R.id.imageView5),
 				(ImageSwitcher) findViewById(R.id.imageView6),
 				(ImageSwitcher) findViewById(R.id.imageView7),
-				(ImageSwitcher) findViewById(R.id.imageView8) };
+				(ImageSwitcher) findViewById(R.id.imageView8),
+				(ImageSwitcher) findViewById(R.id.imageView9),
+				(ImageSwitcher) findViewById(R.id.imageView10),
+				(ImageSwitcher) findViewById(R.id.imageView11),
+				(ImageSwitcher) findViewById(R.id.imageView12),
+				(ImageSwitcher) findViewById(R.id.imageView13),
+				(ImageSwitcher) findViewById(R.id.imageView14),
+				(ImageSwitcher) findViewById(R.id.imageView15),
+				(ImageSwitcher) findViewById(R.id.imageView16),
+				(ImageSwitcher) findViewById(R.id.imageView17),
+				(ImageSwitcher) findViewById(R.id.imageView18),
+				(ImageSwitcher) findViewById(R.id.imageView19),
+				(ImageSwitcher) findViewById(R.id.imageView20),
+				(ImageSwitcher) findViewById(R.id.imageView21),
+				(ImageSwitcher) findViewById(R.id.imageView22),
+				(ImageSwitcher) findViewById(R.id.imageView23),
+				(ImageSwitcher) findViewById(R.id.imageView24) };
 
 		if (savedInstanceState == null) {
 
@@ -98,11 +114,12 @@ public class Level01 extends Activity {
 					R.drawable.troll19, R.drawable.troll20));
 
 			positions = new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 4, 5,
-					6, 7));
+					6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+					22, 23));
 
 			Collections.shuffle(cardInts);
 			Collections.shuffle(positions);
-			currentSet = new ArrayList<Integer>(cardInts.subList(0, 4));
+			currentSet = new ArrayList<Integer>(cardInts.subList(0, 12));
 
 		} else {
 
@@ -291,10 +308,10 @@ public class Level01 extends Activity {
 			}
 
 			public void onFinish() {
-				Intent go = new Intent(Level01.this,
+				Intent go = new Intent(Level03.this,
 						com.memomeme.activities.GameOver.class);
 				go.putExtra("isWin", false);
-				go.putExtra("lastLevel", 1);
+				go.putExtra("lastLevel", 3);
 				startActivity(go);
 				finish();
 			}
@@ -321,18 +338,18 @@ public class Level01 extends Activity {
 
 		if (exact) {
 			pairFound++;
-			score += 50 * combo;
+			score += 150 * combo ;
 			combo++;
 			setScoreText(v, score);
 		} else {
 			combo = 1;
 		}
 
-		if (pairFound == 4) {
+		if (pairFound == 12) {
 			Intent go = new Intent(v.getContext(),
 					com.memomeme.activities.GameOver.class);
 			go.putExtra("isWin", true);
-			go.putExtra("lastLevel", 1);
+			go.putExtra("lastLevel", 3);
 			startActivity(go);
 			finish();
 		}

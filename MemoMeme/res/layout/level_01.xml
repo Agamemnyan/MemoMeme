@@ -9,7 +9,10 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.8" android:paddingLeft="20dp" android:paddingRight="20dp" android:paddingTop="10dp">
+        android:layout_weight="0.8"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp" >
 
         <TextView
             android:id="@+id/textScore"
@@ -26,7 +29,6 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:textSize="32dp" />
-
     </RelativeLayout>
 
     <TableLayout
@@ -64,13 +66,6 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/imgSlot"
                 android:scaleType="center" />
-
-            <ImageSwitcher
-                android:id="@+id/imageView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/imgSlot"
-                android:scaleType="center" />
         </TableRow>
 
         <TableRow
@@ -80,11 +75,33 @@
             android:gravity="center" >
 
             <ImageSwitcher
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/imgSlot"
+                android:scaleType="center" />
+
+            <ImageView
+                android:id="@+id/imageView0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:contentDescription="@string/imgSlot"
+                android:scaleType="center" />
+
+            <ImageSwitcher
                 android:id="@+id/imageView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/imgSlot"
                 android:scaleType="center" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center" >
 
             <ImageSwitcher
                 android:id="@+id/imageView6"
@@ -102,76 +119,6 @@
 
             <ImageSwitcher
                 android:id="@+id/imageView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/imgSlot"
-                android:scaleType="center" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="center" >
-
-            <ImageSwitcher
-                android:id="@+id/imageView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/imgSlot"
-                android:scaleType="center" />
-
-            <ImageSwitcher
-                android:id="@+id/imageView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/imgSlot"
-                android:scaleType="center" />
-
-            <ImageSwitcher
-                android:id="@+id/imageView11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/imgSlot"
-                android:scaleType="center" />
-
-            <ImageSwitcher
-                android:id="@+id/imageView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/imgSlot"
-                android:scaleType="center" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow4"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="center" >
-
-            <ImageSwitcher
-                android:id="@+id/imageView13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/imgSlot"
-                android:scaleType="center" />
-
-            <ImageSwitcher
-                android:id="@+id/imageView14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/imgSlot"
-                android:scaleType="center" />
-
-            <ImageSwitcher
-                android:id="@+id/imageView15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/imgSlot"
-                android:scaleType="center" />
-
-            <ImageSwitcher
-                android:id="@+id/imageView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/imgSlot"

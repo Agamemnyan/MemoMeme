@@ -16,14 +16,14 @@ public class Card {
 	private final int memeFace;
 	private final int pos;
 	
-	public Card(final ImageSwitcher card, int memeFace, int pos, final Context context, final int width, final int height) {
+	public Card(final ImageSwitcher card, int memeFace, int pos, final Context context, final int height) {
 		
 		card.setFactory(new ViewFactory() {
 			
 			public View makeView() {
 				ImageView iView = new ImageView(context);
 				iView.setScaleType(ImageView.ScaleType.FIT_XY);
-				iView.setLayoutParams(new ImageSwitcher.LayoutParams(width, height));
+				iView.setLayoutParams(new ImageSwitcher.LayoutParams(height, height));
 				iView.setBackgroundColor(0xFF000077);
 				return iView;
 			}

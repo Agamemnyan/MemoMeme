@@ -42,7 +42,13 @@ public class GameOver extends Activity {
 					startActivity(new Intent(GameOver.this, Level02.class));
 					break;
 				case 2:
-					startActivity(new Intent(GameOver.this, Level02.class));
+					startActivity(new Intent(GameOver.this, Level03.class));
+					break;
+				case 3:
+					startActivity(new Intent(GameOver.this, Level04.class));
+					break;
+				case 4:
+					startActivity(new Intent(GameOver.this, Level04.class));
 					break;
 				}
 
@@ -59,6 +65,12 @@ public class GameOver extends Activity {
 					break;
 				case 2:
 					startActivity(new Intent(GameOver.this, Level02.class));
+					break;
+				case 3:
+					startActivity(new Intent(GameOver.this, Level03.class));
+					break;
+				case 4:
+					startActivity(new Intent(GameOver.this, Level04.class));
 					break;
 				}
 				finish();

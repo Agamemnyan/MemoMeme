@@ -3,7 +3,7 @@
     package="com.memomeme.activities"
     android:installLocation="preferExternal"
     android:versionCode="1"
-    android:versionName="0.3.6" >
+    android:versionName="0.4.0" >
 
     <uses-sdk
         android:minSdkVersion="7"
@@ -30,6 +30,12 @@
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
         <activity
             android:name=".Level02"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
+        <activity
+            android:name=".Level03"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
+        <activity
+            android:name=".Level04"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
         <activity
             android:name=".GameOver"

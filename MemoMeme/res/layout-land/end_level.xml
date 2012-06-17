@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_gravity="center"
-    android:gravity="center"
-    android:orientation="horizontal" >
+    android:layout_height="fill_parent" >
 
     <LinearLayout
         android:id="@+id/game_over_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
         android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/textWinLose"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="36dp" />
 
         <Button
             android:id="@+id/nextButton"
@@ -41,7 +35,8 @@
         android:id="@+id/gameoverImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
         android:contentDescription="@string/imgGameOver" />
 
-</LinearLayout>
+</RelativeLayout>

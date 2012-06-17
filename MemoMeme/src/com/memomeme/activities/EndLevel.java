@@ -3,6 +3,7 @@ package com.memomeme.activities;
 import java.util.Random;
 
 import com.memomeme.activities.R;
+import com.memomeme.utils.MemeSettings;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,9 +13,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.RelativeLayout.LayoutParams;
+
 
 public class EndLevel extends Activity {
+	
+	private LayoutParams lp;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -22,9 +26,12 @@ public class EndLevel extends Activity {
 		setContentView(R.layout.end_level);
 
 		final Random rand = new Random();
+		
+		lp = new LayoutParams(MemeSettings.dHeight, MemeSettings.dHeight);
 
-		TextView textWL = (TextView) findViewById(R.id.textWinLose);
 		ImageView imgWl = (ImageView) findViewById(R.id.gameoverImage);
+		
+		imgWl.setLayoutParams(lp);
 
 		Integer[] winPics = new Integer[] { R.drawable.win01, R.drawable.win02 };
 		Integer[] losePics = new Integer[] { R.drawable.lose01,
@@ -84,10 +91,8 @@ public class EndLevel extends Activity {
 		});
 
 		if (getIntent().getExtras().getBoolean("isWin")) {
-			textWL.setText(R.string.youWin);
 			imgWl.setImageResource(winPics[rand.nextInt(winPics.length)]);
 		} else {
-			textWL.setText(R.string.youLose);
 			imgWl.setImageResource(losePics[rand.nextInt(losePics.length)]);
 			LinearLayout layout = (LinearLayout) findViewById(R.id.game_over_layout);
 			layout.removeView(nextButton);

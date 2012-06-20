@@ -31,70 +31,70 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lv1_1"
-                android:textSize="24dp" />
+                android:textSize="32sp" android:textStyle="bold" android:layout_marginBottom="10dp"/>
 
             <TextView
                 android:id="@+id/textLV2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lv2_1"
-                android:textSize="24dp" />
+                android:textSize="32sp" android:textStyle="bold" android:layout_marginBottom="10dp"/>
 
             <TextView
                 android:id="@+id/textLV3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lv2_2"
-                android:textSize="24dp" />
+                android:textSize="32sp" android:textStyle="bold" android:layout_marginBottom="10dp"/>
 
             <TextView
                 android:id="@+id/textLV4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lv3_1"
-                android:textSize="24dp" />
+                android:textSize="32sp" android:textStyle="bold" android:layout_marginBottom="10dp"/>
 
             <TextView
                 android:id="@+id/textLV5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lv3_2"
-                android:textSize="24dp" />
+                android:textSize="32sp" android:textStyle="bold" android:layout_marginBottom="10dp"/>
 
             <TextView
                 android:id="@+id/textLV6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lv3_3"
-                android:textSize="24dp" />
+                android:textSize="32sp" android:textStyle="bold" android:layout_marginBottom="10dp"/>
 
             <TextView
                 android:id="@+id/textLV7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lv4_1"
-                android:textSize="24dp" />
+                android:textSize="32sp" android:textStyle="bold" android:layout_marginBottom="10dp"/>
 
             <TextView
                 android:id="@+id/textLV8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lv4_2"
-                android:textSize="24dp" />
+                android:textSize="32sp" android:textStyle="bold" android:layout_marginBottom="10dp"/>
 
             <TextView
                 android:id="@+id/textLV9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lv4_3"
-                android:textSize="24dp" />
+                android:textSize="32sp" android:textStyle="bold" android:layout_marginBottom="10dp"/>
 
             <TextView
                 android:id="@+id/textLV10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lv4_4"
-                android:textSize="24dp" />
+                android:textSize="32sp" android:textStyle="bold" android:layout_marginBottom="10dp"/>
         </LinearLayout>
     </ScrollView>
 

@@ -61,7 +61,7 @@ public class Main extends Activity {
 
 		MemeSettings.boardHeight = MemeSettings.dHeight * 660 / 768;
 		MemeSettings.boardBottomMargin = MemeSettings.dHeight * 20 / 768;
-		MemeSettings.cHeight1 = MemeSettings.dHeight * 198 / 768;
+		MemeSettings.cHeight1 = MemeSettings.dHeight * 199 / 768;
 		MemeSettings.cHeight2 = MemeSettings.dHeight * 151 / 768;
 		MemeSettings.cHeight3 = MemeSettings.dHeight * 122 / 768;
 		MemeSettings.cHeight4 = MemeSettings.dHeight * 100 / 768;

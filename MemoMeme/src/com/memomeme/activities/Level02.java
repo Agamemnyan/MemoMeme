@@ -11,7 +11,6 @@ import com.memomeme.activities.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -28,6 +27,8 @@ public class Level02 extends Activity {
 	int pairFound;
 	int turnedCardsCount;
 	int isShowing;
+
+	int points = 100;
 
 	int[] currentTurnedCards;
 
@@ -50,7 +51,9 @@ public class Level02 extends Activity {
 	private CountDownTimer cd2;
 
 	OnClickListener ocl;
+	TextView timerText;
 	TextView scoreText;
+	TextView comboText;
 
 	private RelativeLayout.LayoutParams lpBoard;
 
@@ -75,7 +78,16 @@ public class Level02 extends Activity {
 		imgBoard.setLayoutParams(lpBoard);
 		imgBoard.setScaleType(ImageView.ScaleType.FIT_XY);
 
+		timerText = (TextView) findViewById(R.id.textTimer);
 		scoreText = (TextView) findViewById(R.id.textScore);
+		comboText = (TextView) findViewById(R.id.textCombo);
+
+		timerText.setTextSize(MemeSettings.timerTextSize);
+		scoreText.setTextSize(MemeSettings.scoreTextSize);
+		comboText.setTextSize(MemeSettings.comboTextSize);
+
+		timerText.setTextColor(MemeSettings.timerColor1);
+
 		cards = new Card[16];
 
 		combo = 1;
@@ -143,6 +155,12 @@ public class Level02 extends Activity {
 		}
 
 		setScoreText(scoreText, score);
+		comboText.setText(Integer.toString(points * combo));
+		if (combo > 1) {
+			comboText.setTextColor(MemeSettings.comboColor2);
+		} else {
+			comboText.setTextColor(MemeSettings.comboColor1);
+		}
 
 		int j = 0;
 		for (Integer i : currentSet) {
@@ -290,20 +308,22 @@ public class Level02 extends Activity {
 				card.getImage().setOnClickListener(ocl);
 			}
 		}
-		final TextView mTextField = (TextView) findViewById(R.id.textTimer);
 
 		cdt = new CountDownTimer(ms, 1000) {
 
 			public void onTick(long millisUntilFinished) {
 				ms = millisUntilFinished;
 
-				if (ms > 45000) {
-					mTextField.setText("00:45");
+				if (millisUntilFinished > 45000) {
+					timerText.setText("00:45");
 				} else {
-					mTextField
+					timerText
 							.setText("00:"
 									+ (millisUntilFinished / 1000 >= 10 ? (millisUntilFinished / 1000)
 											: ("0" + millisUntilFinished / 1000)));
+					if (millisUntilFinished < 6000) {
+						timerText.setTextColor(MemeSettings.timerColor2);
+					}
 				}
 			}
 
@@ -322,15 +342,7 @@ public class Level02 extends Activity {
 
 	protected void setScoreText(View v, int sc) {
 		TextView tv = (TextView) v;
-
-		if (sc > 0) {
-			tv.setTextColor(Color.GREEN);
-		} else if (sc == 0) {
-			tv.setTextColor(Color.DKGRAY);
-		} else {
-			tv.setTextColor(Color.RED);
-		}
-
+		tv.setTextColor(MemeSettings.scoreColor);
 		tv.setText(Integer.toString(sc));
 	}
 
@@ -338,11 +350,20 @@ public class Level02 extends Activity {
 
 		if (exact) {
 			pairFound++;
-			score += 100 * combo;
+			score += points * combo;
 			combo++;
 			setScoreText(v, score);
 		} else {
 			combo = 1;
+		}
+
+		comboText.setText(Integer.toString(points * combo));
+		if (combo > 1 && pairFound != 8) {
+			comboText.setTextColor(MemeSettings.comboColor2);
+		} else if (pairFound != 8) {
+			comboText.setTextColor(MemeSettings.comboColor1);
+		} else {
+			comboText.setVisibility(View.GONE);
 		}
 
 		if (pairFound == 8) {

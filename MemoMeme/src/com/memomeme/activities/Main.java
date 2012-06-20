@@ -46,9 +46,14 @@ public class Main extends Activity implements OnClickListener {
 		ivl.addRule(RelativeLayout.CENTER_HORIZONTAL);
 		ivl.topMargin = MemeSettings.mChallengeTopMargin;
 		iv.setLayoutParams(ivl);
+		iv.setScaleType(ImageView.ScaleType.FIT_XY);
 	}
 
 	private void initSettings() {
+
+		if (MemeSettings.isInit)
+			return;
+
 		DisplayMetrics metrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
@@ -70,6 +75,12 @@ public class Main extends Activity implements OnClickListener {
 
 		MemeSettings.mChallengeHeight = MemeSettings.dHeight * 450 / 768;
 		MemeSettings.mChallengeTopMargin = MemeSettings.dHeight * 25 / 768;
+
+		MemeSettings.timerTextSize = MemeSettings.dHeight * 88 / 768;
+		MemeSettings.scoreTextSize = MemeSettings.dHeight * 88 / 768;
+		MemeSettings.comboTextSize = MemeSettings.dHeight * 88 / 768;
+
+		MemeSettings.isInit = true;
 	}
 
 	public void onClick(View v) {

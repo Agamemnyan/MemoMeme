@@ -16,7 +16,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
-        android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView
@@ -27,7 +26,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
-        android:textSize="24sp"
         android:textStyle="bold" />
 
     <TableLayout
@@ -196,5 +194,14 @@
             </ImageSwitcher>
         </TableRow>
     </TableLayout>
+    
+    <TextView
+        android:id="@+id/textCombo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tableBoard"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

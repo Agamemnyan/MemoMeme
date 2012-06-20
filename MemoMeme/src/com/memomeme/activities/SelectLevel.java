@@ -54,5 +54,6 @@ public class SelectLevel extends Activity implements OnClickListener {
 			break;
 		}
 		startActivity(go);
+		finish();
 	}
 }

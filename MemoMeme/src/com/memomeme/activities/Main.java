@@ -1,6 +1,5 @@
 package com.memomeme.activities;
 
-import com.memomeme.activities.R;
 import com.memomeme.utils.MemeSettings;
 
 import android.app.Activity;
@@ -28,6 +27,15 @@ public class Main extends Activity {
 			}
 		});
 
+		Button buttonLoadGame = (Button) findViewById(R.id.buttonLoad);
+		buttonLoadGame.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+				Intent go = new Intent(v.getContext(), SelectLevel.class);
+				startActivity(go);
+			}
+		});
+
 		Button buttonExit = (Button) findViewById(R.id.buttonExit);
 		buttonExit.setOnClickListener(new OnClickListener() {
 
@@ -42,7 +50,7 @@ public class Main extends Activity {
 	private void initSettings() {
 		DisplayMetrics metrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(metrics);
-		
+
 		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
 			MemeSettings.dWidth = metrics.widthPixels;
 			MemeSettings.dHeight = metrics.heightPixels;
@@ -52,10 +60,10 @@ public class Main extends Activity {
 		}
 
 		MemeSettings.boardHeight = MemeSettings.dHeight * 660 / 768;
-		MemeSettings.boardBottomMargin = MemeSettings.dHeight * 20 / 768;		
-		MemeSettings.cHeight1 = MemeSettings.dHeight * 199 / 768;
-		MemeSettings.cHeight2 = MemeSettings.dHeight * 149 / 768;
-		MemeSettings.cHeight3 = MemeSettings.dHeight * 119 / 768;
-		MemeSettings.cHeight4 = MemeSettings.dHeight * 99 / 768;
+		MemeSettings.boardBottomMargin = MemeSettings.dHeight * 20 / 768;
+		MemeSettings.cHeight1 = MemeSettings.dHeight * 198 / 768;
+		MemeSettings.cHeight2 = MemeSettings.dHeight * 151 / 768;
+		MemeSettings.cHeight3 = MemeSettings.dHeight * 122 / 768;
+		MemeSettings.cHeight4 = MemeSettings.dHeight * 100 / 768;
 	}
 }

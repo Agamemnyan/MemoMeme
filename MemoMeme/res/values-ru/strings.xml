@@ -5,7 +5,7 @@
     <string name="textGameName">MemoMeme</string>
     <string name="buttonGo">Новая Игра</string>
     <string name="buttonResume">Продолжить</string>
-    <string name="buttonLoad">Загрузить</string>
+    <string name="buttonLoad">Загрузить Игру</string>
     <string name="imgSlot">Troll</string>
     <string name="imgGameOver">Game Over Meme</string>
     <string name="buttonRestart">Повторить</string>

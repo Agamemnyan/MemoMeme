@@ -32,7 +32,7 @@ public class Level01 extends Activity {
 
 	int[] currentTurnedCards;
 
-	long ms = 68000;
+	long ms = 38000;
 	long msshow1 = 1000;
 	long msshow2 = 7000;
 
@@ -296,8 +296,8 @@ public class Level01 extends Activity {
 			public void onTick(long millisUntilFinished) {
 				ms = millisUntilFinished;
 
-				if (ms > 60000) {
-					mTextField.setText("01:00");
+				if (ms > 30000) {
+					mTextField.setText("00:30");
 				} else {
 					mTextField
 							.setText("00:"

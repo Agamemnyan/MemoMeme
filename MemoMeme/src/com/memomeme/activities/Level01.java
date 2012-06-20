@@ -50,8 +50,6 @@ public class Level01 extends Activity {
 	private CountDownTimer cd1;
 	private CountDownTimer cd2;
 
-	private int cHeight;
-
 	OnClickListener ocl;
 	TextView scoreText;
 
@@ -63,29 +61,26 @@ public class Level01 extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.level_01);
 
-		cHeight = MemeSettings.dHeight * 207 / 768;
-
-		lp0 = new LayoutParams(cHeight, cHeight);
+		lp0 = new LayoutParams(MemeSettings.cHeight1, MemeSettings.cHeight1);
 		ImageView iv0 = (ImageView) findViewById(R.id.imageView0);
 		iv0.setLayoutParams(lp0);
 		iv0.setScaleType(ImageView.ScaleType.FIT_XY);
 
-		lpBoard = new RelativeLayout.LayoutParams(
-				MemeSettings.dHeight * 660 / 768,
-				MemeSettings.dHeight * 660 / 768);
+		lpBoard = new RelativeLayout.LayoutParams(MemeSettings.boardHeight,
+				MemeSettings.boardHeight);
 		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
 			lpBoard.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
 			lpBoard.addRule(RelativeLayout.CENTER_HORIZONTAL);
-			lpBoard.bottomMargin = 5;
+			lpBoard.bottomMargin = MemeSettings.boardBottomMargin;
 		} else {
 			lpBoard.addRule(RelativeLayout.CENTER_IN_PARENT);
 		}
 
 		TableLayout iBoard = (TableLayout) findViewById(R.id.tableBoard);
 		ImageView imgBoard = (ImageView) findViewById(R.id.imageBoard);
-		iBoard.setLayoutParams(lpBoard);
 		imgBoard.setLayoutParams(lpBoard);
 		imgBoard.setScaleType(ImageView.ScaleType.FIT_XY);
+		iBoard.setLayoutParams(lpBoard);
 
 		scoreText = (TextView) findViewById(R.id.textScore);
 		cards = new Card[8];
@@ -152,7 +147,7 @@ public class Level01 extends Activity {
 		for (Integer i : currentSet) {
 			for (int t = 0; t < 2; t++) {
 				cards[j] = new Card(slots[positions.get(j)], i,
-						positions.get(j), this, cHeight);
+						positions.get(j), this, MemeSettings.cHeight1);
 				j++;
 			}
 		}

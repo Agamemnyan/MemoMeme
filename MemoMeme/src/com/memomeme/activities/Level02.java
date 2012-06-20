@@ -10,12 +10,16 @@ import com.memomeme.utils.MemeSettings;
 import com.memomeme.activities.R;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageSwitcher;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 public class Level02 extends Activity {
@@ -45,17 +49,31 @@ public class Level02 extends Activity {
 	private CountDownTimer cd1;
 	private CountDownTimer cd2;
 
-	private int cHeight;
-
 	OnClickListener ocl;
 	TextView scoreText;
+
+	private RelativeLayout.LayoutParams lpBoard;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.level_02);
 
-		cHeight = MemeSettings.dHeight * 162 / 768;
+		lpBoard = new RelativeLayout.LayoutParams(MemeSettings.boardHeight,
+				MemeSettings.boardHeight);
+		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+			lpBoard.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+			lpBoard.addRule(RelativeLayout.CENTER_HORIZONTAL);
+			lpBoard.bottomMargin = MemeSettings.boardBottomMargin;
+		} else {
+			lpBoard.addRule(RelativeLayout.CENTER_IN_PARENT);
+		}
+
+		TableLayout iBoard = (TableLayout) findViewById(R.id.tableBoard);
+		ImageView imgBoard = (ImageView) findViewById(R.id.imageBoard);
+		iBoard.setLayoutParams(lpBoard);
+		imgBoard.setLayoutParams(lpBoard);
+		imgBoard.setScaleType(ImageView.ScaleType.FIT_XY);
 
 		scoreText = (TextView) findViewById(R.id.textScore);
 		cards = new Card[16];
@@ -130,7 +148,7 @@ public class Level02 extends Activity {
 		for (Integer i : currentSet) {
 			for (int t = 0; t < 2; t++) {
 				cards[j] = new Card(slots[positions.get(j)], i,
-						positions.get(j), this, cHeight);
+						positions.get(j), this, MemeSettings.cHeight2);
 				j++;
 			}
 		}

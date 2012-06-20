@@ -3,6 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+    <ImageView
+        android:id="@+id/imageBoard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/imgBoard"
+        android:src="@drawable/board_lvl_2" />
+
     <TextView
         android:id="@+id/textScore"
         android:layout_width="wrap_content"
@@ -24,6 +31,7 @@
         android:textStyle="bold" />
 
     <TableLayout
+        android:id="@+id/tableBoard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

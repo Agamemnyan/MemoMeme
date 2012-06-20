@@ -17,13 +17,13 @@
         android:id="@+id/buttonContinue"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:text="@string/buttonResume" />
+        android:text="@string/buttonResume" android:clickable="false"/>
 
     <Button
         android:id="@+id/buttonLoad"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:text="@string/buttonLoad" />
+        android:text="@string/buttonLoad" android:clickable="false"/>
 
     <Button
         android:id="@+id/buttonExit"

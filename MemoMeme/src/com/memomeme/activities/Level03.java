@@ -10,6 +10,7 @@ import com.memomeme.utils.MemeSettings;
 import com.memomeme.activities.R;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -17,6 +18,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.TableRow.LayoutParams;
 
@@ -47,24 +50,37 @@ public class Level03 extends Activity {
 	private CountDownTimer cd1;
 	private CountDownTimer cd2;
 
-	private int cHeight;
-
 	OnClickListener ocl;
 	TextView scoreText;
-	
+
 	private LayoutParams lp0;
+	private RelativeLayout.LayoutParams lpBoard;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.level_03);
 
-		cHeight = MemeSettings.dHeight * 130 / 768;
-		
-		lp0 = new LayoutParams(cHeight, cHeight);
+		lp0 = new LayoutParams(MemeSettings.cHeight3, MemeSettings.cHeight3);
 		ImageView iv0 = (ImageView) findViewById(R.id.imageView0);
 		iv0.setLayoutParams(lp0);
 		iv0.setScaleType(ImageView.ScaleType.FIT_XY);
+
+		lpBoard = new RelativeLayout.LayoutParams(MemeSettings.boardHeight,
+				MemeSettings.boardHeight);
+		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+			lpBoard.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+			lpBoard.addRule(RelativeLayout.CENTER_HORIZONTAL);
+			lpBoard.bottomMargin = MemeSettings.boardBottomMargin;
+		} else {
+			lpBoard.addRule(RelativeLayout.CENTER_IN_PARENT);
+		}
+
+		TableLayout iBoard = (TableLayout) findViewById(R.id.tableBoard);
+		ImageView imgBoard = (ImageView) findViewById(R.id.imageBoard);
+		iBoard.setLayoutParams(lpBoard);
+		imgBoard.setLayoutParams(lpBoard);
+		imgBoard.setScaleType(ImageView.ScaleType.FIT_XY);
 
 		scoreText = (TextView) findViewById(R.id.textScore);
 		cards = new Card[24];
@@ -148,7 +164,7 @@ public class Level03 extends Activity {
 		for (Integer i : currentSet) {
 			for (int t = 0; t < 2; t++) {
 				cards[j] = new Card(slots[positions.get(j)], i,
-						positions.get(j), this, cHeight);
+						positions.get(j), this, MemeSettings.cHeight3);
 				j++;
 			}
 		}
@@ -338,7 +354,7 @@ public class Level03 extends Activity {
 
 		if (exact) {
 			pairFound++;
-			score += 150 * combo ;
+			score += 150 * combo;
 			combo++;
 			setScoreText(v, score);
 		} else {

@@ -23,8 +23,10 @@ public class Card {
 			public View makeView() {
 				ImageView iView = new ImageView(context);
 				iView.setScaleType(ImageView.ScaleType.FIT_XY);
-				iView.setLayoutParams(new ImageSwitcher.LayoutParams(height, height));
+				ImageSwitcher.LayoutParams lp = new ImageSwitcher.LayoutParams(height, height);
+				iView.setLayoutParams(lp);
 				iView.setBackgroundColor(0xFF000077);
+				
 				return iView;
 			}
 		});

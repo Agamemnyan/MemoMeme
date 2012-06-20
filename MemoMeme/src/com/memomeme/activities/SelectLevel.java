@@ -13,10 +13,10 @@ public class SelectLevel extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.select_level);
 
-		initLevels();
+		initComponents();
 	}
 
-	private void initLevels() {
+	private void initComponents() {
 
 		// find xml views
 		TextView lvl1 = (TextView) findViewById(R.id.textLV1);

@@ -17,4 +17,7 @@ public class MemeSettings {
 	public static int cHeight3;
 	public static int cHeight4;
 	
+	// Main menu image
+	public static int mChallengeHeight;
+	public static int mChallengeTopMargin;
 }

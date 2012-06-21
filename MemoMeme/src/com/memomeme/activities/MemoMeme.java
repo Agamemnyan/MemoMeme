@@ -3,51 +3,54 @@ package com.memomeme.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 
 public class MemoMeme extends Activity {
+
+	long ms;
+	private CountDownTimer cdt;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.splash);
 
-		/** set time to splash out */
-		final int welcomeScreenDisplay = 1000;
-		/** create a thread to show splash up to splash time */
-		Thread welcomeThread = new Thread() {
-
-			int wait = 0;
-
-			@Override
-			public void run() {
-				try {
-					super.run();
-					/**
-					 * use while to get the splash time. Use sleep() to increase
-					 * the wait variable for every 100L.
-					 */
-					while (wait < welcomeScreenDisplay) {
-						sleep(100);
-						wait += 100;
-					}
-				} catch (Exception e) {
-					System.out.println("EXc=" + e);
-				} finally {
-					/**
-					 * Called after splash times up. Do some action after splash
-					 * times up. Here we moved to another main activity class
-					 */
-					Intent myIntent = new Intent(getBaseContext(), Main.class);
-					startActivity(myIntent);
-					overridePendingTransition(R.anim.launch_in,
-							R.anim.launch_out);
-					MemoMeme.this.finish();
-				}
-			}
-		};
-		welcomeThread.start();
-
+		if (savedInstanceState != null) {
+			ms = savedInstanceState.getLong("ms");
+		} else {
+			ms = 3000;
+		}
 	}
 
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		cdt = new CountDownTimer(ms, 100) {
+
+			public void onTick(long millisUntilFinished) {
+				ms = millisUntilFinished;
+			}
+
+			public void onFinish() {
+				new Intent(MemoMeme.this, Main.class);
+				startActivity(new Intent(MemoMeme.this, Main.class));
+				finish();
+			}
+		};
+
+		cdt.start();
+	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		outState.putLong("ms", ms);
+		super.onSaveInstanceState(outState);
+	}
+
+	@Override
+	protected void onPause() {
+		cdt.cancel();
+		super.onPause();		
+	}
 }

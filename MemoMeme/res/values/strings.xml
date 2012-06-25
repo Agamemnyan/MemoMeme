@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
-    <string name="app_name">MemoMeme</string>
+    <string name="app_name">MemoMeme Free</string>
     <string name="textGameName">MemoMeme</string>
     <string name="buttonGo">New Game</string>
     <string name="buttonResume">Continue</string>

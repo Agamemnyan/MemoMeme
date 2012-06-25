@@ -1,4 +1,4 @@
-package com.memomeme.utils;
+package am.tir.games.memomemefree.utils;
 
 public class User {
 	

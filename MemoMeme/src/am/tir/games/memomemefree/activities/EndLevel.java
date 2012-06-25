@@ -1,10 +1,8 @@
-package com.memomeme.activities;
+package am.tir.games.memomemefree.activities;
 
 import java.util.Random;
 
-import com.memomeme.activities.R;
-import com.memomeme.utils.MemeSettings;
-
+import am.tir.games.memomemefree.utils.MemeSettings;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

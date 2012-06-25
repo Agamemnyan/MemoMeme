@@ -1,6 +1,6 @@
-package com.memomeme.utils;
+package am.tir.games.memomemefree.utils;
 
-import com.memomeme.activities.R;
+import am.tir.games.memomemefree.activities.R;
 import android.content.Context;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -15,34 +15,34 @@ public class Card {
 	private final int cover = R.drawable.cover1;
 	private final int memeFace;
 	private final int pos;
-	
-	public Card(final ImageSwitcher card, int memeFace, int pos, final Context context, final int height) {
-		
+
+	public Card(final ImageSwitcher card, int memeFace, int pos,
+			final Context context, final int height) {
+
 		card.setFactory(new ViewFactory() {
-			
+
 			public View makeView() {
 				ImageView iView = new ImageView(context);
 				iView.setScaleType(ImageView.ScaleType.FIT_XY);
-				ImageSwitcher.LayoutParams lp = new ImageSwitcher.LayoutParams(height, height);
+				ImageSwitcher.LayoutParams lp = new ImageSwitcher.LayoutParams(
+						height, height);
 				iView.setLayoutParams(lp);
 				iView.setBackgroundColor(0xFF000077);
-				
+
 				return iView;
 			}
 		});
-		card.setInAnimation(
-				AnimationUtils.loadAnimation(context,
-						android.R.anim.slide_in_left));
-		card.setOutAnimation(
-				AnimationUtils.loadAnimation(context,
-						android.R.anim.slide_out_right));
+		card.setInAnimation(AnimationUtils.loadAnimation(context,
+				android.R.anim.slide_in_left));
+		card.setOutAnimation(AnimationUtils.loadAnimation(context,
+				android.R.anim.slide_out_right));
 		card.setImageResource(R.drawable.cover1);
-		
+
 		this.card = card;
 		this.memeFace = memeFace;
 		this.pos = pos;
 	}
-	
+
 	public void turnCard() {
 		isTurned = !isTurned;
 		if (!isTurned) {
@@ -52,19 +52,19 @@ public class Card {
 			card.setImageResource(memeFace);
 		}
 	}
-	
+
 	public ImageSwitcher getImage() {
 		return card;
 	}
-	
+
 	public boolean getIsOut() {
 		return isOut;
 	}
-	
+
 	public boolean getIsTurned() {
 		return isTurned;
 	}
-	
+
 	public int getId() {
 		return card.getId();
 	}
@@ -76,8 +76,8 @@ public class Card {
 	public int getPos() {
 		return pos;
 	}
-	
-	public int getMemeInt () {
+
+	public int getMemeInt() {
 		return memeFace;
 	}
 }

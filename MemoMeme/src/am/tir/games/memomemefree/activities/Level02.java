@@ -1,13 +1,12 @@
-package com.memomeme.activities;
+package am.tir.games.memomemefree.activities;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-import com.memomeme.utils.Card;
-import com.memomeme.utils.MemeSettings;
 
-import com.memomeme.activities.R;
+import am.tir.games.memomemefree.utils.Card;
+import am.tir.games.memomemefree.utils.MemeSettings;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -19,21 +18,20 @@ import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
-import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
 
-public class Level01 extends Activity {
+public class Level02 extends Activity {
 	/** Called when the activity is first created. */
 	int score;
 	int pairFound;
 	int turnedCardsCount;
 	int isShowing;
 
-	int points = 50;
+	int points = 100;
 
 	int[] currentTurnedCards;
 
-	long ms = 38000;
+	long ms = 53000;
 	long msshow1 = 1000;
 	long msshow2 = 7000;
 
@@ -56,18 +54,12 @@ public class Level01 extends Activity {
 	TextView scoreText;
 	TextView comboText;
 
-	private LayoutParams lp0;
 	private RelativeLayout.LayoutParams lpBoard;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.level_01);
-
-		lp0 = new LayoutParams(MemeSettings.cHeight1, MemeSettings.cHeight1);
-		ImageView iv0 = (ImageView) findViewById(R.id.imageView0);
-		iv0.setLayoutParams(lp0);
-		iv0.setScaleType(ImageView.ScaleType.FIT_XY);
+		setContentView(R.layout.level_02);
 
 		lpBoard = new RelativeLayout.LayoutParams(MemeSettings.boardHeight,
 				MemeSettings.boardHeight);
@@ -81,9 +73,9 @@ public class Level01 extends Activity {
 
 		TableLayout iBoard = (TableLayout) findViewById(R.id.tableBoard);
 		ImageView imgBoard = (ImageView) findViewById(R.id.imageBoard);
+		iBoard.setLayoutParams(lpBoard);
 		imgBoard.setLayoutParams(lpBoard);
 		imgBoard.setScaleType(ImageView.ScaleType.FIT_XY);
-		iBoard.setLayoutParams(lpBoard);
 
 		timerText = (TextView) findViewById(R.id.textTimer);
 		scoreText = (TextView) findViewById(R.id.textScore);
@@ -95,7 +87,7 @@ public class Level01 extends Activity {
 
 		timerText.setTextColor(MemeSettings.timerColor1);
 
-		cards = new Card[8];
+		cards = new Card[16];
 
 		combo = 1;
 
@@ -107,7 +99,15 @@ public class Level01 extends Activity {
 				(ImageSwitcher) findViewById(R.id.imageView5),
 				(ImageSwitcher) findViewById(R.id.imageView6),
 				(ImageSwitcher) findViewById(R.id.imageView7),
-				(ImageSwitcher) findViewById(R.id.imageView8) };
+				(ImageSwitcher) findViewById(R.id.imageView8),
+				(ImageSwitcher) findViewById(R.id.imageView9),
+				(ImageSwitcher) findViewById(R.id.imageView10),
+				(ImageSwitcher) findViewById(R.id.imageView11),
+				(ImageSwitcher) findViewById(R.id.imageView12),
+				(ImageSwitcher) findViewById(R.id.imageView13),
+				(ImageSwitcher) findViewById(R.id.imageView14),
+				(ImageSwitcher) findViewById(R.id.imageView15),
+				(ImageSwitcher) findViewById(R.id.imageView16) };
 
 		if (savedInstanceState == null) {
 
@@ -126,11 +126,11 @@ public class Level01 extends Activity {
 					R.drawable.troll19, R.drawable.troll20));
 
 			positions = new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 4, 5,
-					6, 7));
+					6, 7, 8, 9, 10, 11, 12, 13, 14, 15));
 
 			Collections.shuffle(cardInts);
 			Collections.shuffle(positions);
-			currentSet = new ArrayList<Integer>(cardInts.subList(0, 4));
+			currentSet = new ArrayList<Integer>(cardInts.subList(0, 8));
 
 		} else {
 
@@ -165,7 +165,7 @@ public class Level01 extends Activity {
 		for (Integer i : currentSet) {
 			for (int t = 0; t < 2; t++) {
 				cards[j] = new Card(slots[positions.get(j)], i,
-						positions.get(j), this, MemeSettings.cHeight1);
+						positions.get(j), this, MemeSettings.cHeight2);
 				j++;
 			}
 		}
@@ -313,8 +313,8 @@ public class Level01 extends Activity {
 			public void onTick(long millisUntilFinished) {
 				ms = millisUntilFinished;
 
-				if (millisUntilFinished > 30000) {
-					timerText.setText("00:30");
+				if (millisUntilFinished > 45000) {
+					timerText.setText("00:45");
 				} else {
 					timerText
 							.setText("00:"
@@ -327,10 +327,10 @@ public class Level01 extends Activity {
 			}
 
 			public void onFinish() {
-				Intent go = new Intent(Level01.this,
-						com.memomeme.activities.EndLevel.class);
+				Intent go = new Intent(Level02.this,
+						am.tir.games.memomemefree.activities.EndLevel.class);
 				go.putExtra("isWin", false);
-				go.putExtra("lastLevel", 1);
+				go.putExtra("lastLevel", 2);
 				startActivity(go);
 				finish();
 			}
@@ -357,19 +357,19 @@ public class Level01 extends Activity {
 		}
 
 		comboText.setText(Integer.toString(points * combo));
-		if (combo > 1 && pairFound != 4) {
+		if (combo > 1 && pairFound != 8) {
 			comboText.setTextColor(MemeSettings.comboColor2);
-		} else if (pairFound != 4) {
+		} else if (pairFound != 8) {
 			comboText.setTextColor(MemeSettings.comboColor1);
 		} else {
 			comboText.setVisibility(View.GONE);
 		}
 
-		if (pairFound == 4) {
+		if (pairFound == 8) {
 			Intent go = new Intent(v.getContext(),
-					com.memomeme.activities.EndLevel.class);
+					am.tir.games.memomemefree.activities.EndLevel.class);
 			go.putExtra("isWin", true);
-			go.putExtra("lastLevel", 1);
+			go.putExtra("lastLevel", 2);
 			startActivity(go);
 			finish();
 		}

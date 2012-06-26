@@ -33,7 +33,6 @@ public class MemoMeme extends Activity {
 			}
 
 			public void onFinish() {
-				new Intent(MemoMeme.this, Main.class);
 				startActivity(new Intent(MemoMeme.this, Main.class));
 				finish();
 			}

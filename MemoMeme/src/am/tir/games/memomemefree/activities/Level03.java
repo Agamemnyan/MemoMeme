@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-
 import am.tir.games.memomemefree.utils.Card;
 import am.tir.games.memomemefree.utils.MemeSettings;
 import android.app.Activity;
@@ -18,8 +17,8 @@ import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
-import android.widget.TextView;
 import android.widget.TableRow.LayoutParams;
+import android.widget.TextView;
 
 public class Level03 extends Activity {
 	/** Called when the activity is first created. */
@@ -343,8 +342,10 @@ public class Level03 extends Activity {
 			}
 
 			public void onFinish() {
-				Intent go = new Intent(Level03.this,
+				Intent go = new Intent(getBaseContext(),
 						am.tir.games.memomemefree.activities.EndLevel.class);
+				go.putExtra("score", score);
+				go.putExtra("user", getIntent().getParcelableExtra("user"));
 				go.putExtra("isWin", false);
 				go.putExtra("lastLevel", 3);
 				startActivity(go);
@@ -382,8 +383,10 @@ public class Level03 extends Activity {
 		}
 
 		if (pairFound == 12) {
-			Intent go = new Intent(v.getContext(),
+			Intent go = new Intent(getBaseContext(),
 					am.tir.games.memomemefree.activities.EndLevel.class);
+			go.putExtra("score", score);
+			go.putExtra("user", getIntent().getParcelableExtra("user"));
 			go.putExtra("isWin", true);
 			go.putExtra("lastLevel", 3);
 			startActivity(go);

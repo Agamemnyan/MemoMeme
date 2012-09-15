@@ -39,4 +39,11 @@
         android:layout_centerVertical="true"
         android:contentDescription="@string/imgGameOver" />
 
+    <TextView
+        android:id="@+id/scoreText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>

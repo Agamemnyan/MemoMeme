@@ -3,6 +3,7 @@ package am.tir.games.memomemefree.activities;
 import java.util.Random;
 
 import am.tir.games.memomemefree.utils.MemeSettings;
+import am.tir.games.memomemefree.utils.User;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,11 +13,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
-
+import android.widget.TextView;
 
 public class EndLevel extends Activity {
-	
+
 	private LayoutParams lp;
+	private User user;
+	private int score;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -24,11 +27,18 @@ public class EndLevel extends Activity {
 		setContentView(R.layout.end_level);
 
 		final Random rand = new Random();
-		
+
 		lp = new LayoutParams(MemeSettings.dHeight, MemeSettings.dHeight);
 
+		TextView scoreText = (TextView) findViewById(R.id.scoreText);
+		user = getIntent().getParcelableExtra("user");
+		score = getIntent().getIntExtra("score", 0);
+
+		scoreText
+				.setText(user.getUserName() + " " + (user.getPoints() + score));
+
 		ImageView imgWl = (ImageView) findViewById(R.id.gameoverImage);
-		
+
 		imgWl.setLayoutParams(lp);
 
 		Integer[] winPics = new Integer[] { R.drawable.win01, R.drawable.win02 };
@@ -42,21 +52,24 @@ public class EndLevel extends Activity {
 		nextButton.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
+				Intent go = null;
 				switch (getIntent().getIntExtra("lastLevel", 13)) {
 				case 1:
-					startActivity(new Intent(EndLevel.this, Level02.class));
+					go = new Intent(EndLevel.this, Level02.class);
 					break;
 				case 2:
-					startActivity(new Intent(EndLevel.this, Level03.class));
+					go = new Intent(EndLevel.this, Level03.class);
 					break;
 				case 3:
-					startActivity(new Intent(EndLevel.this, Level04.class));
+					go = new Intent(EndLevel.this, Level04.class);
 					break;
 				case 4:
-					startActivity(new Intent(EndLevel.this, Level04.class));
+					go = new Intent(EndLevel.this, Level04.class);
 					break;
 				}
-
+				user.setPoints(user.getPoints() + score);
+				go.putExtra("user", user);
+				startActivity(go);
 				finish();
 			}
 		});
@@ -64,20 +77,23 @@ public class EndLevel extends Activity {
 		restartButton.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
+				Intent go = null;
 				switch (getIntent().getIntExtra("lastLevel", 13)) {
 				case 1:
-					startActivity(new Intent(EndLevel.this, Level01.class));
+					go = new Intent(EndLevel.this, Level01.class);
 					break;
 				case 2:
-					startActivity(new Intent(EndLevel.this, Level02.class));
+					go = new Intent(EndLevel.this, Level02.class);
 					break;
 				case 3:
-					startActivity(new Intent(EndLevel.this, Level03.class));
+					go = new Intent(EndLevel.this, Level03.class);
 					break;
 				case 4:
-					startActivity(new Intent(EndLevel.this, Level04.class));
+					go = new Intent(EndLevel.this, Level04.class);
 					break;
 				}
+				go.putExtra("user", user);
+				startActivity(go);
 				finish();
 			}
 		});

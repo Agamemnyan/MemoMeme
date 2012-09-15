@@ -1,5 +1,6 @@
 package am.tir.games.memomemefree.activities;
 
+import am.tir.games.memomemefree.utils.User;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,10 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class NewUser extends Activity {
-	
+
 	EditText etNewUser;
 	Button bSubmit;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,17 +30,15 @@ public class NewUser extends Activity {
 
 	private void initListeners() {
 		bSubmit.setOnClickListener(new OnClickListener() {
-			
+
 			public void onClick(View v) {
-				// TODO creating db user
-				startActivity(new Intent(v.getContext(), Level01.class));
+				Intent go = new Intent(v.getContext(), Level01.class);
+				User user = new User();
+				user.setUserName(etNewUser.getText().toString());
+				go.putExtra("user", user);
+				startActivity(go);
 				finish();
 			}
 		});
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
 	}
 }

@@ -353,8 +353,10 @@ public class Level04 extends Activity {
 			}
 
 			public void onFinish() {
-				Intent go = new Intent(Level04.this,
+				Intent go = new Intent(getBaseContext(),
 						am.tir.games.memomemefree.activities.EndLevel.class);
+				go.putExtra("score", score);
+				go.putExtra("user", getIntent().getParcelableExtra("user"));
 				go.putExtra("isWin", false);
 				go.putExtra("lastLevel", 4);
 				startActivity(go);
@@ -392,8 +394,10 @@ public class Level04 extends Activity {
 		}
 
 		if (pairFound == 18) {
-			Intent go = new Intent(v.getContext(),
+			Intent go = new Intent(getBaseContext(),
 					am.tir.games.memomemefree.activities.EndLevel.class);
+			go.putExtra("score", score);
+			go.putExtra("user", getIntent().getParcelableExtra("user"));
 			go.putExtra("isWin", true);
 			go.putExtra("lastLevel", 4);
 			startActivity(go);

@@ -101,6 +101,8 @@ public class EndLevel extends Activity {
 
 		mainMenuButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
+				user.setPoints(user.getPoints() + score);
+				new ScoreModel(getBaseContext()).add(user);
 				finish();
 			}
 		});

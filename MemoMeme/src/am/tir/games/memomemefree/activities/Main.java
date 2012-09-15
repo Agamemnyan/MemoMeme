@@ -9,9 +9,6 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
 
 public class Main extends Activity implements OnClickListener {
 	/** Called when the activity is first created. */
@@ -26,24 +23,12 @@ public class Main extends Activity implements OnClickListener {
 
 	private void initComponents() {
 
-		// find xml views
-		ImageView iv = (ImageView) findViewById(R.id.imageChallenge);
-
 		Button buttonNewGame = (Button) findViewById(R.id.buttonGo);
 		Button buttonExit = (Button) findViewById(R.id.buttonExit);
 
 		// set listeners
 		buttonNewGame.setOnClickListener(this);
 		buttonExit.setOnClickListener(this);
-
-		// set layoutparams
-		LayoutParams ivl = new LayoutParams(MemeSettings.mChallengeHeight,
-				MemeSettings.mChallengeHeight);
-		ivl.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-		ivl.addRule(RelativeLayout.CENTER_HORIZONTAL);
-		ivl.topMargin = MemeSettings.mChallengeTopMargin;
-		iv.setLayoutParams(ivl);
-		iv.setScaleType(ImageView.ScaleType.FIT_XY);
 	}
 
 	private void initSettings() {

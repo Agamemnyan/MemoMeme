@@ -30,12 +30,10 @@ public class Main extends Activity implements OnClickListener {
 		ImageView iv = (ImageView) findViewById(R.id.imageChallenge);
 
 		Button buttonNewGame = (Button) findViewById(R.id.buttonGo);
-		Button buttonLoadGame = (Button) findViewById(R.id.buttonLoad);
 		Button buttonExit = (Button) findViewById(R.id.buttonExit);
 
 		// set listeners
 		buttonNewGame.setOnClickListener(this);
-		buttonLoadGame.setOnClickListener(this);
 		buttonExit.setOnClickListener(this);
 
 		// set layoutparams
@@ -86,9 +84,6 @@ public class Main extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.buttonGo:
 			startActivity(new Intent(this, NewUser.class));
-			break;
-		case R.id.buttonLoad:
-			startActivity(new Intent(this, SelectLevel.class));
 			break;
 		case R.id.buttonExit:
 			finish();

@@ -3,7 +3,7 @@
     package="am.tir.games.memomemefree.activities"
     android:installLocation="auto"
     android:versionCode="1"
-    android:versionName="0.6.4" >
+    android:versionName="0.6.5" >
 
     <uses-sdk
         android:minSdkVersion="7"
@@ -47,6 +47,9 @@
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
         <activity
             android:name=".LoadGame"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
+        <activity
+            android:name=".HighScores"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
     </application>
 

@@ -3,6 +3,7 @@ package am.tir.games.memomemefree.activities;
 import java.util.Random;
 
 import am.tir.games.memomemefree.utils.MemeSettings;
+import am.tir.games.memomemefree.utils.ScoreModel;
 import am.tir.games.memomemefree.utils.User;
 import android.app.Activity;
 import android.content.Intent;
@@ -11,7 +12,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
@@ -48,6 +48,7 @@ public class EndLevel extends Activity {
 		Button nextButton = (Button) findViewById(R.id.nextButton);
 		Button restartButton = (Button) findViewById(R.id.restartButton);
 		Button mainMenuButton = (Button) findViewById(R.id.buttonMainMenu);
+		Button highScoresButtoon = (Button) findViewById(R.id.highScoresButton);
 
 		nextButton.setOnClickListener(new OnClickListener() {
 
@@ -104,12 +105,22 @@ public class EndLevel extends Activity {
 			}
 		});
 
+		highScoresButtoon.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+				user.setPoints(user.getPoints() + score);
+				new ScoreModel(getBaseContext()).add(user);
+				Intent go = new Intent(getBaseContext(), HighScores.class);
+				startActivity(go);
+			}
+		});
+
 		if (getIntent().getExtras().getBoolean("isWin")) {
 			imgWl.setImageResource(winPics[rand.nextInt(winPics.length)]);
+			highScoresButtoon.setVisibility(View.GONE);
 		} else {
 			imgWl.setImageResource(losePics[rand.nextInt(losePics.length)]);
-			LinearLayout layout = (LinearLayout) findViewById(R.id.game_over_layout);
-			layout.removeView(nextButton);
+			nextButton.setVisibility(View.GONE);
 		}
 	}
 

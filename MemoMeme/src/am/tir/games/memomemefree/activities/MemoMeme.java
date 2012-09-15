@@ -4,22 +4,30 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.widget.ImageView;
 
 public class MemoMeme extends Activity {
 
-	long ms;
+	private long ms;
 	private CountDownTimer cdt;
+	private ImageView logo;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.splash);
 
+		logo = (ImageView) findViewById(R.id.ivLogo);
+
 		if (savedInstanceState != null) {
 			ms = savedInstanceState.getLong("ms");
+			if (ms < 1510) {
+				logo.setImageResource(R.drawable.large_icon);
+			}
 		} else {
 			ms = 3000;
 		}
+
 	}
 
 	@Override
@@ -30,6 +38,9 @@ public class MemoMeme extends Activity {
 
 			public void onTick(long millisUntilFinished) {
 				ms = millisUntilFinished;
+				if (ms < 1510 && ms > 1390) {
+					logo.setImageResource(R.drawable.large_icon);
+				}
 			}
 
 			public void onFinish() {
@@ -50,6 +61,6 @@ public class MemoMeme extends Activity {
 	@Override
 	protected void onPause() {
 		cdt.cancel();
-		super.onPause();		
+		super.onPause();
 	}
 }

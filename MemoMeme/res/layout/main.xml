@@ -24,32 +24,11 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/buttonLoad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonExit"
-        android:layout_alignLeft="@+id/buttonExit"
-        android:text="@string/buttonLoad"
-        android:textSize="22sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/buttonContinue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonLoad"
-        android:layout_alignLeft="@+id/buttonLoad"
-        android:clickable="false"
-        android:text="@string/buttonResume"
-        android:textSize="22sp"
-        android:textStyle="bold" />
-
-    <Button
         android:id="@+id/buttonGo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonContinue"
-        android:layout_alignLeft="@+id/buttonContinue"
+        android:layout_above="@+id/buttonExit"
+        android:layout_alignLeft="@+id/imageChallenge"
         android:text="@string/buttonGo"
         android:textSize="22sp"
         android:textStyle="bold" />

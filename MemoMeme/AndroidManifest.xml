@@ -3,11 +3,11 @@
     package="am.tir.games.memomemefree.activities"
     android:installLocation="preferExternal"
     android:versionCode="1"
-    android:versionName="0.6.2" >
+    android:versionName="0.6.3" >
 
     <uses-sdk
         android:minSdkVersion="7"
-        android:targetSdkVersion="15" />
+        android:targetSdkVersion="16" />
 
     <application
         android:icon="@drawable/ic_launcher"

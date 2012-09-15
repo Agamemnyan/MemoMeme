@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
-    <string name="app_name">MemoMeme Free</string>
+    <string name="app_name">MemoMeme</string>
     <string name="textGameName">MemoMeme</string>
     <string name="buttonGo">New Game</string>
     <string name="buttonResume">Continue</string>
@@ -18,16 +18,16 @@
     <string name="submitUserName">Submit</string>
     <string name="lvTitle">Select Level</string>
     <string name="next_button">Next</string>
-    <string name="lv2_1">Level 2 - 1</string>
-    <string name="lv2_2">Level 2 - 2</string>
-    <string name="lv1_1">Level 1 - 1</string>
-    <string name="lv3_1">Level 3 - 1</string>
-    <string name="lv3_3">Level 3 - 3</string>
-    <string name="lv3_2">Level 3 - 2</string>
-    <string name="lv4_1">Level 4 - 1</string>
-    <string name="lv4_4">Level 4 - 4</string>
-    <string name="lv4_3">Level 4 - 3</string>
-    <string name="lv4_2">Level 4 - 2</string>
+    <string name="lv2_1">Level 2 &#8211; 1</string>
+    <string name="lv2_2">Level 2 &#8211; 2</string>
+    <string name="lv1_1">Level 1 &#8211; 1</string>
+    <string name="lv3_1">Level 3 &#8211; 1</string>
+    <string name="lv3_3">Level 3 &#8211; 3</string>
+    <string name="lv3_2">Level 3 &#8211; 2</string>
+    <string name="lv4_1">Level 4 &#8211; 1</string>
+    <string name="lv4_4">Level 4 &#8211; 4</string>
+    <string name="lv4_3">Level 4 &#8211; 3</string>
+    <string name="lv4_2">Level 4 &#8211; 2</string>
     <string name="imgBoard">Board</string>
     <string name="imgChallengeCons">Challenge Considered</string>
 </resources>

@@ -30,7 +30,7 @@ public class ScoreModel extends BaseModel {
 			if (!cursor.moveToPosition(i)) {
 				break;
 			}
-			int value = cursor.getInt(cursor
+			long value = cursor.getLong(cursor
 					.getColumnIndex(ScoreModel.KEY_VALUE));
 			String name = cursor.getString(cursor
 					.getColumnIndex(ScoreModel.KEY_NAME));
@@ -38,6 +38,13 @@ public class ScoreModel extends BaseModel {
 			result += (i + 1) + ".     " + value + "      " + name + "\n";
 		}
 
+		return result;
+	}
+
+	public long getBestScore() {
+		long result = 0;
+		Cursor cursor = getAllOrdered();
+		result = cursor.getLong(cursor.getColumnIndex(ScoreModel.KEY_VALUE));
 		return result;
 	}
 

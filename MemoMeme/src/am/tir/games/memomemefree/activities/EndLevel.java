@@ -114,6 +114,7 @@ public class EndLevel extends Activity {
 				new ScoreModel(getBaseContext()).add(user);
 				Intent go = new Intent(getBaseContext(), HighScores.class);
 				startActivity(go);
+				finish();
 			}
 		});
 
@@ -123,7 +124,7 @@ public class EndLevel extends Activity {
 		} else {
 			imgWl.setImageResource(losePics[rand.nextInt(losePics.length)]);
 			nextButton.setVisibility(View.GONE);
+			restartButton.setVisibility(View.GONE);
 		}
 	}
-
 }

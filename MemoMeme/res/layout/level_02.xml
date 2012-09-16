@@ -9,15 +9,16 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/imgBoard"
         android:src="@drawable/board_01" />
-
+
     <TextView
         android:id="@+id/textScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
+        android:textSize="@dimen/score_text_size"
         android:textStyle="bold" />
-
+
     <TextView
         android:id="@+id/textTimer"
         android:layout_width="wrap_content"
@@ -26,6 +27,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
+        android:textSize="@dimen/score_text_size"
         android:textStyle="bold" />
 
     <TableLayout
@@ -194,7 +196,7 @@
             </ImageSwitcher>
         </TableRow>
     </TableLayout>
-    
+    
     <TextView
         android:id="@+id/textCombo"
         android:layout_width="wrap_content"
@@ -202,6 +204,7 @@
         android:layout_below="@id/tableBoard"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
+        android:textSize="@dimen/score_text_size"
         android:textStyle="bold" />
 
 </RelativeLayout>

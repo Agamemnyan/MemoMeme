@@ -58,10 +58,6 @@ public class Main extends Activity implements OnClickListener {
 		MemeSettings.mChallengeHeight = MemeSettings.dHeight * 450 / 768;
 		MemeSettings.mChallengeTopMargin = MemeSettings.dHeight * 25 / 768;
 
-		MemeSettings.timerTextSize = MemeSettings.dHeight * 88 / 768;
-		MemeSettings.scoreTextSize = MemeSettings.dHeight * 88 / 768;
-		MemeSettings.comboTextSize = MemeSettings.dHeight * 88 / 768;
-
 		MemeSettings.isInit = true;
 	}
 

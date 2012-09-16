@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="timerColor1">#000000</color>
+    <color name="timerColor2">#992222</color>
+    <color name="scoreColor">#000066</color>
+    <color name="comboColor1">#444444</color>
+    <color name="comboColor2">#229922</color>
+
+</resources>

@@ -87,11 +87,7 @@ public class Level03 extends Activity {
 		scoreText = (TextView) findViewById(R.id.textScore);
 		comboText = (TextView) findViewById(R.id.textCombo);
 
-		timerText.setTextSize(MemeSettings.timerTextSize);
-		scoreText.setTextSize(MemeSettings.scoreTextSize);
-		comboText.setTextSize(MemeSettings.comboTextSize);
-
-		timerText.setTextColor(MemeSettings.timerColor1);
+		timerText.setTextColor(getResources().getColor(R.color.timerColor1));
 
 		cards = new Card[24];
 
@@ -181,9 +177,11 @@ public class Level03 extends Activity {
 		setScoreText(scoreText, score);
 		comboText.setText(Integer.toString(points * combo));
 		if (combo > 1) {
-			comboText.setTextColor(MemeSettings.comboColor2);
+			comboText
+					.setTextColor(getResources().getColor(R.color.comboColor2));
 		} else {
-			comboText.setTextColor(MemeSettings.comboColor1);
+			comboText
+					.setTextColor(getResources().getColor(R.color.comboColor1));
 		}
 
 		int j = 0;
@@ -346,7 +344,8 @@ public class Level03 extends Activity {
 									+ (millisUntilFinished / 1000 >= 10 ? (millisUntilFinished / 1000)
 											: ("0" + millisUntilFinished / 1000)));
 					if (millisUntilFinished < 6000) {
-						timerText.setTextColor(MemeSettings.timerColor2);
+						timerText.setTextColor(getResources().getColor(
+								R.color.timerColor2));
 					}
 				}
 			}
@@ -368,7 +367,7 @@ public class Level03 extends Activity {
 
 	protected void setScoreText(View v, int sc) {
 		TextView tv = (TextView) v;
-		tv.setTextColor(MemeSettings.scoreColor);
+		tv.setTextColor(getResources().getColor(R.color.scoreColor));
 		tv.setText(Integer.toString(sc));
 	}
 
@@ -385,9 +384,11 @@ public class Level03 extends Activity {
 
 		comboText.setText(Integer.toString(points * combo));
 		if (combo > 1 && pairFound != 12) {
-			comboText.setTextColor(MemeSettings.comboColor2);
+			comboText
+					.setTextColor(getResources().getColor(R.color.comboColor2));
 		} else if (pairFound != 12) {
-			comboText.setTextColor(MemeSettings.comboColor1);
+			comboText
+					.setTextColor(getResources().getColor(R.color.comboColor1));
 		} else {
 			comboText.setVisibility(View.GONE);
 		}

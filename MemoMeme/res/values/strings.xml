@@ -13,10 +13,9 @@
     <string name="buttonExit">Exit</string>
     <string name="buttonMainMenu">Main</string>
     <string name="enterUserTitle">Enter your name</string>
-    <string name="fieldUserName">username</string>
+    <string name="fieldUserName">name</string>
     <string name="submitUserName">Submit</string>
     <string name="next_button">Next</string>
-    <string name="high_scores_button">High Scores</string>
     <string name="lv2_1">Level 2 &#8211; 1</string>
     <string name="lv2_2">Level 2 &#8211; 2</string>
     <string name="lv1_1">Level 1 &#8211; 1</string>
@@ -32,5 +31,6 @@
     <string name="tableHeaderBefore">Before</string>
     <string name="tableHeaderLastLevel">Last</string>
     <string name="tableHeaderTotal">Total</string>
+    <string name="highScores">High Scores</string>
 
 </resources>

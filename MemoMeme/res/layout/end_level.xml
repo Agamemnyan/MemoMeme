@@ -11,6 +11,15 @@
         android:gravity="center"
         android:orientation="vertical" >
 
+        <TextView
+            android:id="@+id/tvGameOver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gameOver"
+            android:textColor="@color/default_dark_red"
+            android:textSize="22dp"
+            android:textStyle="bold" />
+
         <ImageView
             android:id="@+id/gameoverImage"
             android:layout_width="wrap_content"
@@ -21,8 +30,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="#55555555"
-            android:layout_marginBottom="5dp" >
+            android:layout_marginBottom="5dp"
+            android:background="#55555555" >
 
             <TableRow
                 android:id="@+id/tableScoreHeader"
@@ -93,23 +102,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/buttonMainMenu" />
-
+
             <Button
                 android:id="@+id/nextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/next_button"
-                android:textColor="#991111"
+                android:textColor="@color/default_dark_red"
                 android:textStyle="bold" />
-
+
             <Button
                 android:id="@+id/highScoresButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/high_scores_button"
-                android:textColor="#991111"
+                android:text="@string/highScores"
+                android:textColor="@color/default_dark_red"
                 android:textStyle="bold" />
-
         </LinearLayout>
     </LinearLayout>
 

@@ -1,5 +1,8 @@
 package am.tir.games.memomemefree.utils;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -10,6 +13,7 @@ public class ScoreModel extends BaseModel {
 	public final static String TABLE_NAME = "Score";
 	public static final String KEY_VALUE = "value";
 	public static final String KEY_NAME = "name";
+	public static final NumberFormat formatter = new DecimalFormat("000000");
 
 	public ScoreModel(final Context context) {
 		super(context, TABLE_NAME);
@@ -35,7 +39,8 @@ public class ScoreModel extends BaseModel {
 			String name = cursor.getString(cursor
 					.getColumnIndex(ScoreModel.KEY_NAME));
 
-			result += (i + 1) + ".     " + value + "      " + name + "\n";
+			result += ((i + 1) < 10 ? "0" + (i + 1) : "" + (i + 1)) + ".  "
+					+ formatter.format(value) + "  " + name + "\n";
 		}
 
 		return result;

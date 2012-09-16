@@ -28,6 +28,8 @@ public class EndLevel extends Activity {
 		TextView scoreBefore = (TextView) findViewById(R.id.valueBefore);
 		TextView scoreLast = (TextView) findViewById(R.id.valueLast);
 		TextView scoreTotal = (TextView) findViewById(R.id.valueTotal);
+		TextView gameOver = (TextView) findViewById(R.id.tvGameOver);
+
 		user = getIntent().getParcelableExtra("user");
 		score = getIntent().getIntExtra("score", 0);
 
@@ -118,6 +120,7 @@ public class EndLevel extends Activity {
 		});
 
 		if (getIntent().getExtras().getBoolean("isWin")) {
+			gameOver.setVisibility(View.GONE);
 			imgWl.setImageResource(winPics[rand.nextInt(winPics.length)]);
 			highScoresButtoon.setVisibility(View.GONE);
 		} else {

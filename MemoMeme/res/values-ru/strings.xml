@@ -13,10 +13,9 @@
     <string name="buttonExit">Выход</string>
     <string name="buttonMainMenu">Начало</string>
     <string name="enterUserTitle">Введите свое имя</string>
-    <string name="fieldUserName">имя пользователья</string>
+    <string name="fieldUserName">имя</string>
     <string name="submitUserName">Ввод</string>
     <string name="next_button">Дальше</string>
-    <string name="high_scores_button">Тысокие баллы</string>
     <string name="lv2_1">Уровень 2 &#8211; 1</string>
     <string name="lv2_2">Уровень 2 &#8211; 2</string>
     <string name="lv1_1">Уровень 1 &#8211; 1</string>
@@ -32,5 +31,6 @@
     <string name="tableHeaderBefore">До</string>
     <string name="tableHeaderLastLevel">Посл.</string>
     <string name="tableHeaderTotal">Всё</string>
+    <string name="highScores">Топ Очки</string>
 
 </resources>

@@ -50,10 +50,10 @@ public class Main extends Activity implements OnClickListener {
 		MemeSettings.boardHeight = MemeSettings.dHeight * 660 / 768;
 		MemeSettings.boardBottomMargin = MemeSettings.dHeight * 20 / 768;
 
-		MemeSettings.cHeight1 = MemeSettings.dHeight * 199 / 768;
-		MemeSettings.cHeight2 = MemeSettings.dHeight * 151 / 768;
+		MemeSettings.cHeight1 = MemeSettings.dHeight * 204 / 768;
+		MemeSettings.cHeight2 = MemeSettings.dHeight * 153 / 768;
 		MemeSettings.cHeight3 = MemeSettings.dHeight * 122 / 768;
-		MemeSettings.cHeight4 = MemeSettings.dHeight * 100 / 768;
+		MemeSettings.cHeight4 = MemeSettings.dHeight * 102 / 768;
 
 		MemeSettings.mChallengeHeight = MemeSettings.dHeight * 450 / 768;
 		MemeSettings.mChallengeTopMargin = MemeSettings.dHeight * 25 / 768;

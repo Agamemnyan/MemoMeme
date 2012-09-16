@@ -12,7 +12,7 @@ public class Card {
 	public ImageSwitcher card;
 	private boolean isTurned = false;
 	private boolean isOut = false;
-	private final int cover = R.drawable.cover1;
+	private final int cover = R.drawable.cover_01;
 	private final int memeFace;
 	private final int pos;
 
@@ -27,7 +27,6 @@ public class Card {
 				ImageSwitcher.LayoutParams lp = new ImageSwitcher.LayoutParams(
 						height, height);
 				iView.setLayoutParams(lp);
-				iView.setBackgroundColor(0xFF000077);
 
 				return iView;
 			}
@@ -36,7 +35,7 @@ public class Card {
 				android.R.anim.slide_in_left));
 		card.setOutAnimation(AnimationUtils.loadAnimation(context,
 				android.R.anim.slide_out_right));
-		card.setImageResource(R.drawable.cover1);
+		card.setImageResource(R.drawable.cover_01);
 
 		this.card = card;
 		this.memeFace = memeFace;

@@ -115,13 +115,23 @@ public class Level01 extends Activity {
 			score = 0;
 
 			ArrayList<Integer> cardInts = new ArrayList<Integer>(Arrays.asList(
-					R.drawable.troll01, R.drawable.troll02, R.drawable.troll03,
-					R.drawable.troll04, R.drawable.troll05, R.drawable.troll06,
-					R.drawable.troll07, R.drawable.troll08, R.drawable.troll09,
-					R.drawable.troll10, R.drawable.troll11, R.drawable.troll12,
-					R.drawable.troll13, R.drawable.troll14, R.drawable.troll15,
-					R.drawable.troll16, R.drawable.troll17, R.drawable.troll18,
-					R.drawable.troll19, R.drawable.troll20));
+					R.drawable.troll_01, R.drawable.troll_02,
+					R.drawable.troll_03, R.drawable.troll_04,
+					R.drawable.troll_05, R.drawable.troll_06,
+					R.drawable.troll_07, R.drawable.troll_08,
+					R.drawable.troll_09, R.drawable.troll_10,
+					R.drawable.troll_11, R.drawable.troll_12,
+					R.drawable.troll_13, R.drawable.troll_14,
+					R.drawable.troll_15, R.drawable.troll_16,
+					R.drawable.troll_17, R.drawable.troll_18,
+					R.drawable.troll_19, R.drawable.troll_20,
+					R.drawable.troll_21, R.drawable.troll_22,
+					R.drawable.troll_23, R.drawable.troll_24,
+					R.drawable.troll_25, R.drawable.troll_26,
+					R.drawable.troll_27, R.drawable.troll_28,
+					R.drawable.troll_29, R.drawable.troll_30,
+					R.drawable.troll_31, R.drawable.troll_32,
+					R.drawable.troll_33, R.drawable.troll_34));
 
 			positions = new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 4, 5,
 					6, 7));

@@ -47,7 +47,7 @@ public class Main extends Activity implements OnClickListener {
 			MemeSettings.dHeight = metrics.widthPixels;
 		}
 
-		MemeSettings.boardHeight = MemeSettings.dHeight * 660 / 768;
+		MemeSettings.boardHeight = MemeSettings.dHeight * 620 / 768;
 		MemeSettings.boardBottomMargin = MemeSettings.dHeight * 20 / 768;
 
 		MemeSettings.cHeight1 = MemeSettings.dHeight * 204 / 768;

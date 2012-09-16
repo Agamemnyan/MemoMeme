@@ -25,12 +25,15 @@ public class EndLevel extends Activity {
 
 		final Random rand = new Random();
 
-		TextView scoreText = (TextView) findViewById(R.id.scoreText);
+		TextView scoreBefore = (TextView) findViewById(R.id.valueBefore);
+		TextView scoreLast = (TextView) findViewById(R.id.valueLast);
+		TextView scoreTotal = (TextView) findViewById(R.id.valueTotal);
 		user = getIntent().getParcelableExtra("user");
 		score = getIntent().getIntExtra("score", 0);
 
-		scoreText
-				.setText(user.getUserName() + " " + (user.getPoints() + score));
+		scoreBefore.setText(String.valueOf(user.getPoints()));
+		scoreLast.setText(String.valueOf(score));
+		scoreTotal.setText(String.valueOf(user.getPoints() + score));
 
 		ImageView imgWl = (ImageView) findViewById(R.id.gameoverImage);
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
+
     <string name="app_name">MemoMeme</string>
     <string name="textGameName">MemoMeme</string>
     <string name="buttonGo">Start</string>
@@ -28,4 +29,8 @@
     <string name="lv4_2">Level 4 &#8211; 2</string>
     <string name="imgBoard">Board</string>
     <string name="imgChallengeCons">Challenge Considered</string>
+    <string name="tableHeaderBefore">Before</string>
+    <string name="tableHeaderLastLevel">Last</string>
+    <string name="tableHeaderTotal">Total</string>
+
 </resources>

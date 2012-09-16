@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
+
     <string name="app_name">MemoMeme</string>
     <string name="textGameName">MemoMeme</string>
     <string name="buttonGo">Начать</string>
@@ -28,4 +29,8 @@
     <string name="lv4_1">Уровень 4 &#8211; 1</string>
     <string name="imgBoard">Board</string>
     <string name="imgChallengeCons">Challenge Considered</string>
+    <string name="tableHeaderBefore">До</string>
+    <string name="tableHeaderLastLevel">Посл.</string>
+    <string name="tableHeaderTotal">Всё</string>
+
 </resources>

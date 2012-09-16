@@ -22,7 +22,7 @@
 
         <Button
             android:id="@+id/buttonGo"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/buttonGo"
             android:textSize="22sp"
@@ -30,7 +30,7 @@
 
         <Button
             android:id="@+id/buttonExit"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/buttonExit"
             android:textSize="22sp"

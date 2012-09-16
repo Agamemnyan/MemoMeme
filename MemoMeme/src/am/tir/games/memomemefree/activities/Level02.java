@@ -9,6 +9,7 @@ import am.tir.games.memomemefree.utils.MemeSettings;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -111,24 +112,13 @@ public class Level02 extends Activity {
 			currentTurnedCards = new int[2];
 			score = 0;
 
-			ArrayList<Integer> cardInts = new ArrayList<Integer>(Arrays.asList(
-					R.drawable.troll_01, R.drawable.troll_02,
-					R.drawable.troll_03, R.drawable.troll_04,
-					R.drawable.troll_05, R.drawable.troll_06,
-					R.drawable.troll_07, R.drawable.troll_08,
-					R.drawable.troll_09, R.drawable.troll_10,
-					R.drawable.troll_11, R.drawable.troll_12,
-					R.drawable.troll_13, R.drawable.troll_14,
-					R.drawable.troll_15, R.drawable.troll_16,
-					R.drawable.troll_17, R.drawable.troll_18,
-					R.drawable.troll_19, R.drawable.troll_20,
-					R.drawable.troll_21, R.drawable.troll_22,
-					R.drawable.troll_23, R.drawable.troll_24,
-					R.drawable.troll_25, R.drawable.troll_26,
-					R.drawable.troll_27, R.drawable.troll_28,
-					R.drawable.troll_29, R.drawable.troll_30,
-					R.drawable.troll_31, R.drawable.troll_32,
-					R.drawable.troll_33, R.drawable.troll_34));
+			TypedArray cardsArray = getResources().obtainTypedArray(
+					R.array.cards_lvl_1);
+			ArrayList<Integer> cardInts = new ArrayList<Integer>(
+					cardsArray.length());
+			for (int i = 0; i < cardsArray.length(); i++) {
+				cardInts.add(cardsArray.getResourceId(i, 0));
+			}
 
 			positions = new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 4, 5,
 					6, 7, 8, 9, 10, 11, 12, 13, 14, 15));
@@ -172,7 +162,8 @@ public class Level02 extends Activity {
 		for (Integer i : currentSet) {
 			for (int t = 0; t < 2; t++) {
 				cards[j] = new Card(slots[positions.get(j)], i,
-						positions.get(j), this, MemeSettings.cHeight2);
+						positions.get(j), this, MemeSettings.cHeight2,
+						R.integer.cover_lvl_2);
 				j++;
 			}
 		}

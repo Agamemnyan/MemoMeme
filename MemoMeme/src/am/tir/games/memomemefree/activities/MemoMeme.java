@@ -22,7 +22,7 @@ public class MemoMeme extends Activity {
 		if (savedInstanceState != null) {
 			ms = savedInstanceState.getLong("ms");
 			if (ms < 1510) {
-				logo.setImageResource(R.drawable.large_icon);
+				logo.setImageResource(R.integer.icon_large);
 			}
 		} else {
 			ms = 3000;
@@ -39,7 +39,7 @@ public class MemoMeme extends Activity {
 			public void onTick(long millisUntilFinished) {
 				ms = millisUntilFinished;
 				if (ms < 1510 && ms > 1390) {
-					logo.setImageResource(R.drawable.large_icon);
+					logo.setImageResource(R.integer.icon_large);
 				}
 			}
 

@@ -1,6 +1,5 @@
 package am.tir.games.memomemefree.utils;
 
-import am.tir.games.memomemefree.activities.R;
 import android.content.Context;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -12,12 +11,14 @@ public class Card {
 	public ImageSwitcher card;
 	private boolean isTurned = false;
 	private boolean isOut = false;
-	private final int cover = R.drawable.cover_01;
+	private final int cover;
 	private final int memeFace;
 	private final int pos;
 
 	public Card(final ImageSwitcher card, int memeFace, int pos,
-			final Context context, final int height) {
+			final Context context, final int height, final int coverRes) {
+
+		cover = coverRes;
 
 		card.setFactory(new ViewFactory() {
 
@@ -35,7 +36,7 @@ public class Card {
 				android.R.anim.slide_in_left));
 		card.setOutAnimation(AnimationUtils.loadAnimation(context,
 				android.R.anim.slide_out_right));
-		card.setImageResource(R.drawable.cover_01);
+		card.setImageResource(cover);
 
 		this.card = card;
 		this.memeFace = memeFace;

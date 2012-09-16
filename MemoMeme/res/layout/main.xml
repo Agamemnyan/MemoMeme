@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/imgChallengeCons"
             android:scaleType="fitCenter"
-            android:src="@drawable/main_01" />
+            android:src="@integer/main" />
 
         <Button
             android:id="@+id/buttonGo"

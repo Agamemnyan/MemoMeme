@@ -6,6 +6,7 @@ import am.tir.games.memomemefree.utils.ScoreModel;
 import am.tir.games.memomemefree.utils.User;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -39,12 +40,19 @@ public class EndLevel extends Activity {
 
 		ImageView imgWl = (ImageView) findViewById(R.id.gameoverImage);
 
-		Integer[] winPics = new Integer[] { R.drawable.win_01,
-				R.drawable.win_02, R.drawable.win_03, R.drawable.win_04,
-				R.drawable.win_05 };
-		Integer[] losePics = new Integer[] { R.drawable.lose_01,
-				R.drawable.lose_02, R.drawable.lose_03, R.drawable.lose_04,
-				R.drawable.lose_05 };
+		TypedArray winArray = getResources()
+				.obtainTypedArray(R.array.win_faces);
+		int[] winPics = new int[winArray.length()];
+		for (int i = 0; i < winArray.length(); i++) {
+			winPics[i] = winArray.getResourceId(i, 0);
+		}
+
+		TypedArray loseArray = getResources().obtainTypedArray(
+				R.array.lose_faces);
+		int[] losePics = new int[loseArray.length()];
+		for (int i = 0; i < loseArray.length(); i++) {
+			losePics[i] = loseArray.getResourceId(i, 0);
+		}
 
 		Button nextButton = (Button) findViewById(R.id.nextButton);
 		Button restartButton = (Button) findViewById(R.id.restartButton);

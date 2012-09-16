@@ -4,52 +4,57 @@
     android:layout_height="fill_parent" >
 
     <LinearLayout
-        android:id="@+id/game_over_layout"
+        android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="5dp"
-        android:orientation="vertical" >
+        android:gravity="center" >
 
-        <Button
-            android:id="@+id/nextButton"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/gameoverImage"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/next_button" />
+            android:contentDescription="@string/imgGameOver" />
 
-        <Button
-            android:id="@+id/restartButton"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/game_over_layout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/buttonRestart" />
+            android:layout_marginRight="5dp"
+            android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/buttonMainMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/buttonMainMenu" />
+            <Button
+                android:id="@+id/nextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/next_button" />
 
-        <Button
-            android:id="@+id/highScoresButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/high_scores_button" />
+            <Button
+                android:id="@+id/restartButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/buttonRestart" />
+
+            <Button
+                android:id="@+id/buttonMainMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/buttonMainMenu" />
+
+            <Button
+                android:id="@+id/highScoresButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/high_scores_button" />
+        </LinearLayout>
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/gameoverImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:contentDescription="@string/imgGameOver" />
 
     <TextView
         android:id="@+id/scoreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/linearLayout1"
         android:layout_centerHorizontal="true"
         android:textSize="24sp"
         android:textStyle="bold" />

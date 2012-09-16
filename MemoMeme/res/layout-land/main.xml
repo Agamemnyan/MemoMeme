@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/imgChallengeCons"
-            android:src="@drawable/challenge_considered" />
+            android:src="@drawable/main_01" />
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -2,7 +2,6 @@ package am.tir.games.memomemefree.activities;
 
 import java.util.Random;
 
-import am.tir.games.memomemefree.utils.MemeSettings;
 import am.tir.games.memomemefree.utils.ScoreModel;
 import am.tir.games.memomemefree.utils.User;
 import android.app.Activity;
@@ -12,12 +11,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
 public class EndLevel extends Activity {
 
-	private LayoutParams lp;
 	private User user;
 	private int score;
 
@@ -28,8 +25,6 @@ public class EndLevel extends Activity {
 
 		final Random rand = new Random();
 
-		lp = new LayoutParams(MemeSettings.dHeight, MemeSettings.dHeight);
-
 		TextView scoreText = (TextView) findViewById(R.id.scoreText);
 		user = getIntent().getParcelableExtra("user");
 		score = getIntent().getIntExtra("score", 0);
@@ -39,11 +34,12 @@ public class EndLevel extends Activity {
 
 		ImageView imgWl = (ImageView) findViewById(R.id.gameoverImage);
 
-		imgWl.setLayoutParams(lp);
-
-		Integer[] winPics = new Integer[] { R.drawable.win01, R.drawable.win02 };
-		Integer[] losePics = new Integer[] { R.drawable.lose01,
-				R.drawable.lose02 };
+		Integer[] winPics = new Integer[] { R.drawable.win_01,
+				R.drawable.win_02, R.drawable.win_03, R.drawable.win_04,
+				R.drawable.win_05 };
+		Integer[] losePics = new Integer[] { R.drawable.lose_01,
+				R.drawable.lose_02, R.drawable.lose_03, R.drawable.lose_04,
+				R.drawable.lose_05 };
 
 		Button nextButton = (Button) findViewById(R.id.nextButton);
 		Button restartButton = (Button) findViewById(R.id.restartButton);

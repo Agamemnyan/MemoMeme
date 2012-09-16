@@ -32,10 +32,14 @@ public class Card {
 				return iView;
 			}
 		});
-		card.setInAnimation(AnimationUtils.loadAnimation(context,
-				android.R.anim.slide_in_left));
-		card.setOutAnimation(AnimationUtils.loadAnimation(context,
-				android.R.anim.slide_out_right));
+
+		if (android.os.Build.VERSION.SDK_INT >= 8) {
+			card.setInAnimation(AnimationUtils.loadAnimation(context,
+					android.R.anim.slide_in_left));
+			card.setOutAnimation(AnimationUtils.loadAnimation(context,
+					android.R.anim.slide_out_right));
+		}
+
 		card.setImageResource(cover);
 
 		this.card = card;

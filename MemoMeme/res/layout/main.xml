@@ -22,14 +22,26 @@
 
         <Button
             android:id="@+id/buttonGo"
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/buttonGo"
+            android:textColor="@color/default_dark_red"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonHighScores"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/highScores"
             android:textSize="22sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/buttonExit"
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/buttonExit"

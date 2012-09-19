@@ -24,10 +24,12 @@ public class Main extends Activity implements OnClickListener {
 	private void initComponents() {
 
 		Button buttonNewGame = (Button) findViewById(R.id.buttonGo);
+		Button buttonHighScoress = (Button) findViewById(R.id.buttonHighScores);
 		Button buttonExit = (Button) findViewById(R.id.buttonExit);
 
 		// set listeners
 		buttonNewGame.setOnClickListener(this);
+		buttonHighScoress.setOnClickListener(this);
 		buttonExit.setOnClickListener(this);
 	}
 
@@ -66,8 +68,12 @@ public class Main extends Activity implements OnClickListener {
 		case R.id.buttonGo:
 			startActivity(new Intent(this, NewUser.class));
 			break;
+		case R.id.buttonHighScores:
+			startActivity(new Intent(this, HighScores.class));
+			break;
 		case R.id.buttonExit:
 			finish();
+			break;
 		}
 	}
 }

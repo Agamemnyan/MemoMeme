@@ -22,38 +22,43 @@ import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
 
 public class Level01 extends Activity {
-	/** Called when the activity is first created. */
-	int score;
-	int pairFound;
-	int turnedCardsCount;
-	int isShowing;
 
-	int points = 50;
+	private int level;
 
-	int[] currentTurnedCards;
+	private int levelTime;
+	private String levelTimeText;
 
-	long ms = 38000;
-	long msshow1 = 1000;
-	long msshow2 = 7000;
+	private int score;
+	private int pairFound;
+	private int turnedCardsCount;
+	private int isShowing;
 
-	ArrayList<Integer> currentSet;
-	ArrayList<Integer> positions;
-	ArrayList<Integer> turnedPos;
-	ArrayList<Integer> pulledPos;
+	private int points;
 
-	Card cards[];
-	Card turnedCard1;
-	Card turnedCard2;
+	private int[] currentTurnedCards;
+
+	private long ms;
+	private long msshow1;
+	private long msshow2;
+
+	private ArrayList<Integer> currentSet;
+	private ArrayList<Integer> positions;
+	private ArrayList<Integer> turnedPos;
+	private ArrayList<Integer> pulledPos;
+
+	private Card cards[];
+	private Card turnedCard1;
+	private Card turnedCard2;
 
 	private int combo;
 	private CountDownTimer cdt;
 	private CountDownTimer cd1;
 	private CountDownTimer cd2;
 
-	OnClickListener ocl;
-	TextView timerText;
-	TextView scoreText;
-	TextView comboText;
+	private OnClickListener ocl;
+	private TextView timerText;
+	private TextView scoreText;
+	private TextView comboText;
 
 	private LayoutParams lp0;
 	private RelativeLayout.LayoutParams lpBoard;
@@ -62,6 +67,8 @@ public class Level01 extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.level_01);
+
+		initLevel();
 
 		lp0 = new LayoutParams(MemeSettings.cHeight1, MemeSettings.cHeight1);
 		ImageView iv0 = (ImageView) findViewById(R.id.imageView0);
@@ -310,13 +317,16 @@ public class Level01 extends Activity {
 			public void onTick(long millisUntilFinished) {
 				ms = millisUntilFinished;
 
-				if (millisUntilFinished > 30000) {
-					timerText.setText("00:30");
+				if (millisUntilFinished > levelTime) {
+					timerText.setText(levelTimeText);
 				} else {
-					timerText
-							.setText("00:"
-									+ (millisUntilFinished / 1000 >= 10 ? (millisUntilFinished / 1000)
-											: ("0" + millisUntilFinished / 1000)));
+					String seconds = MemeSettings.FORMATTER
+							.format((millisUntilFinished / 1000) % 60);
+					String minutes = MemeSettings.FORMATTER
+							.format((millisUntilFinished / (1000 * 60)) % 60);
+
+					timerText.setText(minutes + ":" + seconds);
+
 					if (millisUntilFinished < 6000) {
 						timerText.setTextColor(getResources().getColor(
 								R.color.timerColor2));
@@ -325,12 +335,11 @@ public class Level01 extends Activity {
 			}
 
 			public void onFinish() {
-				Intent go = new Intent(getBaseContext(),
-						am.tir.games.memomemefree.activities.EndLevel.class);
+				Intent go = new Intent(getBaseContext(), EndLevel.class);
 				go.putExtra("score", score);
 				go.putExtra("user", getIntent().getParcelableExtra("user"));
 				go.putExtra("isWin", false);
-				go.putExtra("lastLevel", 1);
+				go.putExtra("lastLevel", level);
 				startActivity(go);
 				finish();
 			}
@@ -339,13 +348,29 @@ public class Level01 extends Activity {
 		cdt.start();
 	}
 
-	protected void setScoreText(View v, int sc) {
+	private void initLevel() {
+		level = getIntent().getIntExtra("level", 1);
+		switch (level) {
+		case 1:
+			points = 50;
+			ms = 38000;
+			msshow1 = 1000;
+			msshow2 = 7000;
+			levelTime = (int) (ms - msshow1 - msshow2);
+			levelTimeText = "00:30";
+			break;
+		default:
+			break;
+		}
+	}
+
+	private void setScoreText(View v, int sc) {
 		TextView tv = (TextView) v;
 		tv.setTextColor(getResources().getColor(R.color.scoreColor));
 		tv.setText(Integer.toString(sc));
 	}
 
-	protected void proceedScore(View v, boolean exact) {
+	private void proceedScore(View v, boolean exact) {
 
 		if (exact) {
 			pairFound++;
@@ -368,12 +393,11 @@ public class Level01 extends Activity {
 		}
 
 		if (pairFound == 4) {
-			Intent go = new Intent(getBaseContext(),
-					am.tir.games.memomemefree.activities.EndLevel.class);
+			Intent go = new Intent(getBaseContext(), EndLevel.class);
 			go.putExtra("score", score);
 			go.putExtra("user", getIntent().getParcelableExtra("user"));
 			go.putExtra("isWin", true);
-			go.putExtra("lastLevel", 1);
+			go.putExtra("lastLevel", level);
 			startActivity(go);
 			finish();
 		}

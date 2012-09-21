@@ -77,6 +77,7 @@ public class EndLevel extends Activity {
 					go = new Intent(EndLevel.this, Level04.class);
 					break;
 				}
+
 				user.setPoints(user.getPoints() + score);
 				go.putExtra("user", user);
 				startActivity(go);
@@ -111,7 +112,9 @@ public class EndLevel extends Activity {
 		mainMenuButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				user.setPoints(user.getPoints() + score);
-				new ScoreModel(getBaseContext()).add(user);
+				if (user.getPoints() > 0) {
+					new ScoreModel(getBaseContext()).add(user);
+				}
 				finish();
 			}
 		});
@@ -120,7 +123,9 @@ public class EndLevel extends Activity {
 
 			public void onClick(View v) {
 				user.setPoints(user.getPoints() + score);
-				new ScoreModel(getBaseContext()).add(user);
+				if (user.getPoints() > 0) {
+					new ScoreModel(getBaseContext()).add(user);
+				}
 				Intent go = new Intent(getBaseContext(), HighScores.class);
 				startActivity(go);
 				finish();

@@ -21,38 +21,43 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 
 public class Level02 extends Activity {
-	/** Called when the activity is first created. */
-	int score;
-	int pairFound;
-	int turnedCardsCount;
-	int isShowing;
 
-	int points = 100;
+	private int level;
 
-	int[] currentTurnedCards;
+	private int levelTime;
+	private String levelTimeText;
 
-	long ms = 53000;
-	long msshow1 = 1000;
-	long msshow2 = 7000;
+	private int score;
+	private int pairFound;
+	private int turnedCardsCount;
+	private int isShowing;
 
-	ArrayList<Integer> currentSet;
-	ArrayList<Integer> positions;
-	ArrayList<Integer> turnedPos;
-	ArrayList<Integer> pulledPos;
+	private int points;
 
-	Card cards[];
-	Card turnedCard1;
-	Card turnedCard2;
+	private int[] currentTurnedCards;
+
+	private long ms;
+	private long msshow1;
+	private long msshow2;
+
+	private ArrayList<Integer> currentSet;
+	private ArrayList<Integer> positions;
+	private ArrayList<Integer> turnedPos;
+	private ArrayList<Integer> pulledPos;
+
+	private Card cards[];
+	private Card turnedCard1;
+	private Card turnedCard2;
 
 	private int combo;
 	private CountDownTimer cdt;
 	private CountDownTimer cd1;
 	private CountDownTimer cd2;
 
-	OnClickListener ocl;
-	TextView timerText;
-	TextView scoreText;
-	TextView comboText;
+	private OnClickListener ocl;
+	private TextView timerText;
+	private TextView scoreText;
+	private TextView comboText;
 
 	private RelativeLayout.LayoutParams lpBoard;
 
@@ -60,6 +65,8 @@ public class Level02 extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.level_02);
+
+		initLevel();
 
 		lpBoard = new RelativeLayout.LayoutParams(MemeSettings.boardHeight,
 				MemeSettings.boardHeight);
@@ -311,13 +318,16 @@ public class Level02 extends Activity {
 			public void onTick(long millisUntilFinished) {
 				ms = millisUntilFinished;
 
-				if (millisUntilFinished > 45000) {
-					timerText.setText("00:45");
+				if (millisUntilFinished > levelTime) {
+					timerText.setText(levelTimeText);
 				} else {
-					timerText
-							.setText("00:"
-									+ (millisUntilFinished / 1000 >= 10 ? (millisUntilFinished / 1000)
-											: ("0" + millisUntilFinished / 1000)));
+					String seconds = MemeSettings.FORMATTER
+							.format((millisUntilFinished / 1000) % 60);
+					String minutes = MemeSettings.FORMATTER
+							.format((millisUntilFinished / (1000 * 60)) % 60);
+
+					timerText.setText(minutes + ":" + seconds);
+
 					if (millisUntilFinished < 6000) {
 						timerText.setTextColor(getResources().getColor(
 								R.color.timerColor2));
@@ -326,18 +336,41 @@ public class Level02 extends Activity {
 			}
 
 			public void onFinish() {
-				Intent go = new Intent(getBaseContext(),
-						am.tir.games.memomemefree.activities.EndLevel.class);
+				Intent go = new Intent(getBaseContext(), EndLevel.class);
 				go.putExtra("score", score);
 				go.putExtra("user", getIntent().getParcelableExtra("user"));
 				go.putExtra("isWin", false);
-				go.putExtra("lastLevel", 2);
+				go.putExtra("lastLevel", level);
 				startActivity(go);
 				finish();
 			}
 		};
 
 		cdt.start();
+	}
+
+	private void initLevel() {
+		level = getIntent().getIntExtra("level", 2);
+		switch (level) {
+		case 1:
+			points = 100;
+			ms = 67000;
+			msshow1 = 1000;
+			msshow2 = 6000;
+			levelTime = (int) (ms - msshow1 - msshow2);
+			levelTimeText = "01:00";
+			break;
+		case 2:
+			points = 100;
+			ms = 51000;
+			msshow1 = 1000;
+			msshow2 = 5000;
+			levelTime = (int) (ms - msshow1 - msshow2);
+			levelTimeText = "00:45";
+			break;
+		default:
+			break;
+		}
 	}
 
 	protected void setScoreText(View v, int sc) {
@@ -369,12 +402,11 @@ public class Level02 extends Activity {
 		}
 
 		if (pairFound == 8) {
-			Intent go = new Intent(getBaseContext(),
-					am.tir.games.memomemefree.activities.EndLevel.class);
+			Intent go = new Intent(getBaseContext(), EndLevel.class);
 			go.putExtra("score", score);
 			go.putExtra("user", getIntent().getParcelableExtra("user"));
 			go.putExtra("isWin", true);
-			go.putExtra("lastLevel", 2);
+			go.putExtra("lastLevel", level);
 			startActivity(go);
 			finish();
 		}

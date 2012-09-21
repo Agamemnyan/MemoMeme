@@ -21,38 +21,43 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 
 public class Level04 extends Activity {
-	/** Called when the activity is first created. */
-	int score;
-	int pairFound;
-	int turnedCardsCount;
-	int isShowing;
 
-	int points = 250;
+	private int level;
 
-	int[] currentTurnedCards;
+	private int levelTime;
+	private String levelTimeText;
 
-	long ms = 98000;
-	long msshow1 = 1000;
-	long msshow2 = 7000;
+	private int score;
+	private int pairFound;
+	private int turnedCardsCount;
+	private int isShowing;
 
-	ArrayList<Integer> currentSet;
-	ArrayList<Integer> positions;
-	ArrayList<Integer> turnedPos;
-	ArrayList<Integer> pulledPos;
+	private int points;
 
-	Card cards[];
-	Card turnedCard1;
-	Card turnedCard2;
+	private int[] currentTurnedCards;
+
+	private long ms;
+	private long msshow1;
+	private long msshow2;
+
+	private ArrayList<Integer> currentSet;
+	private ArrayList<Integer> positions;
+	private ArrayList<Integer> turnedPos;
+	private ArrayList<Integer> pulledPos;
+
+	private Card cards[];
+	private Card turnedCard1;
+	private Card turnedCard2;
 
 	private int combo;
 	private CountDownTimer cdt;
 	private CountDownTimer cd1;
 	private CountDownTimer cd2;
 
-	OnClickListener ocl;
-	TextView timerText;
-	TextView scoreText;
-	TextView comboText;
+	private OnClickListener ocl;
+	private TextView timerText;
+	private TextView scoreText;
+	private TextView comboText;
 
 	private RelativeLayout.LayoutParams lpBoard;
 
@@ -60,6 +65,8 @@ public class Level04 extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.level_04);
+
+		initLevel();
 
 		lpBoard = new RelativeLayout.LayoutParams(MemeSettings.boardHeight,
 				MemeSettings.boardHeight);
@@ -332,19 +339,16 @@ public class Level04 extends Activity {
 			public void onTick(long millisUntilFinished) {
 				ms = millisUntilFinished;
 
-				if (millisUntilFinished > 90000) {
-					timerText.setText("01:30");
-				} else if (millisUntilFinished > 60000) {
-					timerText
-							.setText("01:"
-									+ ((millisUntilFinished - 60000) / 1000 >= 10 ? ((millisUntilFinished - 60000) / 1000)
-											: ("0" + (millisUntilFinished - 60000) / 1000)));
+				if (millisUntilFinished > levelTime) {
+					timerText.setText(levelTimeText);
 				} else {
+					String seconds = MemeSettings.FORMATTER
+							.format((millisUntilFinished / 1000) % 60);
+					String minutes = MemeSettings.FORMATTER
+							.format((millisUntilFinished / (1000 * 60)) % 60);
 
-					timerText
-							.setText("00:"
-									+ (millisUntilFinished / 1000 >= 10 ? (millisUntilFinished / 1000)
-											: ("0" + millisUntilFinished / 1000)));
+					timerText.setText(minutes + ":" + seconds);
+
 					if (millisUntilFinished < 6000) {
 						timerText.setTextColor(getResources().getColor(
 								R.color.timerColor2));
@@ -365,6 +369,30 @@ public class Level04 extends Activity {
 		};
 
 		cdt.start();
+	}
+
+	private void initLevel() {
+		level = getIntent().getIntExtra("level", 1);
+		switch (level) {
+		case 1:
+			points = 100;
+			ms = 68000;
+			msshow1 = 1000;
+			msshow2 = 7000;
+			levelTime = (int) (ms - msshow1 - msshow2);
+			levelTimeText = "01:00";
+			break;
+		case 2:
+			points = 100;
+			ms = 53000;
+			msshow1 = 1000;
+			msshow2 = 7000;
+			levelTime = (int) (ms - msshow1 - msshow2);
+			levelTimeText = "00:45";
+			break;
+		default:
+			break;
+		}
 	}
 
 	protected void setScoreText(View v, int sc) {

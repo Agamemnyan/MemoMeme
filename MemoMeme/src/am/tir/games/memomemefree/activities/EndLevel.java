@@ -2,6 +2,7 @@ package am.tir.games.memomemefree.activities;
 
 import java.util.Random;
 
+import am.tir.games.memomemefree.utils.Levels;
 import am.tir.games.memomemefree.utils.ScoreModel;
 import am.tir.games.memomemefree.utils.User;
 import android.app.Activity;
@@ -62,23 +63,13 @@ public class EndLevel extends Activity {
 		nextButton.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				Intent go = null;
-				switch (getIntent().getIntExtra("lastLevel", 13)) {
-				case 1:
-					go = new Intent(EndLevel.this, Level02.class);
-					break;
-				case 2:
-					go = new Intent(EndLevel.this, Level03.class);
-					break;
-				case 3:
-					go = new Intent(EndLevel.this, Level04.class);
-					break;
-				case 4:
-					go = new Intent(EndLevel.this, Level04.class);
-					break;
-				}
-
+				Intent go = new Intent(EndLevel.this, Level.class);
 				user.setPoints(user.getPoints() + score);
+				go.putExtra(
+						"am.tir.games.memomemefree.utils.Levels",
+						((Levels) getIntent().getSerializableExtra(
+								"am.tir.games.memomemefree.utils.Levels"))
+								.getNext());
 				go.putExtra("user", user);
 				startActivity(go);
 				finish();
@@ -88,21 +79,11 @@ public class EndLevel extends Activity {
 		restartButton.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				Intent go = null;
-				switch (getIntent().getIntExtra("lastLevel", 13)) {
-				case 1:
-					go = new Intent(EndLevel.this, Level01.class);
-					break;
-				case 2:
-					go = new Intent(EndLevel.this, Level02.class);
-					break;
-				case 3:
-					go = new Intent(EndLevel.this, Level03.class);
-					break;
-				case 4:
-					go = new Intent(EndLevel.this, Level04.class);
-					break;
-				}
+				Intent go = new Intent(EndLevel.this, Level.class);
+				go.putExtra(
+						"am.tir.games.memomemefree.utils.Levels",
+						getIntent().getSerializableExtra(
+								"am.tir.games.memomemefree.utils.Levels"));
 				go.putExtra("user", user);
 				startActivity(go);
 				finish();

@@ -1,11 +1,12 @@
 package am.tir.games.memomemefree.activities;
 
+import static am.tir.games.memomemefree.utils.MemeSettings.*;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 import am.tir.games.memomemefree.utils.Card;
-import am.tir.games.memomemefree.utils.MemeSettings;
+import am.tir.games.memomemefree.utils.Levels;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -20,12 +21,17 @@ import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
-public class Level04 extends Activity {
+public class Level extends Activity {
 
-	private int level;
+	private Levels level;
 
-	private int levelTime;
-	private String levelTimeText;
+	private long levelTime;
+
+	private int allPairs;
+	private int coverId;
+	private int cardDrawablesArrayId;
+
+	private int cHeight;
 
 	private int score;
 	private int pairFound;
@@ -36,9 +42,9 @@ public class Level04 extends Activity {
 
 	private int[] currentTurnedCards;
 
-	private long ms;
-	private long msshow1;
-	private long msshow2;
+	private long gameTotalTime;
+	private long beforePreviewTime;
+	private long previewTime;
 
 	private ArrayList<Integer> currentSet;
 	private ArrayList<Integer> positions;
@@ -64,16 +70,14 @@ public class Level04 extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.level_04);
 
 		initLevel();
 
-		lpBoard = new RelativeLayout.LayoutParams(MemeSettings.boardHeight,
-				MemeSettings.boardHeight);
+		lpBoard = new RelativeLayout.LayoutParams(boardHeight, boardHeight);
 		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
 			lpBoard.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
 			lpBoard.addRule(RelativeLayout.CENTER_HORIZONTAL);
-			lpBoard.bottomMargin = MemeSettings.boardBottomMargin;
+			lpBoard.bottomMargin = boardBottomMargin;
 		} else {
 			lpBoard.addRule(RelativeLayout.CENTER_IN_PARENT);
 		}
@@ -90,47 +94,23 @@ public class Level04 extends Activity {
 
 		timerText.setTextColor(getResources().getColor(R.color.timerColor1));
 
-		cards = new Card[36];
+		cards = new Card[allPairs * 2];
 
 		combo = 1;
 
-		ImageSwitcher[] slots = new ImageSwitcher[] {
-				(ImageSwitcher) findViewById(R.id.imageView1),
-				(ImageSwitcher) findViewById(R.id.imageView2),
-				(ImageSwitcher) findViewById(R.id.imageView3),
-				(ImageSwitcher) findViewById(R.id.imageView4),
-				(ImageSwitcher) findViewById(R.id.imageView5),
-				(ImageSwitcher) findViewById(R.id.imageView6),
-				(ImageSwitcher) findViewById(R.id.imageView7),
-				(ImageSwitcher) findViewById(R.id.imageView8),
-				(ImageSwitcher) findViewById(R.id.imageView9),
-				(ImageSwitcher) findViewById(R.id.imageView10),
-				(ImageSwitcher) findViewById(R.id.imageView11),
-				(ImageSwitcher) findViewById(R.id.imageView12),
-				(ImageSwitcher) findViewById(R.id.imageView13),
-				(ImageSwitcher) findViewById(R.id.imageView14),
-				(ImageSwitcher) findViewById(R.id.imageView15),
-				(ImageSwitcher) findViewById(R.id.imageView16),
-				(ImageSwitcher) findViewById(R.id.imageView17),
-				(ImageSwitcher) findViewById(R.id.imageView18),
-				(ImageSwitcher) findViewById(R.id.imageView19),
-				(ImageSwitcher) findViewById(R.id.imageView20),
-				(ImageSwitcher) findViewById(R.id.imageView21),
-				(ImageSwitcher) findViewById(R.id.imageView22),
-				(ImageSwitcher) findViewById(R.id.imageView23),
-				(ImageSwitcher) findViewById(R.id.imageView24),
-				(ImageSwitcher) findViewById(R.id.imageView25),
-				(ImageSwitcher) findViewById(R.id.imageView26),
-				(ImageSwitcher) findViewById(R.id.imageView27),
-				(ImageSwitcher) findViewById(R.id.imageView28),
-				(ImageSwitcher) findViewById(R.id.imageView29),
-				(ImageSwitcher) findViewById(R.id.imageView30),
-				(ImageSwitcher) findViewById(R.id.imageView31),
-				(ImageSwitcher) findViewById(R.id.imageView32),
-				(ImageSwitcher) findViewById(R.id.imageView33),
-				(ImageSwitcher) findViewById(R.id.imageView34),
-				(ImageSwitcher) findViewById(R.id.imageView35),
-				(ImageSwitcher) findViewById(R.id.imageView36) };
+		int[] slotIds = new int[] { R.id.imageView1, R.id.imageView2,
+				R.id.imageView3, R.id.imageView4, R.id.imageView5,
+				R.id.imageView6, R.id.imageView7, R.id.imageView8,
+				R.id.imageView9, R.id.imageView10, R.id.imageView11,
+				R.id.imageView12, R.id.imageView13, R.id.imageView14,
+				R.id.imageView15, R.id.imageView16, R.id.imageView17,
+				R.id.imageView18, R.id.imageView19, R.id.imageView20,
+				R.id.imageView21, R.id.imageView22, R.id.imageView23,
+				R.id.imageView24, R.id.imageView25, R.id.imageView26,
+				R.id.imageView27, R.id.imageView28, R.id.imageView29,
+				R.id.imageView30, R.id.imageView31, R.id.imageView32,
+				R.id.imageView33, R.id.imageView34, R.id.imageView35,
+				R.id.imageView36 };
 
 		if (savedInstanceState == null) {
 
@@ -140,20 +120,21 @@ public class Level04 extends Activity {
 			score = 0;
 
 			TypedArray cardsArray = getResources().obtainTypedArray(
-					R.array.cards_lvl_1);
+					cardDrawablesArrayId);
 			ArrayList<Integer> cardInts = new ArrayList<Integer>(
 					cardsArray.length());
 			for (int i = 0; i < cardsArray.length(); i++) {
 				cardInts.add(cardsArray.getResourceId(i, 0));
 			}
 
-			positions = new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 4, 5,
-					6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
-					22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35));
+			positions = new ArrayList<Integer>(allPairs * 2);
+			for (int i = 0; i < allPairs * 2; i++) {
+				positions.add(i);
+			}
 
 			Collections.shuffle(cardInts);
 			Collections.shuffle(positions);
-			currentSet = new ArrayList<Integer>(cardInts.subList(0, 18));
+			currentSet = new ArrayList<Integer>(cardInts.subList(0, allPairs));
 
 		} else {
 
@@ -166,9 +147,9 @@ public class Level04 extends Activity {
 			combo = savedInstanceState.getInt("combo");
 			isShowing = savedInstanceState.getInt("isShowing");
 
-			ms = savedInstanceState.getLong("ms");
-			msshow1 = savedInstanceState.getLong("msshow1");
-			msshow2 = savedInstanceState.getLong("msshow2");
+			gameTotalTime = savedInstanceState.getLong("ms");
+			beforePreviewTime = savedInstanceState.getLong("msshow1");
+			previewTime = savedInstanceState.getLong("msshow2");
 
 			currentSet = savedInstanceState.getIntegerArrayList("currentSet");
 			positions = savedInstanceState.getIntegerArrayList("positions");
@@ -189,9 +170,10 @@ public class Level04 extends Activity {
 		int j = 0;
 		for (Integer i : currentSet) {
 			for (int t = 0; t < 2; t++) {
-				cards[j] = new Card(slots[positions.get(j)], i,
-						positions.get(j), this, MemeSettings.cHeight4,
-						R.integer.cover_lvl_4);
+				ImageSwitcher isw = (ImageSwitcher) findViewById(slotIds[positions
+						.get(j)]);
+				cards[j] = new Card(isw, i, positions.get(j), this, cHeight,
+						coverId);
 				j++;
 			}
 		}
@@ -202,7 +184,6 @@ public class Level04 extends Activity {
 			}
 
 			for (Integer i : pulledPos) {
-				// cards[i].turnCard();
 				cards[positions.indexOf(i)].pullOut();
 			}
 
@@ -211,13 +192,10 @@ public class Level04 extends Activity {
 				break;
 			case 1:
 				turnedCard1 = cards[positions.indexOf(currentTurnedCards[0])];
-				// turnedCard1.turnCard();
 				break;
 			case 2:
 				turnedCard1 = cards[positions.indexOf(currentTurnedCards[0])];
-				// turnedCard1.turnCard();
 				turnedCard2 = cards[positions.indexOf(currentTurnedCards[1])];
-				// turnedCard2.turnCard();
 			default:
 				break;
 			}
@@ -296,9 +274,9 @@ public class Level04 extends Activity {
 
 		if (isShowing != 2) {
 			if (isShowing == 0) {
-				cd1 = new CountDownTimer(msshow1, 100) {
+				cd1 = new CountDownTimer(beforePreviewTime, 100) {
 					public void onTick(long millisUntilFinished) {
-						msshow1 -= 100;
+						beforePreviewTime -= 100;
 					}
 
 					public void onFinish() {
@@ -311,10 +289,10 @@ public class Level04 extends Activity {
 				cd1.start();
 			}
 
-			cd2 = new CountDownTimer(msshow2, 100) {
+			cd2 = new CountDownTimer(previewTime, 100) {
 
 				public void onTick(long millisUntilFinished) {
-					msshow2 -= 100;
+					previewTime -= 100;
 				}
 
 				public void onFinish() {
@@ -334,35 +312,28 @@ public class Level04 extends Activity {
 			}
 		}
 
-		cdt = new CountDownTimer(ms, 1000) {
+		cdt = new CountDownTimer(gameTotalTime, 1000) {
 
 			public void onTick(long millisUntilFinished) {
-				ms = millisUntilFinished;
+				gameTotalTime = millisUntilFinished;
 
-				if (millisUntilFinished > levelTime) {
-					timerText.setText(levelTimeText);
-				} else {
-					String seconds = MemeSettings.FORMATTER
-							.format((millisUntilFinished / 1000) % 60);
-					String minutes = MemeSettings.FORMATTER
-							.format((millisUntilFinished / (1000 * 60)) % 60);
+				timerText
+						.setText(millisUntilFinished > levelTime ? convertTimeText(levelTime)
+								: convertTimeText(millisUntilFinished));
 
-					timerText.setText(minutes + ":" + seconds);
-
-					if (millisUntilFinished < 6000) {
-						timerText.setTextColor(getResources().getColor(
-								R.color.timerColor2));
-					}
+				if (millisUntilFinished < 6000) {
+					timerText.setTextColor(getResources().getColor(
+							R.color.timerColor2));
 				}
+
 			}
 
 			public void onFinish() {
-				Intent go = new Intent(getBaseContext(),
-						am.tir.games.memomemefree.activities.EndLevel.class);
+				Intent go = new Intent(getBaseContext(), EndLevel.class);
 				go.putExtra("score", score);
 				go.putExtra("user", getIntent().getParcelableExtra("user"));
 				go.putExtra("isWin", false);
-				go.putExtra("lastLevel", 4);
+				go.putExtra("am.tir.games.memomemefree.utils.Levels", level);
 				startActivity(go);
 				finish();
 			}
@@ -372,27 +343,100 @@ public class Level04 extends Activity {
 	}
 
 	private void initLevel() {
-		level = getIntent().getIntExtra("level", 1);
+		// Get level
+		level = (Levels) getIntent().getSerializableExtra(
+				"am.tir.games.memomemefree.utils.Levels");
+
 		switch (level) {
-		case 1:
-			points = 100;
-			ms = 68000;
-			msshow1 = 1000;
-			msshow2 = 7000;
-			levelTime = (int) (ms - msshow1 - msshow2);
-			levelTimeText = "01:00";
+		case LEVEL_1_1:
+			initLevels(R.layout.level_01, R.integer.cover_lvl_1,
+					R.array.cards_lvl_1, cHeight_lvl_1, POINTS_LEVEL_1_1,
+					GAME_TIME_LEVEL_1_1, PREV_TIME_LEVEL_1_1, ALL_PAIRS_LEVEL_1);
 			break;
-		case 2:
-			points = 100;
-			ms = 53000;
-			msshow1 = 1000;
-			msshow2 = 7000;
-			levelTime = (int) (ms - msshow1 - msshow2);
-			levelTimeText = "00:45";
+		case LEVEL_2_1:
+			initLevels(R.layout.level_02, R.integer.cover_lvl_2,
+					R.array.cards_lvl_2, cHeight_lvl_2, POINTS_LEVEL_2_1,
+					GAME_TIME_LEVEL_2_1, PREV_TIME_LEVEL_2_1, ALL_PAIRS_LEVEL_2);
+			break;
+		case LEVEL_2_2:
+			initLevels(R.layout.level_02, R.integer.cover_lvl_2,
+					R.array.cards_lvl_2, cHeight_lvl_2, POINTS_LEVEL_2_2,
+					GAME_TIME_LEVEL_2_2, PREV_TIME_LEVEL_2_2, ALL_PAIRS_LEVEL_2);
+			break;
+		case LEVEL_3_1:
+			initLevels(R.layout.level_03, R.integer.cover_lvl_3,
+					R.array.cards_lvl_3, cHeight_lvl_3, POINTS_LEVEL_3_1,
+					GAME_TIME_LEVEL_3_1, PREV_TIME_LEVEL_3_1, ALL_PAIRS_LEVEL_3);
+			break;
+		case LEVEL_3_2:
+			initLevels(R.layout.level_03, R.integer.cover_lvl_3,
+					R.array.cards_lvl_3, cHeight_lvl_3, POINTS_LEVEL_3_2,
+					GAME_TIME_LEVEL_3_2, PREV_TIME_LEVEL_3_2, ALL_PAIRS_LEVEL_3);
+			break;
+		case LEVEL_3_3:
+			initLevels(R.layout.level_03, R.integer.cover_lvl_3,
+					R.array.cards_lvl_3, cHeight_lvl_3, POINTS_LEVEL_3_3,
+					GAME_TIME_LEVEL_3_3, PREV_TIME_LEVEL_3_3, ALL_PAIRS_LEVEL_3);
+			break;
+		case LEVEL_4_1:
+			initLevels(R.layout.level_04, R.integer.cover_lvl_4,
+					R.array.cards_lvl_4, cHeight_lvl_4, POINTS_LEVEL_4_1,
+					GAME_TIME_LEVEL_4_1, PREV_TIME_LEVEL_4_1, ALL_PAIRS_LEVEL_4);
+			break;
+		case LEVEL_4_2:
+			initLevels(R.layout.level_04, R.integer.cover_lvl_4,
+					R.array.cards_lvl_1, cHeight_lvl_4, POINTS_LEVEL_4_2,
+					GAME_TIME_LEVEL_4_2, PREV_TIME_LEVEL_4_2, ALL_PAIRS_LEVEL_4);
+			break;
+		case LEVEL_4_3:
+			initLevels(R.layout.level_04, R.integer.cover_lvl_4,
+					R.array.cards_lvl_4, cHeight_lvl_4, POINTS_LEVEL_4_3,
+					GAME_TIME_LEVEL_4_3, PREV_TIME_LEVEL_4_3, ALL_PAIRS_LEVEL_4);
+			break;
+		case LEVEL_4_4:
+			initLevels(R.layout.level_04, R.integer.cover_lvl_4,
+					R.array.cards_lvl_4, cHeight_lvl_4, POINTS_LEVEL_4_4,
+					GAME_TIME_LEVEL_4_4, PREV_TIME_LEVEL_4_4, ALL_PAIRS_LEVEL_4);
 			break;
 		default:
 			break;
 		}
+	}
+
+	private String convertTimeText(long milliseconds) {
+		String seconds = FORMATTER.format((milliseconds / 1000) % 60);
+		String minutes = FORMATTER.format((milliseconds / (1000 * 60)) % 60);
+		return minutes + ":" + seconds;
+	}
+
+	/**
+	 * @param layoutId
+	 * @param coverId
+	 * @param cardDrawablesArrayId
+	 * @param cHeight
+	 * @param points
+	 * @param levelTime
+	 * @param previewTime
+	 * @param allPairs
+	 */
+	private void initLevels(int layoutId, int coverId,
+			int cardDrawablesArrayId, int cHeight, int points, long levelTime,
+			long previewTime, int allPairs) {
+
+		this.setContentView(layoutId);
+
+		this.beforePreviewTime = BEFORE_PREVIEW_TIME;
+
+		this.coverId = coverId;
+		this.cardDrawablesArrayId = cardDrawablesArrayId;
+		this.cHeight = cHeight;
+		this.points = points;
+		this.levelTime = levelTime;
+		this.previewTime = previewTime;
+		this.allPairs = allPairs;
+
+		this.gameTotalTime = this.levelTime + this.beforePreviewTime
+				+ this.previewTime;
 	}
 
 	protected void setScoreText(View v, int sc) {
@@ -413,23 +457,22 @@ public class Level04 extends Activity {
 		}
 
 		comboText.setText(Integer.toString(points * combo));
-		if (combo > 1 && pairFound != 18) {
+		if (combo > 1 && pairFound != allPairs) {
 			comboText
 					.setTextColor(getResources().getColor(R.color.comboColor2));
-		} else if (pairFound != 18) {
+		} else if (pairFound != allPairs) {
 			comboText
 					.setTextColor(getResources().getColor(R.color.comboColor1));
 		} else {
 			comboText.setVisibility(View.GONE);
 		}
 
-		if (pairFound == 18) {
-			Intent go = new Intent(getBaseContext(),
-					am.tir.games.memomemefree.activities.EndLevel.class);
+		if (pairFound == allPairs) {
+			Intent go = new Intent(getBaseContext(), EndLevel.class);
 			go.putExtra("score", score);
 			go.putExtra("user", getIntent().getParcelableExtra("user"));
 			go.putExtra("isWin", true);
-			go.putExtra("lastLevel", 4);
+			go.putExtra("am.tir.games.memomemefree.utils.Levels", level);
 			startActivity(go);
 			finish();
 		}
@@ -458,9 +501,9 @@ public class Level04 extends Activity {
 		savedInstanceState.putInt("combo", combo);
 		savedInstanceState.putInt("isShowing", isShowing);
 
-		savedInstanceState.putLong("ms", ms);
-		savedInstanceState.putLong("msshow1", msshow1);
-		savedInstanceState.putLong("msshow2", msshow2);
+		savedInstanceState.putLong("ms", gameTotalTime);
+		savedInstanceState.putLong("msshow1", beforePreviewTime);
+		savedInstanceState.putLong("msshow2", previewTime);
 
 		savedInstanceState.putIntegerArrayList("currentSet", currentSet);
 		savedInstanceState.putIntegerArrayList("positions", positions);

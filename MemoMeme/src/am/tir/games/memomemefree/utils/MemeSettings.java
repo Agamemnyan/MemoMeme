@@ -2,6 +2,10 @@ package am.tir.games.memomemefree.utils;
 
 import java.text.DecimalFormat;
 
+/**
+ * @author Artak.Gevorgyan
+ *
+ */
 public class MemeSettings {
 	// Initialization flag
 	public static boolean isInit;
@@ -19,10 +23,9 @@ public class MemeSettings {
 	public static int cHeight_lvl_2;
 	public static int cHeight_lvl_3;
 	public static int cHeight_lvl_4;
-
-	// Main menu image
-	public static int mChallengeHeight;
-	public static int mChallengeTopMargin;
+	
+	// Sound mode
+	public static SoundMode sound_mode;
 
 	// Time formatter
 	public static final DecimalFormat FORMATTER = new DecimalFormat("00");

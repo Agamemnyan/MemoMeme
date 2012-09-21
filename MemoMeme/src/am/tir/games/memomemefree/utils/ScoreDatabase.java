@@ -6,6 +6,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 import android.util.Log;
 
+/**
+ * @author Artak.Gevorgyan
+ *
+ */
 public class ScoreDatabase extends SQLiteOpenHelper {
 
 	public ScoreDatabase(Context context) {

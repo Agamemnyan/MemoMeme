@@ -3,7 +3,7 @@
     package="am.tir.games.memomemefree.activities"
     android:installLocation="auto"
     android:versionCode="1"
-    android:versionName="0.8.0" >
+    android:versionName="0.8.1" >
 
     <uses-sdk
         android:minSdkVersion="7"
@@ -25,19 +25,16 @@
             android:name=".Main"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
         <activity
-            android:name=".Level"
-            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
-        <activity
-            android:name=".EndLevel"
+            android:name=".Settings"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
         <activity
             android:name=".NewUser"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
         <activity
-            android:name=".SelectLevel"
+            android:name=".Level"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
         <activity
-            android:name=".LoadGame"
+            android:name=".EndLevel"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
         <activity
             android:name=".HighScores"

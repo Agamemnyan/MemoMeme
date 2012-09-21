@@ -32,5 +32,11 @@
     <string name="tableHeaderLastLevel">Посл.</string>
     <string name="tableHeaderTotal">Всё</string>
     <string name="highScores">Топ Очки</string>
+    <string name="button_settings">Настройки</string>
+    <string name="settings_title_sound">Звуки</string>
+    <string name="radio_sound_trollish">Тролль xD</string>
+    <string name="radio_sound_simpsons">Симпсоны :D</string>
+    <string name="radio_sound_normal">Нормальные :)</string>
+    <string name="radio_sound_off">Без звука :|</string>
 
 </resources>

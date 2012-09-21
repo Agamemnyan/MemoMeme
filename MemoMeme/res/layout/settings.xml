@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/soundTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/settings_title_sound"
+            android:textSize="@dimen/settings_titles_text_size"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/rbSoundTrollish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="@string/radio_sound_trollish"
+            android:textSize="@dimen/settings_radio_text_size" />
+
+        <RadioButton
+            android:id="@+id/rbSoundSimpsons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="@string/radio_sound_simpsons"
+            android:textSize="@dimen/settings_radio_text_size" />
+
+        <RadioButton
+            android:id="@+id/rbSoundNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="@string/radio_sound_normal"
+            android:textSize="@dimen/settings_radio_text_size" />
+
+        <RadioButton
+            android:id="@+id/rbSoundOff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="@string/radio_sound_off"
+            android:textSize="@dimen/settings_radio_text_size" />
+    </RadioGroup>
+
+</RelativeLayout>

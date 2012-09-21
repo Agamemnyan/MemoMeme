@@ -10,6 +10,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * @author Artak.Gevorgyan
+ *
+ */
 public class NewUser extends Activity {
 
 	EditText etNewUser;

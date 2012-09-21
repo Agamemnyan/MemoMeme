@@ -37,6 +37,16 @@
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/buttonSettings"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/button_settings"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <Button
                 android:id="@+id/buttonHighScores"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="match_parent"
@@ -55,7 +65,6 @@
                 android:text="@string/buttonExit"
                 android:textSize="22sp"
                 android:textStyle="bold" />
-
         </LinearLayout>
     </LinearLayout>
 

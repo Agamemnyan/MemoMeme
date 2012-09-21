@@ -1,5 +1,9 @@
 package am.tir.games.memomemefree.utils;
 
+/**
+ * @author Artak.Gevorgyan
+ *
+ */
 public enum Levels {
 	LEVEL_1_1,
 	LEVEL_2_1, LEVEL_2_2,

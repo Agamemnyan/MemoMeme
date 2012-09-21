@@ -7,6 +7,10 @@ import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.ViewSwitcher.ViewFactory;
 
+/**
+ * @author Artak.Gevorgyan
+ *
+ */
 public class Card {
 	public ImageSwitcher card;
 	private boolean isTurned = false;

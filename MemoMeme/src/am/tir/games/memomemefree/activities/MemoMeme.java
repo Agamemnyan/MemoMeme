@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.ImageView;
 
+/**
+ * @author Artak.Gevorgyan
+ *
+ */
 public class MemoMeme extends Activity {
 
 	private long ms;

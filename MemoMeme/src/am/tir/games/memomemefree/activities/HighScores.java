@@ -8,6 +8,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * @author Artak.Gevorgyan
+ *
+ */
 public class HighScores extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

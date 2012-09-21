@@ -8,6 +8,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.provider.BaseColumns;
 
+/**
+ * @author Artak.Gevorgyan
+ *
+ */
 public class ScoreModel extends BaseModel {
 
 	public final static String TABLE_NAME = "Score";

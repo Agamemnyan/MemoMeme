@@ -1,16 +1,60 @@
 package am.tir.games.memomemefree.activities;
 
-import static am.tir.games.memomemefree.utils.MemeSettings.*;
+import static am.tir.games.memomemefree.utils.MemeSettings.ALL_PAIRS_LEVEL_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.ALL_PAIRS_LEVEL_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.ALL_PAIRS_LEVEL_3;
+import static am.tir.games.memomemefree.utils.MemeSettings.ALL_PAIRS_LEVEL_4;
+import static am.tir.games.memomemefree.utils.MemeSettings.BEFORE_PREVIEW_TIME;
+import static am.tir.games.memomemefree.utils.MemeSettings.FORMATTER;
+import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_1_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_2_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_2_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_3_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_3_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_3_3;
+import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_4_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_4_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_4_3;
+import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_4_4;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_1_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_2_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_2_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_3_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_3_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_3_3;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_4_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_4_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_4_3;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_4_4;
+import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_1_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_2_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_2_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_3_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_3_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_3_3;
+import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_4_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_4_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_4_3;
+import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_4_4;
+import static am.tir.games.memomemefree.utils.MemeSettings.boardBottomMargin;
+import static am.tir.games.memomemefree.utils.MemeSettings.boardHeight;
+import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_3;
+import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_4;
+import static am.tir.games.memomemefree.utils.MemeSettings.sound_mode;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 import am.tir.games.memomemefree.utils.Card;
 import am.tir.games.memomemefree.utils.Levels;
+import am.tir.games.memomemefree.utils.SoundMode;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -21,15 +65,24 @@ import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+/**
+ * @author Artak.Gevorgyan
+ * 
+ */
 public class Level extends Activity {
 
 	private Levels level;
 
 	private long levelTime;
 
+	private MediaPlayer soundPairFail;
+	private MediaPlayer soundPairFound;
+
 	private int allPairs;
 	private int coverId;
 	private int cardDrawablesArrayId;
+
+	private boolean isSoundOn;
 
 	private int cHeight;
 
@@ -239,11 +292,17 @@ public class Level extends Activity {
 						}
 						if (turnedCard1.getMemeInt() == turnedCard2
 								.getMemeInt()) {
+							if (isSoundOn && soundPairFound != null) {
+								soundPairFound.start();
+							}
 							proceedScore(scoreText, true);
 							turnedCard1.pullOut();
 							turnedCard2.pullOut();
 							turnedCardsCount = 0;
 						} else {
+							if (isSoundOn && soundPairFail != null) {
+								soundPairFail.start();
+							}
 							proceedScore(scoreText, false);
 						}
 					}
@@ -346,6 +405,37 @@ public class Level extends Activity {
 		// Get level
 		level = (Levels) getIntent().getSerializableExtra(
 				"am.tir.games.memomemefree.utils.Levels");
+
+		if (sound_mode == null) {
+			sound_mode = SoundMode.OFF;
+		}
+
+		isSoundOn = true;
+
+		switch (sound_mode) {
+		case TROLLISH:
+			soundPairFail = MediaPlayer.create(getBaseContext(),
+					R.raw.pair_fail_trollish);
+			soundPairFound = MediaPlayer.create(getBaseContext(),
+					R.raw.pair_found_trollish);
+			break;
+		case SIMPSONS:
+			soundPairFail = MediaPlayer.create(getBaseContext(),
+					R.raw.pair_fail_simpsons);
+			soundPairFound = MediaPlayer.create(getBaseContext(),
+					R.raw.pair_found_simpsons);
+			break;
+		case NORMAL:
+			soundPairFail = MediaPlayer.create(getBaseContext(),
+					R.raw.pair_fail_normal);
+			soundPairFound = MediaPlayer.create(getBaseContext(),
+					R.raw.pair_found_normal);
+			break;
+		case OFF:
+			soundPairFail = null;
+			isSoundOn = false;
+			break;
+		}
 
 		switch (level) {
 		case LEVEL_1_1:

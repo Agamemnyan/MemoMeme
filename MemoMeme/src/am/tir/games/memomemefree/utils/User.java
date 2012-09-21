@@ -4,6 +4,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 
+/**
+ * @author Artak.Gevorgyan
+ *
+ */
 public class User implements Parcelable {
 
 	public static final Creator<User> CREATOR = new UserCreator();

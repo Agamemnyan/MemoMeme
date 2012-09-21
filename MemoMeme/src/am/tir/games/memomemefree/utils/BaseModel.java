@@ -5,6 +5,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
+/**
+ * @author Artak.Gevorgyan
+ *
+ */
 public class BaseModel implements BaseColumns {
 	protected final String TABLE_NAME;
 

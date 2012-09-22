@@ -9,6 +9,7 @@ import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_4;
 import static am.tir.games.memomemefree.utils.MemeSettings.dHeight;
 import static am.tir.games.memomemefree.utils.MemeSettings.dWidth;
 import static am.tir.games.memomemefree.utils.MemeSettings.isInit;
+import am.tir.games.memomemefree.utils.ScoreModel;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -29,21 +30,13 @@ public class Main extends Activity implements OnClickListener {
 		setContentView(R.layout.main);
 
 		initSettings();
-		initComponents();
+		initStaticComponents();
 	}
 
-	private void initComponents() {
-
-		Button buttonNewGame = (Button) findViewById(R.id.buttonGo);
-		Button buttonSettings = (Button) findViewById(R.id.buttonSettings);
-		Button buttonHighScoress = (Button) findViewById(R.id.buttonHighScores);
-		Button buttonExit = (Button) findViewById(R.id.buttonExit);
-
-		// set listeners
-		buttonNewGame.setOnClickListener(this);
-		buttonSettings.setOnClickListener(this);
-		buttonHighScoress.setOnClickListener(this);
-		buttonExit.setOnClickListener(this);
+	@Override
+	protected void onResume() {
+		super.onResume();
+		initDynamicComponents();
 	}
 
 	private void initSettings() {
@@ -71,6 +64,27 @@ public class Main extends Activity implements OnClickListener {
 		cHeight_lvl_4 = dHeight * 102 / 768;
 
 		isInit = true;
+	}
+
+	private void initStaticComponents() {
+		Button buttonNewGame = (Button) findViewById(R.id.buttonGo);
+		Button buttonSettings = (Button) findViewById(R.id.buttonSettings);
+		Button buttonExit = (Button) findViewById(R.id.buttonExit);
+
+		buttonNewGame.setOnClickListener(this);
+		buttonSettings.setOnClickListener(this);
+		buttonExit.setOnClickListener(this);
+	}
+
+	private void initDynamicComponents() {
+		Button buttonHighScoress = (Button) findViewById(R.id.buttonHighScores);
+		buttonHighScoress.setOnClickListener(this);
+
+		if (new ScoreModel(this).getIsEmpty()) {
+			buttonHighScoress.setVisibility(View.GONE);
+		} else {
+			buttonHighScoress.setVisibility(View.VISIBLE);
+		}
 	}
 
 	public void onClick(View v) {

@@ -7,9 +7,9 @@
         android:id="@+id/imageBoard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/imgBoard"
-        android:src="@drawable/board_01" />
-
+        android:background="@drawable/bg_trans"
+        android:contentDescription="@string/imgBoard" />
+
     <TextView
         android:id="@+id/textScore"
         android:layout_width="wrap_content"
@@ -18,7 +18,7 @@
         android:layout_marginTop="5dp"
         android:textSize="@dimen/score_text_size"
         android:textStyle="bold" />
-
+
     <TextView
         android:id="@+id/textTimer"
         android:layout_width="wrap_content"
@@ -334,7 +334,7 @@
                 android:scaleType="center" />
         </TableRow>
     </TableLayout>
-    
+
     <TextView
         android:id="@+id/textCombo"
         android:layout_width="wrap_content"

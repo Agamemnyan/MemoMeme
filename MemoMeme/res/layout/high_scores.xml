@@ -31,7 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonMainMenu"
         android:layout_below="@+id/textScoresTitle"
-        android:layout_centerHorizontal="true" >
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bg_trans" >
 
         <TextView
             android:id="@+id/textScores"

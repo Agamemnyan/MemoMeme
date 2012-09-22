@@ -98,7 +98,7 @@ public class EndLevel extends Activity {
 			public void onClick(View v) {
 				user.setPoints(user.getPoints() + score);
 				if (user.getPoints() > 0) {
-					new ScoreModel(getBaseContext()).add(user);
+					new ScoreModel(getBaseContext()).update(user);
 				}
 				finish();
 			}
@@ -109,7 +109,7 @@ public class EndLevel extends Activity {
 			public void onClick(View v) {
 				user.setPoints(user.getPoints() + score);
 				if (user.getPoints() > 0) {
-					new ScoreModel(getBaseContext()).add(user);
+					new ScoreModel(getBaseContext()).update(user);
 				}
 				Intent go = new Intent(getBaseContext(), HighScores.class);
 				startActivity(go);

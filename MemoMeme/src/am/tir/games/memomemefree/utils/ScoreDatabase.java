@@ -8,7 +8,7 @@ import android.util.Log;
 
 /**
  * @author Artak.Gevorgyan
- *
+ * 
  */
 public class ScoreDatabase extends SQLiteOpenHelper {
 
@@ -18,7 +18,6 @@ public class ScoreDatabase extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		// TODO Create your tables here
 		Log.i("ScoreExample", "Create database: " + ScoreModel.TABLE_NAME);
 
 		/*
@@ -29,13 +28,13 @@ public class ScoreDatabase extends SQLiteOpenHelper {
 		db.execSQL("create table " + ScoreModel.TABLE_NAME + " ("
 				+ BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
 				+ ScoreModel.KEY_VALUE + " INTEGER NOT NULL,"
-				+ ScoreModel.KEY_NAME + " TEXT);");
+				+ ScoreModel.KEY_NAME + " TEXT, " + ScoreModel.KEY_LEVEL
+				+ " INTEGER);");
 
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+		// TODO
 	}
-
 }

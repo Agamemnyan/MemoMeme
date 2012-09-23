@@ -25,21 +25,14 @@
         android:layout_margin="10dp"
         android:text="@string/buttonMainMenu" />
 
-    <ScrollView
-        android:id="@+id/scrollScores"
-        android:layout_width="wrap_content"
+    <ListView
+        android:id="@+id/scoreListView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonMainMenu"
-        android:layout_below="@+id/textScoresTitle"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/bg_trans" >
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textScoresTitle" >
 
-        <TextView
-            android:id="@+id/textScores"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-    </ScrollView>
+    </ListView>
 
 </RelativeLayout>

@@ -51,6 +51,7 @@ public class ScoreModel extends BaseModel {
 					.getColumnIndex(ScoreModel.KEY_NAME)));
 			user.setLevel(cursor.getInt(cursor
 					.getColumnIndex(ScoreModel.KEY_LEVEL)));
+			result.add(user);
 		}
 
 		cursor.close();

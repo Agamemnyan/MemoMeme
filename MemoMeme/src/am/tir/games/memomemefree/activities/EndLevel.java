@@ -118,13 +118,14 @@ public class EndLevel extends Activity {
 		});
 
 		if (getIntent().getExtras().getBoolean("isWin")) {
+			user.setLevel(user.getLevel() + 1);
 			gameOver.setVisibility(View.GONE);
 			imgWl.setImageResource(winPics[rand.nextInt(winPics.length)]);
 			highScoresButtoon.setVisibility(View.GONE);
 		} else {
+			user.setLevel(0);
 			imgWl.setImageResource(losePics[rand.nextInt(losePics.length)]);
 			nextButton.setVisibility(View.GONE);
-			restartButton.setVisibility(View.GONE);
 		}
 	}
 }

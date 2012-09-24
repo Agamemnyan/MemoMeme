@@ -55,24 +55,31 @@ public class ScoreModel extends BaseModel {
 		}
 
 		cursor.close();
-		close();
 		return result;
 	}
 
 	public long getBestScore() {
 		long result = 0;
 		Cursor cursor = getNonZeroOrdered();
-		result = cursor.getLong(cursor.getColumnIndex(ScoreModel.KEY_VALUE));
+		if (cursor.moveToPosition(0)) {
+			result = cursor
+					.getLong(cursor.getColumnIndex(ScoreModel.KEY_VALUE));
+		}
+
 		cursor.close();
-		close();
 		return result;
 	}
 
 	public boolean getIsEmpty() {
 		Cursor cursor = getAllOrdered();
-		if (cursor.getCount() == 0)
-			return true;
-		return false;
+		boolean result = false;
+
+		if (cursor.getCount() == 0) {
+			result = true;
+		}
+
+		cursor.close();
+		return result;
 	}
 
 	public User add(String name) {
@@ -80,6 +87,11 @@ public class ScoreModel extends BaseModel {
 		values.put(KEY_VALUE, 0);
 		values.put(KEY_NAME, name);
 		values.put(KEY_LEVEL, 0);
+
+		ContentValues valuesTemp = new ContentValues();
+		valuesTemp.put(KEY_LEVEL, 0);
+		String whereClause = KEY_LEVEL + " > 0";
+		database.update(TABLE_NAME, values, whereClause, null);
 
 		long id = database.insert(TABLE_NAME, null, values);
 
@@ -90,13 +102,25 @@ public class ScoreModel extends BaseModel {
 		return result;
 	}
 
-	// public void add(final User user) {
-	// final ContentValues values = new ContentValues();
-	// values.put(KEY_VALUE, user.getPoints());
-	// values.put(KEY_NAME, user.getUserName());
-	//
-	// database.insert(TABLE_NAME, null, values);
-	// }
+	public User getContinueUserIfAny() {
+		User user = null;
+		Cursor cursor = database.query(TABLE_NAME, null, KEY_LEVEL + ">" + "0",
+				null, null, null, KEY_VALUE + " DESC");
+		if (cursor.moveToPosition(0)) {
+			user = new User();
+			user.setId(cursor.getLong(cursor.getColumnIndex(BaseColumns._ID)));
+			user.setPoints(cursor.getLong(cursor
+					.getColumnIndex(ScoreModel.KEY_VALUE)));
+			user.setUserName(cursor.getString(cursor
+					.getColumnIndex(ScoreModel.KEY_NAME)));
+			user.setLevel(cursor.getInt(cursor
+					.getColumnIndex(ScoreModel.KEY_LEVEL)));
+		}
+
+		cursor.close();
+
+		return user;
+	}
 
 	public void update(User user) {
 		final ContentValues values = new ContentValues();

@@ -37,6 +37,17 @@
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/buttonContinue"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/button_continue"
+                android:textColor="@color/default_dark_red"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <Button
                 android:id="@+id/buttonSettings"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="match_parent"

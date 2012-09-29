@@ -19,6 +19,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 /**
  * @author Artak.Gevorgyan
@@ -72,9 +73,15 @@ public class Main extends Activity implements OnClickListener {
 		Button buttonSettings = (Button) findViewById(R.id.buttonSettings);
 		Button buttonExit = (Button) findViewById(R.id.buttonExit);
 
+		ImageButton ibHelp = (ImageButton) findViewById(R.id.ibHelp);
+		ImageButton ibAbout = (ImageButton) findViewById(R.id.ibAbout);
+
 		buttonNewGame.setOnClickListener(this);
 		buttonSettings.setOnClickListener(this);
 		buttonExit.setOnClickListener(this);
+
+		ibHelp.setOnClickListener(this);
+		ibAbout.setOnClickListener(this);
 	}
 
 	private void initDynamicComponents() {
@@ -117,6 +124,12 @@ public class Main extends Activity implements OnClickListener {
 			break;
 		case R.id.buttonHighScores:
 			startActivity(new Intent(this, HighScores.class));
+			break;
+		case R.id.ibHelp:
+			startActivity(new Intent(this, Help.class));
+			break;
+		case R.id.ibAbout:
+			startActivity(new Intent(this, About.class));
 			break;
 		case R.id.buttonExit:
 			finish();

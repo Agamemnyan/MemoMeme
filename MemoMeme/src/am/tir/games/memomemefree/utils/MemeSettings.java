@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 
 /**
  * @author Artak.Gevorgyan
- *
+ * 
  */
 public class MemeSettings {
 	// Initialization flag
@@ -23,7 +23,7 @@ public class MemeSettings {
 	public static int cHeight_lvl_2;
 	public static int cHeight_lvl_3;
 	public static int cHeight_lvl_4;
-	
+
 	// Sound mode
 	public static SoundMode sound_mode;
 
@@ -70,5 +70,16 @@ public class MemeSettings {
 	public static final int POINTS_LEVEL_4_1 = 1000;
 	public static final int POINTS_LEVEL_4_2 = 1500;
 	public static final int POINTS_LEVEL_4_3 = 2500;
-	public static final int POINTS_LEVEL_4_4 = 5000;
+	public static final int POINTS_LEVEL_4_4 = 3500;
+	// Point for sec
+	public static final int POINTS_FOR_SEC_LEVEL_1_1 = 10;
+	public static final int POINTS_FOR_SEC_LEVEL_2_1 = 20;
+	public static final int POINTS_FOR_SEC_LEVEL_2_2 = 30;
+	public static final int POINTS_FOR_SEC_LEVEL_3_1 = 40;
+	public static final int POINTS_FOR_SEC_LEVEL_3_2 = 60;
+	public static final int POINTS_FOR_SEC_LEVEL_3_3 = 100;
+	public static final int POINTS_FOR_SEC_LEVEL_4_1 = 200;
+	public static final int POINTS_FOR_SEC_LEVEL_4_2 = 300;
+	public static final int POINTS_FOR_SEC_LEVEL_4_3 = 500;
+	public static final int POINTS_FOR_SEC_LEVEL_4_4 = 700;
 }

@@ -40,5 +40,12 @@
     <string name="radio_sound_normal">Normal :)</string>
     <string name="radio_sound_off">Off :|</string>
     <string name="button_continue">Continue</string>
+    <string name="button_help">Help</string>
+    <string name="button_about">About</string>
+    <string name="about_text">MemoMeme Challenge\n v. 1.0.0 \n © Tir CS, Tir Games, 2012</string>
+    <string name="instructions_title_text">Instructions</string>
+    <string name="instructions_text"></string>
+    <string name="button_more_apps">More by Tir CS</string>
+    <string name="admob_id">a15067349b414c4</string>
 
 </resources>

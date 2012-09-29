@@ -4,6 +4,7 @@
     <integer name="main">@drawable/main_01_768</integer>
     <integer name="icon_large">@drawable/icon_large_768</integer>
     <integer name="games_logo">@drawable/tir_games_logo_768</integer>
+    <integer name="won_all">@drawable/won_all_768</integer>
 
     <array name="win_faces">
         <item>@drawable/win_01_768</item>
@@ -58,8 +59,6 @@
         <item>@drawable/troll_30_306</item>
         <item>@drawable/troll_31_306</item>
         <item>@drawable/troll_32_306</item>
-        <item>@drawable/troll_33_306</item>
-        <item>@drawable/troll_34_306</item>
     </array>
     <array name="cards_lvl_2">
         <item>@drawable/troll_01_306</item>
@@ -94,8 +93,6 @@
         <item>@drawable/troll_30_306</item>
         <item>@drawable/troll_31_306</item>
         <item>@drawable/troll_32_306</item>
-        <item>@drawable/troll_33_306</item>
-        <item>@drawable/troll_34_306</item>
     </array>
     <array name="cards_lvl_3">
         <item>@drawable/troll_01_204</item>
@@ -130,8 +127,6 @@
         <item>@drawable/troll_30_204</item>
         <item>@drawable/troll_31_204</item>
         <item>@drawable/troll_32_204</item>
-        <item>@drawable/troll_33_204</item>
-        <item>@drawable/troll_34_204</item>
     </array>
     <array name="cards_lvl_4">
         <item>@drawable/troll_01_204</item>
@@ -166,8 +161,6 @@
         <item>@drawable/troll_30_204</item>
         <item>@drawable/troll_31_204</item>
         <item>@drawable/troll_32_204</item>
-        <item>@drawable/troll_33_204</item>
-        <item>@drawable/troll_34_204</item>
     </array>
 
 </resources>

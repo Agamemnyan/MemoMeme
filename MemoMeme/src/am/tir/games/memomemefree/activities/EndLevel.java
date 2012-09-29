@@ -116,7 +116,7 @@ public class EndLevel extends Activity {
 			if (level != 10) {
 				imgWl.setImageResource(losePics[rand.nextInt(losePics.length)]);
 			} else {
-				imgWl.setImageResource(winPics[rand.nextInt(winPics.length)]);
+				imgWl.setImageResource(R.integer.won_all);
 				gameOver.setText(R.string.gameOverAll);
 			}
 		}

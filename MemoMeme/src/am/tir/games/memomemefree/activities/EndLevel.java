@@ -103,7 +103,7 @@ public class EndLevel extends Activity {
 			}
 		});
 
-		if (getIntent().getExtras().getBoolean("isWin")) {
+		if (getIntent().getExtras().getBoolean("isWin") && level != 10) {
 			gameOver.setVisibility(View.GONE);
 			imgWl.setImageResource(winPics[rand.nextInt(winPics.length)]);
 			highScoresButtoon.setVisibility(View.GONE);
@@ -112,8 +112,13 @@ public class EndLevel extends Activity {
 			ScoreModel scoreModel = new ScoreModel(getBaseContext());
 			scoreModel.update(user);
 			scoreModel.close();
-			imgWl.setImageResource(losePics[rand.nextInt(losePics.length)]);
 			nextButton.setVisibility(View.GONE);
+			if (level != 10) {
+				imgWl.setImageResource(losePics[rand.nextInt(losePics.length)]);
+			} else {
+				imgWl.setImageResource(winPics[rand.nextInt(winPics.length)]);
+				gameOver.setText(R.string.gameOverAll);
+			}
 		}
 	}
 }

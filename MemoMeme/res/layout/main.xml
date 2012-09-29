@@ -15,56 +15,74 @@
         <ImageView
             android:id="@+id/imageChallenge"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:contentDescription="@string/imgChallengeCons"
             android:scaleType="fitCenter"
             android:src="@integer/main" />
 
-        <Button
-            android:id="@+id/buttonGo"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/buttonGo"
-            android:textColor="@color/default_dark_red"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:layout_weight="1" >
 
-        <Button
-            android:id="@+id/buttonContinue"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/button_continue"
-            android:textColor="@color/default_dark_red"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            <Button
+                android:id="@+id/buttonGo"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height"
+                android:background="@drawable/button_bg"
+                android:padding="@dimen/button_text_padding"
+                android:text="@string/buttonGo"
+                android:textColor="@color/default_dark_red"
+                android:textSize="@dimen/button_text_size"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/buttonSettings"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/button_settings"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            <Button
+                android:id="@+id/buttonContinue"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height"
+                android:background="@drawable/button_bg"
+                android:padding="@dimen/button_text_padding"
+                android:text="@string/button_continue"
+                android:textColor="@color/default_dark_red"
+                android:textSize="@dimen/button_text_size"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/buttonHighScores"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/highScores"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/buttonSettings"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height"
+                android:background="@drawable/button_bg"
+                android:padding="@dimen/button_text_padding"
+                android:text="@string/button_settings"
+                android:textSize="@dimen/button_text_size"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/buttonHighScores"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height"
+                android:background="@drawable/button_bg"
+                android:padding="@dimen/button_text_padding"
+                android:text="@string/highScores"
+                android:textSize="@dimen/button_text_size"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/buttonExit"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height"
+            android:background="@drawable/button_bg"
+            android:padding="@dimen/button_text_padding"
             android:text="@string/buttonExit"
-            android:textSize="22sp"
+            android:textSize="@dimen/button_text_size"
             android:textStyle="bold" />
     </LinearLayout>
 

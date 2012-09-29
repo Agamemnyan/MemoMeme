@@ -20,8 +20,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:ems="10"
-        android:text="@string/fieldUserName" 
-        android:inputType="text">
+        android:inputType="text"
+        android:text="@string/fieldUserName" >
 
         <requestFocus />
     </EditText>
@@ -29,8 +29,11 @@
     <Button
         android:id="@+id/buttonSubmitUser"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/button_height"
         android:layout_margin="20dp"
-        android:text="@string/submitUserName" />
+        android:background="@drawable/button_bg"
+        android:padding="@dimen/button_text_padding"
+        android:text="@string/submitUserName"
+        android:textSize="@dimen/button_text_size" />
 
 </LinearLayout>

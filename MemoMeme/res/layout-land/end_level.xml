@@ -4,7 +4,6 @@
     android:layout_height="fill_parent" >
 
     <LinearLayout
-        android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -13,106 +12,136 @@
 
         <ImageView
             android:id="@+id/gameoverImage"
-            android:layout_width="wrap_content"
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/imgGameOver" />
-
+            android:layout_weight="1"
+            android:contentDescription="@string/imgGameOver"
+            android:scaleType="fitStart"
+            android:src="@integer/won_all" />
+
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_trans"
-            android:orientation="vertical"
-            android:padding="5dp" >
-
-            <TextView
-                android:id="@+id/headerBefore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tableHeaderBefore"
-                android:textSize="22dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/valueBefore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18dp" />
-
-            <TextView
-                android:id="@+id/headerLast"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tableHeaderLastLevel"
-                android:textSize="22dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/valueLast"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18dp" />
-
-            <TextView
-                android:id="@+id/headerTotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tableHeaderTotal"
-                android:textSize="22dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/valueTotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/game_over_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="vertical" >
-
-            <Button
-                android:id="@+id/nextButton"
-                android:layout_width="match_parent"
+
+            <TextView
+                android:id="@+id/tvGameOver"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/next_button"
+                android:text="@string/gameOver"
                 android:textColor="@color/default_dark_red"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/highScoresButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/highScores"
-                android:textColor="@color/default_dark_red"
+                android:textSize="@dimen/endlevel_game_over_text_size"
                 android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/restartButton"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/buttonRestart" />
+                android:gravity="center" >
 
-            <Button
-                android:id="@+id/buttonMainMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/buttonMainMenu" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/endlevel_scores_margin"
+                    android:background="@drawable/common_bg"
+                    android:orientation="vertical"
+                    android:padding="@dimen/endlevel_scores_padding" >
+
+                    <TextView
+                        android:id="@+id/headerBefore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tableHeaderBefore"
+                        android:textSize="@dimen/endlevel_scores_title_text_size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/valueBefore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="16000"
+                        android:textSize="@dimen/endlevel_scores_points_text_size" />
+
+                    <TextView
+                        android:id="@+id/headerLast"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tableHeaderLastLevel"
+                        android:textSize="@dimen/endlevel_scores_title_text_size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/valueLast"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1600"
+                        android:textSize="@dimen/endlevel_scores_points_text_size" />
+
+                    <TextView
+                        android:id="@+id/headerTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tableHeaderTotal"
+                        android:textSize="@dimen/endlevel_scores_title_text_size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/valueTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="160000"
+                        android:textSize="@dimen/endlevel_scores_points_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/game_over_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:orientation="vertical" >
+
+                    <Button
+                        android:id="@+id/nextButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/button_height"
+                        android:background="@drawable/button_bg"
+                        android:padding="@dimen/button_text_padding"
+                        android:text="@string/next_button"
+                        android:textColor="@color/default_dark_red"
+                        android:textSize="@dimen/button_text_size"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/highScoresButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/button_height"
+                        android:background="@drawable/button_bg"
+                        android:padding="@dimen/button_text_padding"
+                        android:text="@string/highScores"
+                        android:textColor="@color/default_dark_red"
+                        android:textSize="@dimen/button_text_size"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/restartButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/button_height"
+                        android:background="@drawable/button_bg"
+                        android:padding="@dimen/button_text_padding"
+                        android:text="@string/buttonRestart"
+                        android:textSize="@dimen/button_text_size" />
+
+                    <Button
+                        android:id="@+id/buttonMainMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/button_height"
+                        android:background="@drawable/button_bg"
+                        android:padding="@dimen/button_text_padding"
+                        android:text="@string/buttonMainMenu"
+                        android:textSize="@dimen/button_text_size" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/tvGameOver"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/linearLayout1"
-        android:layout_centerHorizontal="true"
-        android:text="@string/gameOver"
-        android:textColor="@color/default_dark_red"
-        android:textSize="22dp"
-        android:textStyle="bold" />
 
 </RelativeLayout>

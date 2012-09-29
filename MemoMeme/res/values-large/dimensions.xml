@@ -8,5 +8,14 @@
     <dimen name="scores_column_2_width">100dp</dimen>
     <dimen name="scores_column_3_width">150dp</dimen>
     <dimen name="scores_column_4_width">90dp</dimen>
+    <dimen name="button_text_size">26dp</dimen>
+    <dimen name="button_text_padding">10dp</dimen>
+    <dimen name="button_height">50dp</dimen>
+    <dimen name="endlevel_scores_margin">15dp</dimen>
+    <dimen name="endlevel_scores_title_text_size">28dp</dimen>
+    <dimen name="endlevel_scores_points_text_size">26dp</dimen>
+    <dimen name="endlevel_scores_padding">10dp</dimen>
+    <dimen name="endlevel_scores_titles_margins">10dp</dimen>
+    <dimen name="endlevel_game_over_text_size">32dp</dimen>
 
 </resources>

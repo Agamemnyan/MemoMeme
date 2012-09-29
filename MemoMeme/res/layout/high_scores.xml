@@ -19,11 +19,14 @@
     <Button
         android:id="@+id/buttonMainMenu"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/button_height"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp"
-        android:text="@string/buttonMainMenu" />
+        android:background="@drawable/button_bg"
+        android:padding="@dimen/button_text_padding"
+        android:text="@string/buttonMainMenu"
+        android:textSize="@dimen/button_text_size" />
 
     <ListView
         android:id="@+id/scoreListView"
@@ -32,7 +35,6 @@
         android:layout_above="@+id/buttonMainMenu"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textScoresTitle" >
-
     </ListView>
 
 </RelativeLayout>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="default_dark_red">#991111</color>
+    <color name="default_dark_red">#DA1F26</color>
     <color name="timerColor1">#000000</color>
     <color name="timerColor2">#992222</color>
     <color name="scoreColor">#000066</color>

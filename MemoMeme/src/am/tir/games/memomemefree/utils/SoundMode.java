@@ -8,5 +8,5 @@ package am.tir.games.memomemefree.utils;
  * 
  */
 public enum SoundMode {
-	TROLLISH, SIMPSONS, NORMAL, OFF
+	TROLLISH, SIMPSONS, NORMAL
 }

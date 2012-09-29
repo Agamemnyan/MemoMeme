@@ -26,6 +26,7 @@ public class MemeSettings {
 
 	// Sound mode
 	public static SoundMode sound_mode;
+	public static boolean isSoundOn;
 
 	// Time formatter
 	public static final DecimalFormat FORMATTER = new DecimalFormat("00");

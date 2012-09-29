@@ -42,6 +42,7 @@ import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_1;
 import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_2;
 import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_3;
 import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_4;
+import static am.tir.games.memomemefree.utils.MemeSettings.isSoundOn;
 import static am.tir.games.memomemefree.utils.MemeSettings.sound_mode;
 
 import java.util.ArrayList;
@@ -49,7 +50,6 @@ import java.util.Collections;
 
 import am.tir.games.memomemefree.utils.Card;
 import am.tir.games.memomemefree.utils.ScoreModel;
-import am.tir.games.memomemefree.utils.SoundMode;
 import am.tir.games.memomemefree.utils.User;
 import android.app.Activity;
 import android.content.Intent;
@@ -60,6 +60,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -82,8 +83,6 @@ public class Level extends Activity {
 	private int allPairs;
 	private int coverId;
 	private int cardDrawablesArrayId;
-
-	private boolean isSoundOn;
 
 	private int cHeight;
 
@@ -411,12 +410,6 @@ public class Level extends Activity {
 		user = (User) getIntent().getParcelableExtra("user");
 		int level = user.getLevel();
 
-		if (sound_mode == null) {
-			sound_mode = SoundMode.OFF;
-		}
-
-		isSoundOn = true;
-
 		switch (sound_mode) {
 		case TROLLISH:
 			soundPairFail = MediaPlayer.create(getBaseContext(),
@@ -435,10 +428,6 @@ public class Level extends Activity {
 					R.raw.pair_fail_normal);
 			soundPairFound = MediaPlayer.create(getBaseContext(),
 					R.raw.pair_found_normal);
-			break;
-		case OFF:
-			soundPairFail = null;
-			isSoundOn = false;
 			break;
 		}
 
@@ -496,6 +485,23 @@ public class Level extends Activity {
 		default:
 			break;
 		}
+
+		final ImageButton ibSound = (ImageButton) findViewById(R.id.ibSound);
+		if (isSoundOn) {
+			ibSound.setImageResource(R.drawable.sounds_on);
+		}
+
+		ibSound.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+				isSoundOn = !isSoundOn;
+				if (isSoundOn) {
+					ibSound.setImageResource(R.drawable.sounds_on);
+				} else {
+					ibSound.setImageResource(R.drawable.sounds_muted);
+				}
+			}
+		});
 	}
 
 	private String convertTimeText(long milliseconds) {

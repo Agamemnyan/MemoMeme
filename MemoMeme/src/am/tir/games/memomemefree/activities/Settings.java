@@ -1,6 +1,7 @@
 package am.tir.games.memomemefree.activities;
 
 import static am.tir.games.memomemefree.utils.MemeSettings.sound_mode;
+import static am.tir.games.memomemefree.utils.MemeSettings.isSoundOn;
 import am.tir.games.memomemefree.utils.SoundMode;
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,7 +11,7 @@ import android.widget.RadioButton;
 
 /**
  * @author Artak.Gevorgyan
- *
+ * 
  */
 public class Settings extends Activity implements OnClickListener {
 	@Override
@@ -22,18 +23,32 @@ public class Settings extends Activity implements OnClickListener {
 	}
 
 	private void initSoundSettings() {
+
+		// Toggle
+		RadioButton rbSoundOff = (RadioButton) findViewById(R.id.rbSoundOff);
+		RadioButton rbSoundOn = (RadioButton) findViewById(R.id.rbSoundOn);
+
+		rbSoundOff.setOnClickListener(this);
+		rbSoundOn.setOnClickListener(this);
+
+		if (isSoundOn) {
+			rbSoundOn.setChecked(true);
+		} else {
+			rbSoundOff.setChecked(true);
+		}
+
+		// Packs
 		RadioButton rbSoundTrollish = (RadioButton) findViewById(R.id.rbSoundTrollish);
 		RadioButton rbSoundSimpsons = (RadioButton) findViewById(R.id.rbSoundSimpsons);
 		RadioButton rbSoundNormal = (RadioButton) findViewById(R.id.rbSoundNormal);
-		RadioButton rbSoundOff = (RadioButton) findViewById(R.id.rbSoundOff);
 
 		rbSoundTrollish.setOnClickListener(this);
 		rbSoundSimpsons.setOnClickListener(this);
 		rbSoundNormal.setOnClickListener(this);
-		rbSoundOff.setOnClickListener(this);
 
 		if (sound_mode == null) {
-			rbSoundOff.setChecked(true);
+			rbSoundNormal.setChecked(true);
+			sound_mode = SoundMode.NORMAL;
 			return;
 		}
 
@@ -46,9 +61,6 @@ public class Settings extends Activity implements OnClickListener {
 			break;
 		case NORMAL:
 			rbSoundNormal.setChecked(true);
-			break;
-		case OFF:
-			rbSoundOff.setChecked(true);
 			break;
 		}
 	}
@@ -73,7 +85,11 @@ public class Settings extends Activity implements OnClickListener {
 			break;
 		case R.id.rbSoundOff:
 			if (checked)
-				sound_mode = SoundMode.OFF;
+				isSoundOn = false;
+			break;
+		case R.id.rbSoundOn:
+			if (checked)
+				isSoundOn = true;
 			break;
 		}
 	}

@@ -10,7 +10,9 @@ import static am.tir.games.memomemefree.utils.MemeSettings.dHeight;
 import static am.tir.games.memomemefree.utils.MemeSettings.dWidth;
 import static am.tir.games.memomemefree.utils.MemeSettings.isInit;
 import static am.tir.games.memomemefree.utils.MemeSettings.isSoundOn;
+import static am.tir.games.memomemefree.utils.MemeSettings.sound_mode;
 import am.tir.games.memomemefree.utils.ScoreModel;
+import am.tir.games.memomemefree.utils.SoundMode;
 import am.tir.games.memomemefree.utils.User;
 import android.app.Activity;
 import android.content.Intent;
@@ -67,6 +69,7 @@ public class Main extends Activity implements OnClickListener {
 		cHeight_lvl_4 = dHeight * 102 / 768;
 
 		isSoundOn = false;
+		sound_mode = SoundMode.NORMAL;
 
 		isInit = true;
 	}

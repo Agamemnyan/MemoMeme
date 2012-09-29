@@ -33,6 +33,11 @@ public class ScoreModel extends BaseModel {
 				null, null, KEY_VALUE + " DESC");
 	}
 
+	public Cursor getOrderedWithoutCurrent(long id) {
+		return database.query(TABLE_NAME, null, BaseColumns._ID + "!=" + id,
+				null, null, null, KEY_VALUE + " DESC");
+	}
+
 	public List<User> getAllFormated() {
 
 		Cursor cursor = getNonZeroOrdered();
@@ -58,9 +63,9 @@ public class ScoreModel extends BaseModel {
 		return result;
 	}
 
-	public long getBestScore() {
+	public long getBestScore(long l) {
 		long result = 0;
-		Cursor cursor = getNonZeroOrdered();
+		Cursor cursor = getOrderedWithoutCurrent(l);
 		if (cursor.moveToPosition(0)) {
 			result = cursor
 					.getLong(cursor.getColumnIndex(ScoreModel.KEY_VALUE));

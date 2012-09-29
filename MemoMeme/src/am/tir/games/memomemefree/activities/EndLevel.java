@@ -35,6 +35,7 @@ public class EndLevel extends Activity {
 		TextView scoreLast = (TextView) findViewById(R.id.valueLast);
 		TextView scoreTotal = (TextView) findViewById(R.id.valueTotal);
 		TextView gameOver = (TextView) findViewById(R.id.tvGameOver);
+		TextView newRecord = (TextView) findViewById(R.id.textRecord);
 
 		user = getIntent().getParcelableExtra("user");
 		score = getIntent().getIntExtra("score", 0);
@@ -107,10 +108,14 @@ public class EndLevel extends Activity {
 			gameOver.setVisibility(View.GONE);
 			imgWl.setImageResource(winPics[rand.nextInt(winPics.length)]);
 			highScoresButtoon.setVisibility(View.GONE);
+			newRecord.setVisibility(View.GONE);
 		} else {
 			user.setLevel(0);
 			ScoreModel scoreModel = new ScoreModel(getBaseContext());
 			scoreModel.update(user);
+			if (scoreModel.getBestScore(user.getId()) > user.getPoints()) {
+				newRecord.setVisibility(View.GONE);
+			}
 			scoreModel.close();
 			nextButton.setVisibility(View.GONE);
 			if (level != 10) {

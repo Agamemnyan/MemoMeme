@@ -409,7 +409,7 @@ public class Level extends Activity {
 		// Get level
 		user = (User) getIntent().getParcelableExtra("user");
 		int level = user.getLevel();
-
+		
 		switch (sound_mode) {
 		case TROLLISH:
 			soundPairFail = MediaPlayer.create(getBaseContext(),

@@ -9,14 +9,14 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:gravity="center" >
-
+
         <ImageView
             android:id="@+id/gameoverImage"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/imgGameOver"
-            android:scaleType="fitStart"
+            android:scaleType="fitCenter"
             android:src="@integer/won_all" />
 
         <LinearLayout
@@ -30,9 +30,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/gameOver"
-                android:textColor="@color/default_dark_red"
                 android:textSize="@dimen/endlevel_game_over_text_size"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textRecord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/new_record"
+                android:textColor="@color/default_dark_red"
+                android:textSize="@dimen/endlevel_game_over_text_size" />
 
             <LinearLayout
                 android:layout_width="wrap_content"

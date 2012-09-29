@@ -46,12 +46,6 @@ public class Settings extends Activity implements OnClickListener {
 		rbSoundSimpsons.setOnClickListener(this);
 		rbSoundNormal.setOnClickListener(this);
 
-		if (sound_mode == null) {
-			rbSoundNormal.setChecked(true);
-			sound_mode = SoundMode.NORMAL;
-			return;
-		}
-
 		switch (sound_mode) {
 		case TROLLISH:
 			rbSoundTrollish.setChecked(true);

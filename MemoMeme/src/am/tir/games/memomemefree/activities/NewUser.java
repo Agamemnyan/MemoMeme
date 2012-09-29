@@ -1,6 +1,5 @@
 package am.tir.games.memomemefree.activities;
 
-import am.tir.games.memomemefree.utils.Levels;
 import am.tir.games.memomemefree.utils.ScoreModel;
 import am.tir.games.memomemefree.utils.User;
 import android.app.Activity;
@@ -42,8 +41,6 @@ public class NewUser extends Activity {
 				User user = new ScoreModel(getBaseContext()).add(etNewUser
 						.getText().toString());
 				go.putExtra("user", user);
-				go.putExtra("am.tir.games.memomemefree.utils.Levels",
-						Levels.LEVEL_1_1);
 				startActivity(go);
 				finish();
 			}

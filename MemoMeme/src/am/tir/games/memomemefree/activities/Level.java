@@ -48,8 +48,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import am.tir.games.memomemefree.utils.Card;
-import am.tir.games.memomemefree.utils.Levels;
+import am.tir.games.memomemefree.utils.ScoreModel;
 import am.tir.games.memomemefree.utils.SoundMode;
+import am.tir.games.memomemefree.utils.User;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -71,7 +72,7 @@ import android.widget.TextView;
  */
 public class Level extends Activity {
 
-	private Levels level;
+	private User user;
 
 	private long levelTime;
 
@@ -390,9 +391,13 @@ public class Level extends Activity {
 			public void onFinish() {
 				Intent go = new Intent(getBaseContext(), EndLevel.class);
 				go.putExtra("score", score);
-				go.putExtra("user", getIntent().getParcelableExtra("user"));
+				user.setPoints(user.getPoints() + score);
+				user.setLevel(user.getLevel() + 1);
+				ScoreModel scoreModel = new ScoreModel(getBaseContext());
+				scoreModel.update(user);
+				scoreModel.close();
+				go.putExtra("user", user);
 				go.putExtra("isWin", false);
-				go.putExtra("am.tir.games.memomemefree.utils.Levels", level);
 				startActivity(go);
 				finish();
 			}
@@ -403,8 +408,8 @@ public class Level extends Activity {
 
 	private void initLevel() {
 		// Get level
-		level = (Levels) getIntent().getSerializableExtra(
-				"am.tir.games.memomemefree.utils.Levels");
+		user = (User) getIntent().getParcelableExtra("user");
+		int level = user.getLevel();
 
 		if (sound_mode == null) {
 			sound_mode = SoundMode.OFF;
@@ -438,52 +443,52 @@ public class Level extends Activity {
 		}
 
 		switch (level) {
-		case LEVEL_1_1:
+		case 0:
 			initLevels(R.layout.level_01, R.integer.cover_lvl_1,
 					R.array.cards_lvl_1, cHeight_lvl_1, POINTS_LEVEL_1_1,
 					GAME_TIME_LEVEL_1_1, PREV_TIME_LEVEL_1_1, ALL_PAIRS_LEVEL_1);
 			break;
-		case LEVEL_2_1:
+		case 1:
 			initLevels(R.layout.level_02, R.integer.cover_lvl_2,
 					R.array.cards_lvl_2, cHeight_lvl_2, POINTS_LEVEL_2_1,
 					GAME_TIME_LEVEL_2_1, PREV_TIME_LEVEL_2_1, ALL_PAIRS_LEVEL_2);
 			break;
-		case LEVEL_2_2:
+		case 2:
 			initLevels(R.layout.level_02, R.integer.cover_lvl_2,
 					R.array.cards_lvl_2, cHeight_lvl_2, POINTS_LEVEL_2_2,
 					GAME_TIME_LEVEL_2_2, PREV_TIME_LEVEL_2_2, ALL_PAIRS_LEVEL_2);
 			break;
-		case LEVEL_3_1:
+		case 3:
 			initLevels(R.layout.level_03, R.integer.cover_lvl_3,
 					R.array.cards_lvl_3, cHeight_lvl_3, POINTS_LEVEL_3_1,
 					GAME_TIME_LEVEL_3_1, PREV_TIME_LEVEL_3_1, ALL_PAIRS_LEVEL_3);
 			break;
-		case LEVEL_3_2:
+		case 4:
 			initLevels(R.layout.level_03, R.integer.cover_lvl_3,
 					R.array.cards_lvl_3, cHeight_lvl_3, POINTS_LEVEL_3_2,
 					GAME_TIME_LEVEL_3_2, PREV_TIME_LEVEL_3_2, ALL_PAIRS_LEVEL_3);
 			break;
-		case LEVEL_3_3:
+		case 5:
 			initLevels(R.layout.level_03, R.integer.cover_lvl_3,
 					R.array.cards_lvl_3, cHeight_lvl_3, POINTS_LEVEL_3_3,
 					GAME_TIME_LEVEL_3_3, PREV_TIME_LEVEL_3_3, ALL_PAIRS_LEVEL_3);
 			break;
-		case LEVEL_4_1:
+		case 6:
 			initLevels(R.layout.level_04, R.integer.cover_lvl_4,
 					R.array.cards_lvl_4, cHeight_lvl_4, POINTS_LEVEL_4_1,
 					GAME_TIME_LEVEL_4_1, PREV_TIME_LEVEL_4_1, ALL_PAIRS_LEVEL_4);
 			break;
-		case LEVEL_4_2:
+		case 7:
 			initLevels(R.layout.level_04, R.integer.cover_lvl_4,
 					R.array.cards_lvl_1, cHeight_lvl_4, POINTS_LEVEL_4_2,
 					GAME_TIME_LEVEL_4_2, PREV_TIME_LEVEL_4_2, ALL_PAIRS_LEVEL_4);
 			break;
-		case LEVEL_4_3:
+		case 8:
 			initLevels(R.layout.level_04, R.integer.cover_lvl_4,
 					R.array.cards_lvl_4, cHeight_lvl_4, POINTS_LEVEL_4_3,
 					GAME_TIME_LEVEL_4_3, PREV_TIME_LEVEL_4_3, ALL_PAIRS_LEVEL_4);
 			break;
-		case LEVEL_4_4:
+		case 9:
 			initLevels(R.layout.level_04, R.integer.cover_lvl_4,
 					R.array.cards_lvl_4, cHeight_lvl_4, POINTS_LEVEL_4_4,
 					GAME_TIME_LEVEL_4_4, PREV_TIME_LEVEL_4_4, ALL_PAIRS_LEVEL_4);
@@ -560,9 +565,13 @@ public class Level extends Activity {
 		if (pairFound == allPairs) {
 			Intent go = new Intent(getBaseContext(), EndLevel.class);
 			go.putExtra("score", score);
-			go.putExtra("user", getIntent().getParcelableExtra("user"));
+			user.setPoints(user.getPoints() + score);
+			user.setLevel(user.getLevel() + 1);
+			ScoreModel scoreModel = new ScoreModel(getBaseContext());
+			scoreModel.update(user);
+			scoreModel.close();
+			go.putExtra("user", user);
 			go.putExtra("isWin", true);
-			go.putExtra("am.tir.games.memomemefree.utils.Levels", level);
 			startActivity(go);
 			finish();
 		}

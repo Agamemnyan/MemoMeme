@@ -9,7 +9,6 @@ import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_4;
 import static am.tir.games.memomemefree.utils.MemeSettings.dHeight;
 import static am.tir.games.memomemefree.utils.MemeSettings.dWidth;
 import static am.tir.games.memomemefree.utils.MemeSettings.isInit;
-import am.tir.games.memomemefree.utils.Levels;
 import am.tir.games.memomemefree.utils.ScoreModel;
 import am.tir.games.memomemefree.utils.User;
 import android.app.Activity;
@@ -100,8 +99,6 @@ public class Main extends Activity implements OnClickListener {
 
 				public void onClick(View arg0) {
 					Intent go = new Intent(getBaseContext(), Level.class);
-					go.putExtra("am.tir.games.memomemefree.utils.Levels",
-							Levels.values()[user.getLevel() + 1]);
 					go.putExtra("user", user);
 					startActivity(go);
 				}

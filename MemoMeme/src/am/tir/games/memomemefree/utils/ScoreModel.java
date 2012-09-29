@@ -71,7 +71,7 @@ public class ScoreModel extends BaseModel {
 	}
 
 	public boolean getIsEmpty() {
-		Cursor cursor = getAllOrdered();
+		Cursor cursor = getNonZeroOrdered();
 		boolean result = false;
 
 		if (cursor.getCount() == 0) {
@@ -91,7 +91,7 @@ public class ScoreModel extends BaseModel {
 		ContentValues valuesTemp = new ContentValues();
 		valuesTemp.put(KEY_LEVEL, 0);
 		String whereClause = KEY_LEVEL + " > 0";
-		database.update(TABLE_NAME, values, whereClause, null);
+		database.update(TABLE_NAME, valuesTemp, whereClause, null);
 
 		long id = database.insert(TABLE_NAME, null, values);
 

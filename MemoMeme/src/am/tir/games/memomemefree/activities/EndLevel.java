@@ -2,7 +2,6 @@ package am.tir.games.memomemefree.activities;
 
 import java.util.Random;
 
-import am.tir.games.memomemefree.utils.Levels;
 import am.tir.games.memomemefree.utils.ScoreModel;
 import am.tir.games.memomemefree.utils.User;
 import android.app.Activity;
@@ -23,6 +22,7 @@ public class EndLevel extends Activity {
 
 	private User user;
 	private int score;
+	private int level;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -39,9 +39,11 @@ public class EndLevel extends Activity {
 		user = getIntent().getParcelableExtra("user");
 		score = getIntent().getIntExtra("score", 0);
 
-		scoreBefore.setText(String.valueOf(user.getPoints()));
+		level = user.getLevel();
+
+		scoreBefore.setText(String.valueOf(user.getPoints() - score));
 		scoreLast.setText(String.valueOf(score));
-		scoreTotal.setText(String.valueOf(user.getPoints() + score));
+		scoreTotal.setText(String.valueOf(user.getPoints()));
 
 		ImageView imgWl = (ImageView) findViewById(R.id.gameoverImage);
 
@@ -68,12 +70,6 @@ public class EndLevel extends Activity {
 
 			public void onClick(View v) {
 				Intent go = new Intent(EndLevel.this, Level.class);
-				user.setPoints(user.getPoints() + score);
-				go.putExtra(
-						"am.tir.games.memomemefree.utils.Levels",
-						((Levels) getIntent().getSerializableExtra(
-								"am.tir.games.memomemefree.utils.Levels"))
-								.getNext());
 				go.putExtra("user", user);
 				startActivity(go);
 				finish();
@@ -84,10 +80,8 @@ public class EndLevel extends Activity {
 
 			public void onClick(View v) {
 				Intent go = new Intent(EndLevel.this, Level.class);
-				go.putExtra(
-						"am.tir.games.memomemefree.utils.Levels",
-						getIntent().getSerializableExtra(
-								"am.tir.games.memomemefree.utils.Levels"));
+				user.setPoints(user.getPoints() - score);
+				user.setLevel(level - 1);
 				go.putExtra("user", user);
 				startActivity(go);
 				finish();
@@ -96,10 +90,6 @@ public class EndLevel extends Activity {
 
 		mainMenuButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				user.setPoints(user.getPoints() + score);
-				if (user.getPoints() > 0) {
-					new ScoreModel(getBaseContext()).update(user);
-				}
 				finish();
 			}
 		});
@@ -107,10 +97,6 @@ public class EndLevel extends Activity {
 		highScoresButtoon.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				user.setPoints(user.getPoints() + score);
-				if (user.getPoints() > 0) {
-					new ScoreModel(getBaseContext()).update(user);
-				}
 				Intent go = new Intent(getBaseContext(), HighScores.class);
 				startActivity(go);
 				finish();
@@ -118,12 +104,14 @@ public class EndLevel extends Activity {
 		});
 
 		if (getIntent().getExtras().getBoolean("isWin")) {
-			user.setLevel(user.getLevel() + 1);
 			gameOver.setVisibility(View.GONE);
 			imgWl.setImageResource(winPics[rand.nextInt(winPics.length)]);
 			highScoresButtoon.setVisibility(View.GONE);
 		} else {
 			user.setLevel(0);
+			ScoreModel scoreModel = new ScoreModel(getBaseContext());
+			scoreModel.update(user);
+			scoreModel.close();
 			imgWl.setImageResource(losePics[rand.nextInt(losePics.length)]);
 			nextButton.setVisibility(View.GONE);
 		}

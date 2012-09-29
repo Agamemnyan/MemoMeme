@@ -17,13 +17,20 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/about_text"
-            android:textSize="22sp" />
+            android:textSize="@dimen/about_text_size" />
 
         <Button
             android:id="@+id/btnMore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button_more_apps" />
+            android:layout_marginTop="@dimen/about_more_button_margin"
+            android:background="@drawable/button_bg"
+            android:padding="@dimen/button_text_padding"
+            android:text="@string/button_more_apps"
+            android:textColor="@color/default_dark_red"
+            android:textSize="@dimen/button_text_size"
+            android:textStyle="bold" />
+
     </LinearLayout>
 
     <com.google.ads.AdView

@@ -206,13 +206,14 @@
         android:layout_marginTop="25dp"
         android:textSize="@dimen/score_text_size"
         android:textStyle="bold" />
-
+
     <ImageButton
         android:id="@+id/ibSound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/sound_button_margins"
         android:background="@drawable/button_bg"
         android:contentDescription="@string/button_sound"
         android:src="@drawable/sounds_muted" />

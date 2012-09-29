@@ -29,7 +29,7 @@ public class ScoreDatabase extends SQLiteOpenHelper {
 				+ BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
 				+ ScoreModel.KEY_VALUE + " INTEGER NOT NULL,"
 				+ ScoreModel.KEY_NAME + " TEXT, " + ScoreModel.KEY_LEVEL
-				+ " INTEGER);");
+				+ " INTEGER, " + ScoreModel.KEY_DATE + " TEXT);");
 
 	}
 

@@ -7,6 +7,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.provider.BaseColumns;
+import android.text.format.DateUtils;
+import android.text.format.Time;
 
 /**
  * @author Artak.Gevorgyan
@@ -18,6 +20,7 @@ public class ScoreModel extends BaseModel {
 	public static final String KEY_VALUE = "value";
 	public static final String KEY_NAME = "name";
 	public static final String KEY_LEVEL = "level";
+	public static final String KEY_DATE = "date";
 
 	public ScoreModel(final Context context) {
 		super(context, TABLE_NAME);
@@ -56,6 +59,8 @@ public class ScoreModel extends BaseModel {
 					.getColumnIndex(ScoreModel.KEY_NAME)));
 			user.setLevel(cursor.getInt(cursor
 					.getColumnIndex(ScoreModel.KEY_LEVEL)));
+			user.setDate(cursor.getString(cursor
+					.getColumnIndex(ScoreModel.KEY_DATE)));
 			result.add(user);
 		}
 
@@ -92,6 +97,7 @@ public class ScoreModel extends BaseModel {
 		values.put(KEY_VALUE, 0);
 		values.put(KEY_NAME, name);
 		values.put(KEY_LEVEL, 0);
+		values.put(KEY_DATE, getFormattedDate());
 
 		ContentValues valuesTemp = new ContentValues();
 		valuesTemp.put(KEY_LEVEL, 0);
@@ -132,6 +138,7 @@ public class ScoreModel extends BaseModel {
 		values.put(KEY_VALUE, user.getPoints());
 		values.put(KEY_NAME, user.getUserName());
 		values.put(KEY_LEVEL, user.getLevel());
+		values.put(KEY_DATE, getFormattedDate());
 
 		String whereClause = BaseColumns._ID + " = " + user.getId();
 
@@ -141,5 +148,13 @@ public class ScoreModel extends BaseModel {
 	@Override
 	public void remove(final int id) {
 		database.delete(TABLE_NAME, BaseColumns._ID + " = " + id, null);
+	}
+
+	private String getFormattedDate() {
+		Time today = new Time(Time.getCurrentTimezone());
+		today.setToNow();	
+
+		return DateUtils.formatDateTime(context, today.toMillis(true),
+				DateUtils.FORMAT_NUMERIC_DATE);
 	}
 }

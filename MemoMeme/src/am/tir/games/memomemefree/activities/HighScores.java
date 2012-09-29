@@ -89,7 +89,7 @@ public class HighScores extends Activity {
 				scoreTextPoints.setText(String.valueOf(dataSource.get(position)
 						.getPoints()));
 				scoreTextName.setText(dataSource.get(position).getUserName());
-				scoreTextDate.setText("23.09");
+				scoreTextDate.setText(dataSource.get(position).getDate());
 			} else {
 				view = convertView;
 			}

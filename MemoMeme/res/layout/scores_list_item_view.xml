@@ -18,7 +18,7 @@
         android:id="@+id/scoreTextPoints"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="11500"
+        android:text="115000"
         android:textSize="@dimen/score_text_size"
         android:width="@dimen/scores_column_2_width" />
 
@@ -34,7 +34,7 @@
         android:id="@+id/scoreTextDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="31.01"
+        android:text="12/12/2012"
         android:textSize="@dimen/score_text_size"
         android:width="@dimen/scores_column_4_width" />
 

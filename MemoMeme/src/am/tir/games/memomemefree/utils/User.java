@@ -16,6 +16,7 @@ public class User implements Parcelable {
 	private String userName;
 	private long points;
 	private int level;
+	private String date;
 
 	public User() {
 		super();
@@ -28,6 +29,7 @@ public class User implements Parcelable {
 		userName = source.readString();
 		points = source.readLong();
 		level = source.readInt();
+		setDate(source.readString());
 	}
 
 	/**
@@ -90,6 +92,20 @@ public class User implements Parcelable {
 		this.level = level;
 	}
 
+	/**
+	 * @return
+	 */
+	public String getDate() {
+		return date;
+	}
+
+	/**
+	 * @param date
+	 */
+	public void setDate(String date) {
+		this.date = date;
+	}
+
 	public int describeContents() {
 		return hashCode();
 	}
@@ -100,5 +116,6 @@ public class User implements Parcelable {
 		dest.writeString(userName);
 		dest.writeLong(points);
 		dest.writeInt(level);
+		dest.writeString(date);
 	}
 }

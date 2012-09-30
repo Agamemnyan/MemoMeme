@@ -356,4 +356,15 @@
         android:contentDescription="@string/button_sound"
         android:src="@drawable/sounds_muted" />
 
+    <ImageButton
+        android:id="@+id/ibPlayPause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="@dimen/sound_button_margins"
+        android:background="@drawable/button_bg"
+        android:contentDescription="@string/button_pause_play"
+        android:src="@drawable/game_pause" />
+
 </RelativeLayout>

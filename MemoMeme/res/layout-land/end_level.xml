@@ -18,10 +18,10 @@
             android:contentDescription="@string/imgGameOver"
             android:scaleType="fitCenter"
             android:src="@integer/won_all" />
-
+
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical" >
 

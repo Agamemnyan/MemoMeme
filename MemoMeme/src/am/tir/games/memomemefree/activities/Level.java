@@ -76,6 +76,7 @@ public class Level extends Activity {
 	private User user;
 
 	private long levelTime;
+	private boolean isPaused;
 
 	private MediaPlayer soundPairFail;
 	private MediaPlayer soundPairFound;
@@ -117,6 +118,8 @@ public class Level extends Activity {
 	private TextView timerText;
 	private TextView scoreText;
 	private TextView comboText;
+
+	private ImageButton ibPlayPause;
 
 	private RelativeLayout.LayoutParams lpBoard;
 
@@ -208,6 +211,8 @@ public class Level extends Activity {
 			positions = savedInstanceState.getIntegerArrayList("positions");
 			turnedPos = savedInstanceState.getIntegerArrayList("turnedPos");
 			pulledPos = savedInstanceState.getIntegerArrayList("pulledPos");
+
+			isPaused = savedInstanceState.getBoolean("isPaused");
 		}
 
 		setScoreText(scoreText, score);
@@ -263,6 +268,10 @@ public class Level extends Activity {
 		ocl = new OnClickListener() {
 
 			public void onClick(View v) {
+
+				if (isPaused) {
+					return;
+				}
 
 				for (Card card : cards) {
 					if (card.getId() == v.getId() && card.getIsOut())
@@ -371,45 +380,25 @@ public class Level extends Activity {
 			}
 		}
 
-		cdt = new CountDownTimer(gameTotalTime, 1000) {
-
-			public void onTick(long millisUntilFinished) {
-				gameTotalTime = millisUntilFinished;
-
-				timerText
-						.setText(millisUntilFinished > levelTime ? convertTimeText(levelTime)
-								: convertTimeText(millisUntilFinished));
-
-				if (millisUntilFinished < 6000) {
-					timerText.setTextColor(getResources().getColor(
-							R.color.timerColor2));
-				}
-
-			}
-
-			public void onFinish() {
-				Intent go = new Intent(getBaseContext(), EndLevel.class);
-				go.putExtra("score", score);
-				user.setPoints(user.getPoints() + score);
-				user.setLevel(user.getLevel() + 1);
-				ScoreModel scoreModel = new ScoreModel(getBaseContext());
-				scoreModel.update(user);
-				scoreModel.close();
-				go.putExtra("user", user);
-				go.putExtra("isWin", false);
-				startActivity(go);
-				finish();
-			}
-		};
-
-		cdt.start();
+		if (!isPaused) {
+			ibPlayPause.setImageResource(R.drawable.game_pause);
+			initTimer();
+			cdt.start();
+		} else if (gameTotalTime >= levelTime) {
+			timerText.setText(convertTimeText(levelTime));
+			ibPlayPause.setImageResource(R.drawable.game_play);
+		} else {
+			timerText.setText(convertTimeText(gameTotalTime));
+			ibPlayPause.setImageResource(R.drawable.game_play);
+			ibPlayPause.setVisibility(View.VISIBLE);
+		}
 	}
 
 	private void initLevel() {
 		// Get level
 		user = (User) getIntent().getParcelableExtra("user");
 		int level = user.getLevel();
-		
+
 		switch (sound_mode) {
 		case TROLLISH:
 			soundPairFail = MediaPlayer.create(getBaseContext(),
@@ -486,7 +475,9 @@ public class Level extends Activity {
 			break;
 		}
 
+		// Init Sound Toggle Button
 		final ImageButton ibSound = (ImageButton) findViewById(R.id.ibSound);
+
 		if (isSoundOn) {
 			ibSound.setImageResource(R.drawable.sounds_on);
 		}
@@ -502,6 +493,62 @@ public class Level extends Activity {
 				}
 			}
 		});
+
+		// Init Pause/Play button
+		ibPlayPause = (ImageButton) findViewById(R.id.ibPlayPause);
+
+		ibPlayPause.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+				isPaused = !isPaused;
+				if (isPaused) {
+					ibPlayPause.setImageResource(R.drawable.game_play);
+					cdt.cancel();
+				} else {
+					ibPlayPause.setImageResource(R.drawable.game_pause);
+					initTimer();
+					cdt.start();
+				}
+			}
+		});
+
+		ibPlayPause.setVisibility(View.GONE);
+	}
+
+	private void initTimer() {
+		cdt = new CountDownTimer(gameTotalTime, 1000) {
+
+			public void onTick(long millisUntilFinished) {
+				gameTotalTime = millisUntilFinished;
+
+				timerText
+						.setText(millisUntilFinished > levelTime ? convertTimeText(levelTime)
+								: convertTimeText(millisUntilFinished));
+
+				if (millisUntilFinished < levelTime) {
+					ibPlayPause.setVisibility(View.VISIBLE);
+				}
+
+				if (millisUntilFinished < 6000) {
+					timerText.setTextColor(getResources().getColor(
+							R.color.timerColor2));
+				}
+			}
+
+			public void onFinish() {
+				Intent go = new Intent(getBaseContext(), EndLevel.class);
+				go.putExtra("score", score);
+				user.setPoints(user.getPoints() + score);
+				user.setLevel(user.getLevel() + 1);
+				ScoreModel scoreModel = new ScoreModel(getBaseContext());
+				scoreModel.update(user);
+				scoreModel.close();
+				go.putExtra("user", user);
+				go.putExtra("isWin", false);
+				startActivity(go);
+				finish();
+			}
+		};
 	}
 
 	private String convertTimeText(long milliseconds) {
@@ -615,13 +662,19 @@ public class Level extends Activity {
 		savedInstanceState.putIntegerArrayList("turnedPos", turnedPos);
 		savedInstanceState.putIntegerArrayList("pulledPos", pulledPos);
 
+		savedInstanceState.putBoolean("isPaused", isPaused);
+
 		super.onSaveInstanceState(savedInstanceState);
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		cdt.cancel();
+
+		if (cdt != null) {
+			cdt.cancel();
+		}
+
 		if (isShowing != 2) {
 			if (isShowing == 0)
 				cd1.cancel();

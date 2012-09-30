@@ -1,5 +1,16 @@
 package am.tir.games.memomemefree.activities;
 
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_1_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_2_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_2_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_3_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_3_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_3_3;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_4_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_4_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_4_3;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_4_4;
+
 import java.util.Random;
 
 import am.tir.games.memomemefree.utils.ScoreModel;
@@ -23,6 +34,8 @@ public class EndLevel extends Activity {
 	private User user;
 	private int score;
 	private int level;
+	private int pointPerSecond;
+	private int seconds;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -33,18 +46,63 @@ public class EndLevel extends Activity {
 
 		TextView scoreBefore = (TextView) findViewById(R.id.valueBefore);
 		TextView scoreLast = (TextView) findViewById(R.id.valueLast);
+		TextView scoreForSeconds = (TextView) findViewById(R.id.valueForSeconds);
 		TextView scoreTotal = (TextView) findViewById(R.id.valueTotal);
 		TextView gameOver = (TextView) findViewById(R.id.tvGameOver);
 		TextView newRecord = (TextView) findViewById(R.id.textRecord);
 
 		user = getIntent().getParcelableExtra("user");
 		score = getIntent().getIntExtra("score", 0);
+		seconds = ((int) getIntent().getLongExtra("milliSeconds", 0)) / 1000;
 
 		level = user.getLevel();
 
-		scoreBefore.setText(String.valueOf(user.getPoints() - score));
-		scoreLast.setText(String.valueOf(score));
-		scoreTotal.setText(String.valueOf(user.getPoints()));
+		switch (level) {
+		case 0:
+			pointPerSecond = 0;
+			break;
+		case 1:
+			pointPerSecond = POINTS_FOR_SEC_LEVEL_1_1;
+			break;
+		case 2:
+			pointPerSecond = POINTS_FOR_SEC_LEVEL_2_1;
+			break;
+		case 3:
+			pointPerSecond = POINTS_FOR_SEC_LEVEL_2_2;
+			break;
+		case 4:
+			pointPerSecond = POINTS_FOR_SEC_LEVEL_3_1;
+			break;
+		case 5:
+			pointPerSecond = POINTS_FOR_SEC_LEVEL_3_2;
+			break;
+		case 6:
+			pointPerSecond = POINTS_FOR_SEC_LEVEL_3_3;
+			break;
+		case 7:
+			pointPerSecond = POINTS_FOR_SEC_LEVEL_4_1;
+			break;
+		case 8:
+			pointPerSecond = POINTS_FOR_SEC_LEVEL_4_2;
+			break;
+		case 9:
+			pointPerSecond = POINTS_FOR_SEC_LEVEL_4_3;
+			break;
+		case 10:
+			pointPerSecond = POINTS_FOR_SEC_LEVEL_4_4;
+			break;
+
+		default:
+			break;
+		}
+
+		scoreBefore.setText((user.getPoints() - score - pointPerSecond
+				* seconds)
+				+ "p");
+		scoreLast.setText(score + "p");
+		scoreForSeconds.setText(seconds + "s×" + pointPerSecond + "p/s="
+				+ seconds * pointPerSecond + "p");
+		scoreTotal.setText(user.getPoints() + "p");
 
 		ImageView imgWl = (ImageView) findViewById(R.id.gameoverImage);
 
@@ -81,7 +139,8 @@ public class EndLevel extends Activity {
 
 			public void onClick(View v) {
 				Intent go = new Intent(EndLevel.this, Level.class);
-				user.setPoints(user.getPoints() - score);
+				user.setPoints(user.getPoints() - score - pointPerSecond
+						* seconds);
 				user.setLevel(level - 1);
 				go.putExtra("user", user);
 				startActivity(go);

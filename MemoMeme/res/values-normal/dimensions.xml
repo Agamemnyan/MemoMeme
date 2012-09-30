@@ -14,6 +14,7 @@
     <dimen name="endlevel_scores_margin">7dp</dimen>
     <dimen name="endlevel_scores_title_text_size">20dp</dimen>
     <dimen name="endlevel_scores_points_text_size">18dp</dimen>
+    <dimen name="endlevel_scores_points_total_text_size">22dp</dimen>
     <dimen name="endlevel_scores_padding">10dp</dimen>
     <dimen name="endlevel_scores_titles_margins">10dp</dimen>
     <dimen name="endlevel_game_over_text_size">26dp</dimen>

@@ -1,49 +1,6 @@
 package am.tir.games.memomemefree.activities;
 
-import static am.tir.games.memomemefree.utils.MemeSettings.ALL_PAIRS_LEVEL_1;
-import static am.tir.games.memomemefree.utils.MemeSettings.ALL_PAIRS_LEVEL_2;
-import static am.tir.games.memomemefree.utils.MemeSettings.ALL_PAIRS_LEVEL_3;
-import static am.tir.games.memomemefree.utils.MemeSettings.ALL_PAIRS_LEVEL_4;
-import static am.tir.games.memomemefree.utils.MemeSettings.BEFORE_PREVIEW_TIME;
-import static am.tir.games.memomemefree.utils.MemeSettings.FORMATTER;
-import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_1_1;
-import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_2_1;
-import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_2_2;
-import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_3_1;
-import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_3_2;
-import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_3_3;
-import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_4_1;
-import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_4_2;
-import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_4_3;
-import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_4_4;
-import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_1_1;
-import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_2_1;
-import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_2_2;
-import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_3_1;
-import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_3_2;
-import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_3_3;
-import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_4_1;
-import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_4_2;
-import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_4_3;
-import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_4_4;
-import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_1_1;
-import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_2_1;
-import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_2_2;
-import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_3_1;
-import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_3_2;
-import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_3_3;
-import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_4_1;
-import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_4_2;
-import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_4_3;
-import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_4_4;
-import static am.tir.games.memomemefree.utils.MemeSettings.boardBottomMargin;
-import static am.tir.games.memomemefree.utils.MemeSettings.boardHeight;
-import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_1;
-import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_2;
-import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_3;
-import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_4;
-import static am.tir.games.memomemefree.utils.MemeSettings.isSoundOn;
-import static am.tir.games.memomemefree.utils.MemeSettings.sound_mode;
+import static am.tir.games.memomemefree.utils.MemeSettings.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -77,6 +34,8 @@ public class Level extends Activity {
 
 	private long levelTime;
 	private boolean isPaused;
+
+	private int pointsPerSecond;
 
 	private MediaPlayer soundPairFail;
 	private MediaPlayer soundPairFound;
@@ -424,52 +383,62 @@ public class Level extends Activity {
 		case 0:
 			initLevels(R.layout.level_01, R.integer.cover_lvl_1,
 					R.array.cards_lvl_1, cHeight_lvl_1, POINTS_LEVEL_1_1,
-					GAME_TIME_LEVEL_1_1, PREV_TIME_LEVEL_1_1, ALL_PAIRS_LEVEL_1);
+					GAME_TIME_LEVEL_1_1, PREV_TIME_LEVEL_1_1,
+					ALL_PAIRS_LEVEL_1, POINTS_FOR_SEC_LEVEL_1_1);
 			break;
 		case 1:
 			initLevels(R.layout.level_02, R.integer.cover_lvl_2,
 					R.array.cards_lvl_2, cHeight_lvl_2, POINTS_LEVEL_2_1,
-					GAME_TIME_LEVEL_2_1, PREV_TIME_LEVEL_2_1, ALL_PAIRS_LEVEL_2);
+					GAME_TIME_LEVEL_2_1, PREV_TIME_LEVEL_2_1,
+					ALL_PAIRS_LEVEL_2, POINTS_FOR_SEC_LEVEL_2_1);
 			break;
 		case 2:
 			initLevels(R.layout.level_02, R.integer.cover_lvl_2,
 					R.array.cards_lvl_2, cHeight_lvl_2, POINTS_LEVEL_2_2,
-					GAME_TIME_LEVEL_2_2, PREV_TIME_LEVEL_2_2, ALL_PAIRS_LEVEL_2);
+					GAME_TIME_LEVEL_2_2, PREV_TIME_LEVEL_2_2,
+					ALL_PAIRS_LEVEL_2, POINTS_FOR_SEC_LEVEL_2_2);
 			break;
 		case 3:
 			initLevels(R.layout.level_03, R.integer.cover_lvl_3,
 					R.array.cards_lvl_3, cHeight_lvl_3, POINTS_LEVEL_3_1,
-					GAME_TIME_LEVEL_3_1, PREV_TIME_LEVEL_3_1, ALL_PAIRS_LEVEL_3);
+					GAME_TIME_LEVEL_3_1, PREV_TIME_LEVEL_3_1,
+					ALL_PAIRS_LEVEL_3, POINTS_FOR_SEC_LEVEL_3_1);
 			break;
 		case 4:
 			initLevels(R.layout.level_03, R.integer.cover_lvl_3,
 					R.array.cards_lvl_3, cHeight_lvl_3, POINTS_LEVEL_3_2,
-					GAME_TIME_LEVEL_3_2, PREV_TIME_LEVEL_3_2, ALL_PAIRS_LEVEL_3);
+					GAME_TIME_LEVEL_3_2, PREV_TIME_LEVEL_3_2,
+					ALL_PAIRS_LEVEL_3, POINTS_FOR_SEC_LEVEL_3_2);
 			break;
 		case 5:
 			initLevels(R.layout.level_03, R.integer.cover_lvl_3,
 					R.array.cards_lvl_3, cHeight_lvl_3, POINTS_LEVEL_3_3,
-					GAME_TIME_LEVEL_3_3, PREV_TIME_LEVEL_3_3, ALL_PAIRS_LEVEL_3);
+					GAME_TIME_LEVEL_3_3, PREV_TIME_LEVEL_3_3,
+					ALL_PAIRS_LEVEL_3, POINTS_FOR_SEC_LEVEL_3_3);
 			break;
 		case 6:
 			initLevels(R.layout.level_04, R.integer.cover_lvl_4,
 					R.array.cards_lvl_4, cHeight_lvl_4, POINTS_LEVEL_4_1,
-					GAME_TIME_LEVEL_4_1, PREV_TIME_LEVEL_4_1, ALL_PAIRS_LEVEL_4);
+					GAME_TIME_LEVEL_4_1, PREV_TIME_LEVEL_4_1,
+					ALL_PAIRS_LEVEL_4, POINTS_FOR_SEC_LEVEL_4_1);
 			break;
 		case 7:
 			initLevels(R.layout.level_04, R.integer.cover_lvl_4,
 					R.array.cards_lvl_1, cHeight_lvl_4, POINTS_LEVEL_4_2,
-					GAME_TIME_LEVEL_4_2, PREV_TIME_LEVEL_4_2, ALL_PAIRS_LEVEL_4);
+					GAME_TIME_LEVEL_4_2, PREV_TIME_LEVEL_4_2,
+					ALL_PAIRS_LEVEL_4, POINTS_FOR_SEC_LEVEL_4_2);
 			break;
 		case 8:
 			initLevels(R.layout.level_04, R.integer.cover_lvl_4,
 					R.array.cards_lvl_4, cHeight_lvl_4, POINTS_LEVEL_4_3,
-					GAME_TIME_LEVEL_4_3, PREV_TIME_LEVEL_4_3, ALL_PAIRS_LEVEL_4);
+					GAME_TIME_LEVEL_4_3, PREV_TIME_LEVEL_4_3,
+					ALL_PAIRS_LEVEL_4, POINTS_FOR_SEC_LEVEL_4_3);
 			break;
 		case 9:
 			initLevels(R.layout.level_04, R.integer.cover_lvl_4,
 					R.array.cards_lvl_4, cHeight_lvl_4, POINTS_LEVEL_4_4,
-					GAME_TIME_LEVEL_4_4, PREV_TIME_LEVEL_4_4, ALL_PAIRS_LEVEL_4);
+					GAME_TIME_LEVEL_4_4, PREV_TIME_LEVEL_4_4,
+					ALL_PAIRS_LEVEL_4, POINTS_FOR_SEC_LEVEL_4_4);
 			break;
 		default:
 			break;
@@ -569,7 +538,7 @@ public class Level extends Activity {
 	 */
 	private void initLevels(int layoutId, int coverId,
 			int cardDrawablesArrayId, int cHeight, int points, long levelTime,
-			long previewTime, int allPairs) {
+			long previewTime, int allPairs, int pointsPerSecond) {
 
 		this.setContentView(layoutId);
 
@@ -582,6 +551,7 @@ public class Level extends Activity {
 		this.levelTime = levelTime;
 		this.previewTime = previewTime;
 		this.allPairs = allPairs;
+		this.pointsPerSecond = pointsPerSecond;
 
 		this.gameTotalTime = this.levelTime + this.beforePreviewTime
 				+ this.previewTime;
@@ -618,13 +588,15 @@ public class Level extends Activity {
 		if (pairFound == allPairs) {
 			Intent go = new Intent(getBaseContext(), EndLevel.class);
 			go.putExtra("score", score);
-			user.setPoints(user.getPoints() + score);
+			user.setPoints(user.getPoints() + score + ((int) gameTotalTime)
+					/ 1000 * pointsPerSecond);
 			user.setLevel(user.getLevel() + 1);
 			ScoreModel scoreModel = new ScoreModel(getBaseContext());
 			scoreModel.update(user);
 			scoreModel.close();
 			go.putExtra("user", user);
 			go.putExtra("isWin", true);
+			go.putExtra("milliSeconds", gameTotalTime);
 			startActivity(go);
 			finish();
 		}

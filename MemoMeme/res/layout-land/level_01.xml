@@ -14,13 +14,6 @@
         ads:adUnitId="@string/admob_id"
         ads:loadAdOnCreate="true" />
 
-    <ImageView
-        android:id="@+id/imageBoard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/common_bg"
-        android:contentDescription="@string/imgBoard" />
-
     <TextView
         android:id="@+id/textScore"
         android:layout_width="wrap_content"
@@ -46,7 +39,7 @@
         android:text="01:30"
         android:textSize="@dimen/score_text_size"
         android:textStyle="bold" />
-
+
     <TextView
         android:id="@+id/textCombo"
         android:layout_width="wrap_content"
@@ -60,110 +53,118 @@
         android:text="1600"
         android:textSize="@dimen/score_text_size"
         android:textStyle="bold" />
-
-    <TableLayout
-        android:id="@+id/tableBoard"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="5dp"
+        android:layout_below="@+id/textScore"
         android:gravity="center"
-        android:soundEffectsEnabled="true"
-        android:weightSum="1" >
+        android:orientation="vertical" >
+
+        <TableLayout
+            android:id="@+id/tableBoard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/common_bg"
+            android:gravity="center"
+            android:padding="@dimen/game_board_padding"
+            android:weightSum="1" >
 
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="center" >
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center" >
 
-            <ImageSwitcher
-                android:id="@+id/imageView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/imgSlot"
-                android:scaleType="center" >
-            </ImageSwitcher>
+                <ImageSwitcher
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/imgSlot"
+                    android:scaleType="center" >
+                </ImageSwitcher>
 
-            <ImageSwitcher
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/imgSlot"
-                android:scaleType="center" >
-            </ImageSwitcher>
+                <ImageSwitcher
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/imgSlot"
+                    android:scaleType="center" >
+                </ImageSwitcher>
 
-            <ImageSwitcher
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/imgSlot"
-                android:scaleType="center" >
-            </ImageSwitcher>
-        </TableRow>
+                <ImageSwitcher
+                    android:id="@+id/imageView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/imgSlot"
+                    android:scaleType="center" >
+                </ImageSwitcher>
+            </TableRow>
 
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="center" >
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center" >
 
-            <ImageSwitcher
-                android:id="@+id/imageView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/imgSlot"
-                android:scaleType="center" >
-            </ImageSwitcher>
+                <ImageSwitcher
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/imgSlot"
+                    android:scaleType="center" >
+                </ImageSwitcher>
 
-            <ImageView
-                android:id="@+id/imageView0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/imgSlot"
-                android:scaleType="center" />
+                <ImageView
+                    android:id="@+id/imageView0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/imgSlot"
+                    android:scaleType="center" />
 
-            <ImageSwitcher
-                android:id="@+id/imageView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/imgSlot"
-                android:scaleType="center" >
-            </ImageSwitcher>
-        </TableRow>
+                <ImageSwitcher
+                    android:id="@+id/imageView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/imgSlot"
+                    android:scaleType="center" >
+                </ImageSwitcher>
+            </TableRow>
 
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="center" >
+            <TableRow
+                android:id="@+id/tableRow3"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center" >
 
-            <ImageSwitcher
-                android:id="@+id/imageView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/imgSlot"
-                android:scaleType="center" >
-            </ImageSwitcher>
+                <ImageSwitcher
+                    android:id="@+id/imageView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/imgSlot"
+                    android:scaleType="center" >
+                </ImageSwitcher>
 
-            <ImageSwitcher
-                android:id="@+id/imageView7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/imgSlot"
-                android:scaleType="center" >
-            </ImageSwitcher>
+                <ImageSwitcher
+                    android:id="@+id/imageView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/imgSlot"
+                    android:scaleType="center" >
+                </ImageSwitcher>
 
-            <ImageSwitcher
-                android:id="@+id/imageView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/imgSlot"
-                android:scaleType="center" >
-            </ImageSwitcher>
-        </TableRow>
-    </TableLayout>
+                <ImageSwitcher
+                    android:id="@+id/imageView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/imgSlot"
+                    android:scaleType="center" >
+                </ImageSwitcher>
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
 
     <ImageButton
         android:id="@+id/ibSound"

@@ -14,10 +14,6 @@ public class MemeSettings {
 	public static int dWidth;
 	public static int dHeight;
 
-	// Board metrics
-	public static int boardHeight;
-	public static int boardBottomMargin;
-
 	// Card metrics
 	public static int cHeight_lvl_1;
 	public static int cHeight_lvl_2;

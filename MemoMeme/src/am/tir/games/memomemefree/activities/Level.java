@@ -1,6 +1,57 @@
 package am.tir.games.memomemefree.activities;
 
-import static am.tir.games.memomemefree.utils.MemeSettings.*;
+import static am.tir.games.memomemefree.utils.MemeSettings.ALL_PAIRS_LEVEL_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.ALL_PAIRS_LEVEL_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.ALL_PAIRS_LEVEL_3;
+import static am.tir.games.memomemefree.utils.MemeSettings.ALL_PAIRS_LEVEL_4;
+import static am.tir.games.memomemefree.utils.MemeSettings.BEFORE_PREVIEW_TIME;
+import static am.tir.games.memomemefree.utils.MemeSettings.FORMATTER;
+import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_1_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_2_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_2_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_3_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_3_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_3_3;
+import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_4_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_4_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_4_3;
+import static am.tir.games.memomemefree.utils.MemeSettings.GAME_TIME_LEVEL_4_4;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_1_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_2_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_2_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_3_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_3_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_3_3;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_4_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_4_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_4_3;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_4_4;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_1_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_2_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_2_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_3_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_3_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_3_3;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_4_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_4_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_4_3;
+import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_LEVEL_4_4;
+import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_1_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_2_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_2_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_3_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_3_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_3_3;
+import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_4_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_4_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_4_3;
+import static am.tir.games.memomemefree.utils.MemeSettings.PREV_TIME_LEVEL_4_4;
+import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_1;
+import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_2;
+import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_3;
+import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_4;
+import static am.tir.games.memomemefree.utils.MemeSettings.isSoundOn;
+import static am.tir.games.memomemefree.utils.MemeSettings.sound_mode;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,7 +61,6 @@ import am.tir.games.memomemefree.utils.ScoreModel;
 import am.tir.games.memomemefree.utils.User;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -19,9 +69,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TableLayout;
 import android.widget.TextView;
 
 /**
@@ -80,28 +127,13 @@ public class Level extends Activity {
 
 	private ImageButton ibPlayPause;
 
-	private RelativeLayout.LayoutParams lpBoard;
+	// private RelativeLayout.LayoutParams lpBoard;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		initLevel();
-
-		lpBoard = new RelativeLayout.LayoutParams(boardHeight, boardHeight);
-		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-			lpBoard.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-			lpBoard.addRule(RelativeLayout.CENTER_HORIZONTAL);
-			lpBoard.bottomMargin = boardBottomMargin;
-		} else {
-			lpBoard.addRule(RelativeLayout.CENTER_IN_PARENT);
-		}
-
-		TableLayout iBoard = (TableLayout) findViewById(R.id.tableBoard);
-		ImageView imgBoard = (ImageView) findViewById(R.id.imageBoard);
-		iBoard.setLayoutParams(lpBoard);
-		imgBoard.setLayoutParams(lpBoard);
-		imgBoard.setScaleType(ImageView.ScaleType.FIT_XY);
 
 		timerText = (TextView) findViewById(R.id.textTimer);
 		scoreText = (TextView) findViewById(R.id.textScore);

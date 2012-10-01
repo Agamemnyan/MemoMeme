@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="score_text_size">18dp</dimen>
-    <dimen name="score_bg_height">30dp</dimen>
+    <dimen name="score_text_size">14dp</dimen>
+    <dimen name="score_bg_height">25dp</dimen>
     <dimen name="score_text_padding">5dp</dimen>
     <dimen name="settings_titles_text_size">20dp</dimen>
     <dimen name="settings_radio_text_size">18dp</dimen>
@@ -16,7 +16,7 @@
     <dimen name="button_height">40dp</dimen>
     <dimen name="endlevel_scores_margin">5dp</dimen>
     <dimen name="endlevel_scores_title_text_size">18dp</dimen>
-    <dimen name="endlevel_scores_points_text_size">14dp</dimen>
+    <dimen name="endlevel_scores_points_text_size">16dp</dimen>
     <dimen name="endlevel_scores_points_total_text_size">20dp</dimen>
     <dimen name="endlevel_scores_padding">10dp</dimen>
     <dimen name="endlevel_scores_titles_margins">10dp</dimen>
@@ -25,5 +25,6 @@
     <dimen name="about_text_size">24dp</dimen>
     <dimen name="about_more_button_margin">5dp</dimen>
     <dimen name="sound_button_margins">10dp</dimen>
+    <dimen name="game_board_padding">3dp</dimen>
 
 </resources>

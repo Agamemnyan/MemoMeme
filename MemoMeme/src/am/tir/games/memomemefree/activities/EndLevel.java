@@ -96,13 +96,12 @@ public class EndLevel extends Activity {
 			break;
 		}
 
-		scoreBefore.setText((user.getPoints() - score - pointPerSecond
-				* seconds)
-				+ "p");
-		scoreLast.setText(score + "p");
-		scoreForSeconds.setText(seconds + "s×" + pointPerSecond + "p/s="
-				+ seconds * pointPerSecond + "p");
-		scoreTotal.setText(user.getPoints() + "p");
+		scoreBefore.setText(String.valueOf(user.getPoints() - score
+				- pointPerSecond * seconds));
+		scoreLast.setText(String.valueOf(score));
+		scoreForSeconds.setText(seconds + "×" + pointPerSecond + "=" + seconds
+				* pointPerSecond);
+		scoreTotal.setText(String.valueOf(user.getPoints()));
 
 		ImageView imgWl = (ImageView) findViewById(R.id.gameoverImage);
 

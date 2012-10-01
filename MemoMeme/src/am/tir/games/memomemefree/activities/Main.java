@@ -1,7 +1,5 @@
 package am.tir.games.memomemefree.activities;
 
-import static am.tir.games.memomemefree.utils.MemeSettings.boardBottomMargin;
-import static am.tir.games.memomemefree.utils.MemeSettings.boardHeight;
 import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_1;
 import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_2;
 import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_3;
@@ -60,8 +58,8 @@ public class Main extends Activity implements OnClickListener {
 			dHeight = metrics.widthPixels;
 		}
 
-		boardHeight = dHeight * 620 / 768;
-		boardBottomMargin = dHeight * 20 / 768;
+//		boardHeight = dHeight * 620 / 768;
+//		boardBottomMargin = dHeight * 20 / 768;
 
 		cHeight_lvl_1 = dHeight * 204 / 768;
 		cHeight_lvl_2 = dHeight * 153 / 768;

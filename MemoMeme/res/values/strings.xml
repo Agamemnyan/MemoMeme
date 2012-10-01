@@ -42,8 +42,8 @@
     <string name="tableHeaderForSeconds">For Seconds</string>
     <string name="tableHeaderTotal">Total</string>
     <string name="highScores">Scores</string>
-    <string name="settings_title_sound">Sounds</string>
-    <string name="settings_title_sound_toggle">Turn Sound</string>
+    <string name="settings_title_sound">Sound Pack</string>
+    <string name="settings_title_sound_toggle">Sound</string>
     <string name="radio_sound_trollish">Trollish xD</string>
     <string name="radio_sound_simpsons">Simpsons :D</string>
     <string name="radio_sound_normal">Normal :)</string>

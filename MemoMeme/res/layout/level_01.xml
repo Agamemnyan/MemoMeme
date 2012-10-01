@@ -3,30 +3,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+    <com.google.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+        android:id="@+id/ad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/admob_id"
+        ads:loadAdOnCreate="true" />
+
     <ImageView
         android:id="@+id/imageBoard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/common_bg"
         android:contentDescription="@string/imgBoard" />
-
+
     <TextView
         android:id="@+id/textScore"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="@dimen/score_bg_height"
+        android:background="@drawable/common_bg"
+        android:gravity="center"
+        android:paddingLeft="@dimen/score_text_padding"
+        android:paddingRight="@dimen/score_text_padding"
+        android:text="16000"
         android:textSize="@dimen/score_text_size"
         android:textStyle="bold" />
-
+
     <TextView
         android:id="@+id/textTimer"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/score_bg_height"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
+        android:background="@drawable/common_bg"
+        android:gravity="center"
+        android:paddingLeft="@dimen/score_text_padding"
+        android:paddingRight="@dimen/score_text_padding"
+        android:text="00:25"
         android:textSize="@dimen/score_text_size"
         android:textStyle="bold" />
 
@@ -131,36 +148,40 @@
         </TableRow>
     </TableLayout>
 
-    <TextView
-        android:id="@+id/textCombo"
+    <ImageButton
+        android:id="@+id/ibPlayPause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tableBoard"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:textSize="@dimen/score_text_size"
-        android:textStyle="bold" />
+        android:layout_above="@+id/ad"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="@dimen/sound_button_margins"
+        android:background="@drawable/button_bg"
+        android:contentDescription="@string/button_pause_play"
+        android:src="@drawable/game_pause" />
 
     <ImageButton
         android:id="@+id/ibSound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/ad"
         android:layout_alignParentRight="true"
         android:layout_margin="@dimen/sound_button_margins"
         android:background="@drawable/button_bg"
         android:contentDescription="@string/button_sound"
         android:src="@drawable/sounds_muted" />
 
-    <ImageButton
-        android:id="@+id/ibPlayPause"
+    <TextView
+        android:id="@+id/textCombo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_margin="@dimen/sound_button_margins"
-        android:background="@drawable/button_bg"
-        android:contentDescription="@string/button_pause_play"
-        android:src="@drawable/game_pause" />
+        android:layout_height="@dimen/score_bg_height"
+        android:layout_alignBottom="@+id/ibPlayPause"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/common_bg"
+        android:gravity="center"
+        android:paddingLeft="@dimen/score_text_padding"
+        android:paddingRight="@dimen/score_text_padding"
+        android:text="1600"
+        android:textSize="@dimen/score_text_size"
+        android:textStyle="bold" />
 
 </RelativeLayout>

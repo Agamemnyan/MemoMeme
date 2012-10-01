@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             android:text="@string/new_record"
             android:textColor="@color/default_dark_red"
             android:textSize="@dimen/endlevel_game_over_text_size" />
-
+
         <TableLayout
             android:id="@+id/tableLayout1"
             android:layout_width="wrap_content"
@@ -110,14 +110,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center" >
-
+
                 <TextView
                     android:id="@+id/valueTotal"
                     android:gravity="center"
                     android:text="160000"
                     android:textColor="@color/default_dark_red"
                     android:textSize="@dimen/endlevel_scores_points_total_text_size" />
-
             </TableRow>
         </TableLayout>
 
@@ -168,5 +167,16 @@
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
+
+    <com.google.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+        android:id="@+id/ad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/admob_id"
+        ads:loadAdOnCreate="true" />
 
 </RelativeLayout>

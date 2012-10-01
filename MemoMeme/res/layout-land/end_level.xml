@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/lib/com.google.ads"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/ad"
+        android:layout_below="@+id/tvGameOver"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:gravity="center" >
 
         <ImageView
@@ -24,14 +26,6 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/tvGameOver"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/gameOver"
-                android:textSize="@dimen/endlevel_game_over_text_size"
-                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textRecord"
@@ -166,5 +160,27 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
+    <com.google.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+        android:id="@+id/ad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        ads:loadAdOnCreate="true"
+        app:adSize="BANNER"
+        app:adUnitId="@string/admob_id" >
+    </com.google.ads.AdView>
+
+    <TextView
+        android:id="@+id/tvGameOver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/gameOver"
+        android:textSize="@dimen/endlevel_game_over_text_size"
+        android:textStyle="bold" />
 
 </RelativeLayout>

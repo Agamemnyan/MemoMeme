@@ -85,8 +85,8 @@
         android:id="@+id/ibAbout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:layout_margin="@dimen/main_imagebuttons_margins"
         android:background="@drawable/button_bg"
         android:contentDescription="@string/button_about"
@@ -96,11 +96,22 @@
         android:id="@+id/ibHelp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:layout_margin="@dimen/main_imagebuttons_margins"
         android:background="@drawable/button_bg"
         android:contentDescription="@string/button_help"
         android:src="@drawable/button_help" />
+
+    <com.google.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+        android:id="@+id/ad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/admob_id"
+        ads:loadAdOnCreate="true" />
 
 </RelativeLayout>

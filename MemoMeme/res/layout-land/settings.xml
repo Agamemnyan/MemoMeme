@@ -1,18 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/lib/com.google.ads"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_above="@+id/ad"
+        android:layout_alignParentTop="true"
+        android:gravity="center_horizontal"
         android:orientation="horizontal" >
 
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/settings_radio_group_margins"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/soundToggleTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/settings_title_sound_toggle"
+                android:textSize="@dimen/settings_titles_text_size"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/rbSoundOn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="@string/radio_sound_on"
+                android:textSize="@dimen/settings_radio_text_size" />
+
+            <RadioButton
+                android:id="@+id/rbSoundOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="@string/radio_sound_off"
+                android:textSize="@dimen/settings_radio_text_size" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/settings_radio_group_margins"
             android:gravity="left"
             android:orientation="vertical" >
 
@@ -49,38 +85,18 @@
                 android:text="@string/radio_sound_normal"
                 android:textSize="@dimen/settings_radio_text_size" />
         </RadioGroup>
-
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/soundToggleTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="@string/settings_title_sound_toggle"
-                android:textSize="@dimen/settings_titles_text_size"
-                android:textStyle="bold" />
-
-            <RadioButton
-                android:id="@+id/rbSoundOn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:text="@string/radio_sound_on"
-                android:textSize="@dimen/settings_radio_text_size" />
-
-            <RadioButton
-                android:id="@+id/rbSoundOff"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:text="@string/radio_sound_off"
-                android:textSize="@dimen/settings_radio_text_size" />
-        </RadioGroup>
     </LinearLayout>
+
+    <com.google.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+        android:id="@+id/ad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        ads:loadAdOnCreate="true"
+        app:adSize="BANNER"
+        app:adUnitId="@string/admob_id" >
+    </com.google.ads.AdView>
 
 </RelativeLayout>

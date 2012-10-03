@@ -10,7 +10,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:text="@string/instructions_title_text"
-        android:textSize="24sp"
+        android:textColor="@color/default_dark_red"
+        android:textSize="@dimen/help_title_size"
         android:textStyle="bold" />
 
     <ScrollView
@@ -18,24 +19,605 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/ad"
-        android:layout_below="@+id/textInstrTitle"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp" >
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textInstrTitle" >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center" >
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/textInstr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/instructions_text"
-                android:textSize="18sp" />
+                android:textSize="@dimen/help_text_size" />
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TableLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/help_table_margin"
+                    android:gravity="center" >
+
+                    <TableRow
+                        android:id="@+id/tableRowHeader"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/headerLevelName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center_horizontal"
+                            android:padding="@dimen/help_table_headers_padding"
+                            android:text="@string/help_table_header_level_name"
+                            android:textColor="@color/default_dark_red"
+                            android:textSize="@dimen/help_title_size" />
+
+                        <TextView
+                            android:id="@+id/headerPairsCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center_horizontal"
+                            android:padding="@dimen/help_table_headers_padding"
+                            android:text="@string/help_table_header_pairs"
+                            android:textColor="@color/default_dark_red"
+                            android:textSize="@dimen/help_title_size" />
+
+                        <TextView
+                            android:id="@+id/headerPreviewTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center_horizontal"
+                            android:padding="@dimen/help_table_headers_padding"
+                            android:text="@string/help_table_header_preview_time"
+                            android:textColor="@color/default_dark_red"
+                            android:textSize="@dimen/help_title_size" />
+
+                        <TextView
+                            android:id="@+id/headerLevelTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center_horizontal"
+                            android:padding="@dimen/help_table_headers_padding"
+                            android:text="@string/help_table_header_game_time"
+                            android:textColor="@color/default_dark_red"
+                            android:textSize="@dimen/help_title_size" />
+
+                        <TextView
+                            android:id="@+id/headerMinPoints"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center_horizontal"
+                            android:padding="@dimen/help_table_headers_padding"
+                            android:text="@string/help_table_header_min_points"
+                            android:textColor="@color/default_dark_red"
+                            android:textSize="@dimen/help_title_size" />
+
+                        <TextView
+                            android:id="@+id/headerPointsForSecond"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center_horizontal"
+                            android:padding="@dimen/help_table_headers_padding"
+                            android:text="@string/help_table_header_points_for_seconds"
+                            android:textColor="@color/default_dark_red"
+                            android:textSize="@dimen/help_title_size" />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/value_1_LevelName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/lvl_0_name"
+                            android:textColor="@color/default_dark_red"
+                            android:textSize="@dimen/help_title_size" />
+
+                        <TextView
+                            android:id="@+id/value_1_PairsCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_1_PreviewTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_1_LevelTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_1_MinPoints"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_1_PointsForSecond"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/value_2_LevelName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/lvl_1_name"
+                            android:textColor="@color/default_dark_red"
+                            android:textSize="@dimen/help_title_size" />
+
+                        <TextView
+                            android:id="@+id/value_2_PairsCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_2_PreviewTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_2_LevelTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_2_MinPoints"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_2_PointsForSecond"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/value_3_LevelName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/lvl_2_name"
+                            android:textColor="@color/default_dark_red"
+                            android:textSize="@dimen/help_title_size" />
+
+                        <TextView
+                            android:id="@+id/value_3_PairsCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_3_PreviewTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_3_LevelTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_3_MinPoints"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_3_PointsForSecond"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/value_4_LevelName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/lvl_3_name"
+                            android:textColor="@color/default_dark_red"
+                            android:textSize="@dimen/help_title_size" />
+
+                        <TextView
+                            android:id="@+id/value_4_PairsCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_4_PreviewTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_4_LevelTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_4_MinPoints"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_4_PointsForSecond"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/value_5_LevelName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/lvl_4_name"
+                            android:textColor="@color/default_dark_red"
+                            android:textSize="@dimen/help_title_size" />
+
+                        <TextView
+                            android:id="@+id/value_5_PairsCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_5_PreviewTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_5_LevelTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_5_MinPoints"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_5_PointsForSecond"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/value_6_LevelName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/lvl_5_name"
+                            android:textColor="@color/default_dark_red"
+                            android:textSize="@dimen/help_title_size" />
+
+                        <TextView
+                            android:id="@+id/value_6_PairsCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_6_PreviewTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_6_LevelTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_6_MinPoints"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_6_PointsForSecond"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/value_7_LevelName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/lvl_6_name"
+                            android:textColor="@color/default_dark_red"
+                            android:textSize="@dimen/help_title_size" />
+
+                        <TextView
+                            android:id="@+id/value_7_PairsCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_7_PreviewTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_7_LevelTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_7_MinPoints"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_7_PointsForSecond"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/value_8_LevelName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/lvl_7_name"
+                            android:textColor="@color/default_dark_red"
+                            android:textSize="@dimen/help_title_size" />
+
+                        <TextView
+                            android:id="@+id/value_8_PairsCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_8_PreviewTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_8_LevelTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_8_MinPoints"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_8_PointsForSecond"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/value_9_LevelName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/lvl_8_name"
+                            android:textColor="@color/default_dark_red"
+                            android:textSize="@dimen/help_title_size" />
+
+                        <TextView
+                            android:id="@+id/value_9_PairsCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_9_PreviewTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_9_LevelTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_9_MinPoints"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_9_PointsForSecond"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/value_10_LevelName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/lvl_9_name"
+                            android:textColor="@color/default_dark_red"
+                            android:textSize="@dimen/help_title_size" />
+
+                        <TextView
+                            android:id="@+id/value_10_PairsCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_10_PreviewTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_10_LevelTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_10_MinPoints"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+
+                        <TextView
+                            android:id="@+id/value_10_PointsForSecond"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/help_text_size" />
+                    </TableRow>
+                </TableLayout>
+            </HorizontalScrollView>
         </LinearLayout>
     </ScrollView>
 

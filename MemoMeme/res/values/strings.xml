@@ -25,16 +25,6 @@
     <string name="fieldUserName">name</string>
     <string name="submitUserName">Submit</string>
     <string name="next_button">Next</string>
-    <string name="lvl_0">Level 1</string>
-    <string name="lvl_1">Level 2 &#8211; 1</string>
-    <string name="lvl_2">Level 2 &#8211; 2</string>
-    <string name="lvl_3">Level 3 &#8211; 1</string>
-    <string name="lvl_4">Level 3 &#8211; 2</string>
-    <string name="lvl_5">Level 3 &#8211; 3</string>
-    <string name="lvl_6">Level 4 &#8211; 1</string>
-    <string name="lvl_7">Level 4 &#8211; 2</string>
-    <string name="lvl_8">Level 4 &#8211; 3</string>
-    <string name="lvl_9">Level 4 &#8211; 4</string>
     <string name="imgBoard">Board</string>
     <string name="imgChallengeCons">Challenge Considered</string>
     <string name="tableHeaderBefore">Before</string>
@@ -49,9 +39,25 @@
     <string name="radio_sound_normal">Normal :)</string>
     <string name="radio_sound_off">Off</string>
     <string name="radio_sound_on">On</string>
-    <string name="about_text">MemoMeme Challenge\n v. 1.0.0 \n © Tir CS, Tir Games, 2012</string>
+    <string name="about_text">MemoMeme Challenge\n v. 1.0.0\n© Tir CS, Tir Games, 2012</string>
     <string name="instructions_title_text">Instructions</string>
-    <string name="instructions_text"></string>
+    <string name="instructions_text">Your task is to remember the location of the same trollfaces and find them in a given period of time.\nThe game gradually becomes more complicated as the time of showing the cards given initially shortens, the number of the cards increases and/or the time of the game is reduced.\nThe minimal scores given for the correctly guessed pair are increasing with each level. If you open the right pair one after another the minimal scores are multiplied (second pair - X×2, third pair - Х×3 etc.). At the end of the level the seconds left also turn into scores (being multiplied according to the level) are added to the scores for the current level and the scores for the previous ones.\nIn case of losing the game, the scores which you have managed to earn are being added to the previous scores and get into the top scores.\nYou can replay the last level if you lost the game or you think that you could get more scores.\nAfter another passed level you can quit the game, then you will have the opportunity to continue it from the level you’ve reached. If you start a new game, you’ll not be able to continue the previous one any more.\nYou can choose or switch off the sound of the game in the settings. You can switch on or off the sound also during the game.</string>
     <string name="admob_id">a15067349b414c4</string>
+    <string name="help_table_header_level_name">Level</string>
+    <string name="help_table_header_pairs">Pairs</string>
+    <string name="help_table_header_preview_time">Prev. Time\n(sec.)</string>
+    <string name="help_table_header_game_time">Game Time\n(sec.)</string>
+    <string name="help_table_header_min_points">Min\npoints</string>
+    <string name="help_table_header_points_for_seconds">Points for\nSeconds</string>
+    <string name="lvl_0_name">Level 1 &#8211; 1</string>
+    <string name="lvl_1_name">Level 2 &#8211; 1</string>
+    <string name="lvl_2_name">Level 2 &#8211; 2</string>
+    <string name="lvl_3_name">Level 3 &#8211; 1</string>
+    <string name="lvl_4_name">Level 3 &#8211; 2</string>
+    <string name="lvl_5_name">Level 3 &#8211; 3</string>
+    <string name="lvl_6_name">Level 4 &#8211; 1</string>
+    <string name="lvl_7_name">Level 4 &#8211; 2</string>
+    <string name="lvl_8_name">Level 4 &#8211; 3</string>
+    <string name="lvl_9_name">Level 4 &#8211; 4</string>
 
 </resources>

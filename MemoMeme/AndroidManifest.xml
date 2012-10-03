@@ -3,7 +3,7 @@
     package="am.tir.games.memomemefree.activities"
     android:installLocation="preferExternal"
     android:versionCode="1"
-    android:versionName="0.9.7" >
+    android:versionName="0.9.8" >
 
     <uses-sdk
         android:minSdkVersion="7"

@@ -31,5 +31,7 @@
     <dimen name="help_table_margin">5dp</dimen>
     <dimen name="help_table_headers_padding">5dp</dimen>
     <dimen name="game_board_portrait_bottom_margin">60dp</dimen>
+    <dimen name="splash_level_name_text_size">22dp</dimen>
+    <dimen name="margin_for_ad">50dp</dimen>
 
 </resources>

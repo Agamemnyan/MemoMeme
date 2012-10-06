@@ -7,7 +7,9 @@ import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_4;
 import static am.tir.games.memomemefree.utils.MemeSettings.dHeight;
 import static am.tir.games.memomemefree.utils.MemeSettings.dWidth;
 import static am.tir.games.memomemefree.utils.MemeSettings.isInit;
-import static am.tir.games.memomemefree.utils.MemeSettings.isSoundOn;
+import static am.tir.games.memomemefree.utils.MemeSettings.is_sound_on;
+import static am.tir.games.memomemefree.utils.MemeSettings.prefName;
+import static am.tir.games.memomemefree.utils.MemeSettings.preferences;
 import static am.tir.games.memomemefree.utils.MemeSettings.sound_mode;
 import am.tir.games.memomemefree.utils.ScoreModel;
 import am.tir.games.memomemefree.utils.SoundMode;
@@ -58,16 +60,17 @@ public class Main extends Activity implements OnClickListener {
 			dHeight = metrics.widthPixels;
 		}
 
-//		boardHeight = dHeight * 620 / 768;
-//		boardBottomMargin = dHeight * 20 / 768;
+		// boardHeight = dHeight * 620 / 768;
+		// boardBottomMargin = dHeight * 20 / 768;
 
 		cHeight_lvl_1 = dHeight * 204 / 768;
 		cHeight_lvl_2 = dHeight * 153 / 768;
 		cHeight_lvl_3 = dHeight * 122 / 768;
 		cHeight_lvl_4 = dHeight * 102 / 768;
 
-		isSoundOn = false;
-		sound_mode = SoundMode.NORMAL;
+		preferences = getSharedPreferences(prefName, MODE_PRIVATE);
+		is_sound_on = preferences.getBoolean("is_sound_on", false);
+		sound_mode = SoundMode.values()[preferences.getInt("sound_mode", 2)];
 
 		isInit = true;
 	}
@@ -109,8 +112,10 @@ public class Main extends Activity implements OnClickListener {
 			buttonContinue.setOnClickListener(new OnClickListener() {
 
 				public void onClick(View arg0) {
-					Intent go = new Intent(getBaseContext(), Level.class);
+					Intent go = new Intent(getBaseContext(), Splash.class);
 					go.putExtra("user", user);
+					go.putExtra("whichChallenge", user.getLevel() > 6 ? 2 : 1);
+					go.putExtra("whichLevel", user.getLevel() + 1);
 					startActivity(go);
 				}
 			});

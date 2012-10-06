@@ -26,14 +26,14 @@ public class ScoreModel extends BaseModel {
 		super(context, TABLE_NAME);
 	}
 
-	public Cursor getAllOrdered() {
-		return database.query(TABLE_NAME, null, null, null, null, null,
-				KEY_VALUE + " DESC");
-	}
+	// public Cursor getAllOrdered() {
+	// return database.query(TABLE_NAME, null, null, null, null, null,
+	// KEY_VALUE + " DESC");
+	// }
 
 	public Cursor getNonZeroOrdered() {
 		return database.query(TABLE_NAME, null, KEY_VALUE + ">" + "0", null,
-				null, null, KEY_VALUE + " DESC");
+				null, null, KEY_VALUE + " DESC", "20");
 	}
 
 	public Cursor getOrderedWithoutCurrent(long id) {
@@ -152,7 +152,7 @@ public class ScoreModel extends BaseModel {
 
 	private String getFormattedDate() {
 		Time today = new Time(Time.getCurrentTimezone());
-		today.setToNow();	
+		today.setToNow();
 
 		return DateUtils.formatDateTime(context, today.toMillis(true),
 				DateUtils.FORMAT_NUMERIC_DATE);

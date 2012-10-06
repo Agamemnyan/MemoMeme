@@ -5,6 +5,10 @@
     <integer name="icon_large">@drawable/icon_large_768</integer>
     <integer name="games_logo">@drawable/tir_games_logo_768</integer>
     <integer name="won_all">@drawable/won_all_768</integer>
+    <integer name="challenge_accepted">@drawable/challenge_accepted_768</integer>
+    <integer name="challenge_accepted_drunk">@drawable/challenge_accepted_drunk_768</integer>
+    <integer name="challenge_denied">@drawable/challenge_denied_768</integer>
+    <integer name="challenge_failed">@drawable/challenge_failed_768</integer>
 
     <array name="win_faces">
         <item>@drawable/win_01_768</item>

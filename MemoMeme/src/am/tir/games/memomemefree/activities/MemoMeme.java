@@ -19,7 +19,7 @@ public class MemoMeme extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.splash);
+		setContentView(R.layout.memomeme);
 
 		logo = (ImageView) findViewById(R.id.ivLogo);
 

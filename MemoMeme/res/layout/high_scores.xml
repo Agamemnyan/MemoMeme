@@ -1,24 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/lib/com.google.ads"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
-    <com.google.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
-        android:id="@+id/ad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/admob_id"
-        ads:loadAdOnCreate="true" />
 
     <TextView
         android:id="@+id/textScoresTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ad"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
@@ -27,25 +16,27 @@
         android:textSize="24dp"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/buttonMainMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/button_height"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
-        android:background="@drawable/button_bg"
-        android:padding="@dimen/button_text_padding"
-        android:text="@string/buttonMainMenu"
-        android:textSize="@dimen/button_text_size" />
-
     <ListView
         android:id="@+id/scoreListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonMainMenu"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textScoresTitle" >
+        android:layout_below="@+id/textScoresTitle"
+        android:paddingBottom="@dimen/margin_for_ad" >
+
     </ListView>
+
+    <com.google.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+        android:id="@+id/ad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        ads:loadAdOnCreate="true"
+        app:adSize="BANNER"
+        app:adUnitId="@string/admob_id" >
+    </com.google.ads.AdView>
 
 </RelativeLayout>

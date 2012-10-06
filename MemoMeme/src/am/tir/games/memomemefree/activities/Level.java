@@ -50,7 +50,8 @@ import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_1;
 import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_2;
 import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_3;
 import static am.tir.games.memomemefree.utils.MemeSettings.cHeight_lvl_4;
-import static am.tir.games.memomemefree.utils.MemeSettings.isSoundOn;
+import static am.tir.games.memomemefree.utils.MemeSettings.is_sound_on;
+import static am.tir.games.memomemefree.utils.MemeSettings.preferences;
 import static am.tir.games.memomemefree.utils.MemeSettings.sound_mode;
 
 import java.util.ArrayList;
@@ -61,6 +62,7 @@ import am.tir.games.memomemefree.utils.ScoreModel;
 import am.tir.games.memomemefree.utils.User;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -78,6 +80,8 @@ import android.widget.TextView;
 public class Level extends Activity {
 
 	private User user;
+
+	private SharedPreferences.Editor editor;
 
 	private long levelTime;
 	private boolean isPaused;
@@ -292,7 +296,7 @@ public class Level extends Activity {
 						}
 						if (turnedCard1.getMemeInt() == turnedCard2
 								.getMemeInt()) {
-							if (isSoundOn && soundPairFound != null) {
+							if (is_sound_on && soundPairFound != null) {
 								soundPairFound.start();
 							}
 							proceedScore(scoreText, true);
@@ -300,7 +304,7 @@ public class Level extends Activity {
 							turnedCard2.pullOut();
 							turnedCardsCount = 0;
 						} else {
-							if (isSoundOn && soundPairFail != null) {
+							if (is_sound_on && soundPairFail != null) {
 								soundPairFail.start();
 							}
 							proceedScore(scoreText, false);
@@ -479,15 +483,15 @@ public class Level extends Activity {
 		// Init Sound Toggle Button
 		final ImageButton ibSound = (ImageButton) findViewById(R.id.ibSound);
 
-		if (isSoundOn) {
+		if (is_sound_on) {
 			ibSound.setImageResource(R.drawable.sounds_on);
 		}
 
 		ibSound.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				isSoundOn = !isSoundOn;
-				if (isSoundOn) {
+				is_sound_on = !is_sound_on;
+				if (is_sound_on) {
 					ibSound.setImageResource(R.drawable.sounds_on);
 				} else {
 					ibSound.setImageResource(R.drawable.sounds_muted);
@@ -501,6 +505,7 @@ public class Level extends Activity {
 		ibPlayPause.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
+				editor = preferences.edit();
 				isPaused = !isPaused;
 				if (isPaused) {
 					ibPlayPause.setImageResource(R.drawable.game_play);
@@ -540,7 +545,6 @@ public class Level extends Activity {
 				Intent go = new Intent(getBaseContext(), EndLevel.class);
 				go.putExtra("score", score);
 				user.setPoints(user.getPoints() + score);
-				user.setLevel(user.getLevel() + 1);
 				ScoreModel scoreModel = new ScoreModel(getBaseContext());
 				scoreModel.update(user);
 				scoreModel.close();
@@ -684,5 +688,14 @@ public class Level extends Activity {
 				cd1.cancel();
 			cd2.cancel();
 		}
+	}
+
+	@Override
+	protected void onDestroy() {
+		if (editor != null) {
+			editor.putBoolean("is_sound_on", is_sound_on);
+			editor.commit();
+		}
+		super.onDestroy();
 	}
 }

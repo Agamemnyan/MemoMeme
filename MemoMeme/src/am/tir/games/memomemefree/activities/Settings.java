@@ -1,9 +1,9 @@
 package am.tir.games.memomemefree.activities;
 
-import static am.tir.games.memomemefree.utils.MemeSettings.sound_mode;
-import static am.tir.games.memomemefree.utils.MemeSettings.isSoundOn;
+import static am.tir.games.memomemefree.utils.MemeSettings.*;
 import am.tir.games.memomemefree.utils.SoundMode;
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,6 +14,8 @@ import android.widget.RadioButton;
  * 
  */
 public class Settings extends Activity implements OnClickListener {
+	private SharedPreferences.Editor editor;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -31,7 +33,7 @@ public class Settings extends Activity implements OnClickListener {
 		rbSoundOff.setOnClickListener(this);
 		rbSoundOn.setOnClickListener(this);
 
-		if (isSoundOn) {
+		if (is_sound_on) {
 			rbSoundOn.setChecked(true);
 		} else {
 			rbSoundOff.setChecked(true);
@@ -62,6 +64,7 @@ public class Settings extends Activity implements OnClickListener {
 	public void onClick(View view) {
 		// Is the button now checked?
 		boolean checked = ((RadioButton) view).isChecked();
+		editor = preferences.edit();
 
 		// Check which radio button was clicked
 		switch (view.getId()) {
@@ -79,12 +82,22 @@ public class Settings extends Activity implements OnClickListener {
 			break;
 		case R.id.rbSoundOff:
 			if (checked)
-				isSoundOn = false;
+				is_sound_on = false;
 			break;
 		case R.id.rbSoundOn:
 			if (checked)
-				isSoundOn = true;
+				is_sound_on = true;
 			break;
 		}
+	}
+
+	@Override
+	public void onBackPressed() {
+		if (editor != null) {
+			editor.putBoolean("is_sound_on", is_sound_on);
+			editor.putInt("sound_mode", sound_mode.ordinal());
+			editor.commit();
+		}
+		super.onBackPressed();
 	}
 }

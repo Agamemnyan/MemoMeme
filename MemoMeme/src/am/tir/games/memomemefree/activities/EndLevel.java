@@ -36,6 +36,7 @@ public class EndLevel extends Activity {
 	private int level;
 	private int pointPerSecond;
 	private int seconds;
+	private boolean isWin;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class EndLevel extends Activity {
 		setContentView(R.layout.end_level);
 
 		final Random rand = new Random();
+		isWin = getIntent().getExtras().getBoolean("isWin");
 
 		TextView scoreBefore = (TextView) findViewById(R.id.valueBefore);
 		TextView scoreLast = (TextView) findViewById(R.id.valueLast);
@@ -127,8 +129,10 @@ public class EndLevel extends Activity {
 		nextButton.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				Intent go = new Intent(EndLevel.this, Level.class);
+				Intent go = new Intent(EndLevel.this, Splash.class);
 				go.putExtra("user", user);
+				go.putExtra("whichChallenge", level > 6 ? 2 : 1);
+				go.putExtra("whichLevel", level + 1);
 				startActivity(go);
 				finish();
 			}
@@ -137,11 +141,15 @@ public class EndLevel extends Activity {
 		restartButton.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				Intent go = new Intent(EndLevel.this, Level.class);
+				Intent go = new Intent(EndLevel.this, Splash.class);
+
 				user.setPoints(user.getPoints() - score - pointPerSecond
 						* seconds);
-				user.setLevel(level - 1);
+				if (isWin) {
+					user.setLevel(level - 1);
+				}
 				go.putExtra("user", user);
+				go.putExtra("whichChallenge", level > 7 ? 2 : 1);
 				startActivity(go);
 				finish();
 			}
@@ -149,6 +157,9 @@ public class EndLevel extends Activity {
 
 		mainMenuButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
+				Intent go = new Intent(EndLevel.this, Splash.class);
+				go.putExtra("whichChallenge", isWin ? 3 : 4);
+				startActivity(go);
 				finish();
 			}
 		});
@@ -157,20 +168,19 @@ public class EndLevel extends Activity {
 
 			public void onClick(View v) {
 				Intent go = new Intent(getBaseContext(), HighScores.class);
+				go.putExtra("userId", user.getId());
 				startActivity(go);
 				finish();
 			}
 		});
 
-		if (getIntent().getExtras().getBoolean("isWin") && level != 10) {
+		if (isWin && level != 10) {
 			gameOver.setVisibility(View.GONE);
 			imgWl.setImageResource(winPics[rand.nextInt(winPics.length)]);
 			highScoresButtoon.setVisibility(View.GONE);
 			newRecord.setVisibility(View.GONE);
 		} else {
-			user.setLevel(0);
 			ScoreModel scoreModel = new ScoreModel(getBaseContext());
-			scoreModel.update(user);
 			if (scoreModel.getBestScore(user.getId()) > user.getPoints()) {
 				newRecord.setVisibility(View.GONE);
 			}

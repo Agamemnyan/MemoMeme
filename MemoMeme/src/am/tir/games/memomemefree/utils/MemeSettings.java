@@ -2,6 +2,8 @@ package am.tir.games.memomemefree.utils;
 
 import java.text.DecimalFormat;
 
+import android.content.SharedPreferences;
+
 /**
  * @author Artak.Gevorgyan
  * 
@@ -9,6 +11,10 @@ import java.text.DecimalFormat;
 public class MemeSettings {
 	// Initialization flag
 	public static boolean isInit;
+
+	// Prefs
+	public static SharedPreferences preferences;
+	public static final String prefName = "Settings";
 
 	// Display metrics
 	public static int dWidth;
@@ -22,7 +28,7 @@ public class MemeSettings {
 
 	// Sound mode
 	public static SoundMode sound_mode;
-	public static boolean isSoundOn;
+	public static boolean is_sound_on;
 
 	// Time formatter
 	public static final DecimalFormat FORMATTER = new DecimalFormat("00");

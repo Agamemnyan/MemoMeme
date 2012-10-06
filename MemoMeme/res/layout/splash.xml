@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -10,6 +11,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/app_name"
-        android:src="@integer/games_logo" />
+        android:src="@integer/challenge_accepted" />
+
+    <TextView
+        android:id="@+id/tvLevelName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lvl_0_name"
+        android:textColor="@color/default_dark_red"
+        android:textSize="@dimen/splash_level_name_text_size"
+        android:textStyle="bold" />
 
 </LinearLayout>

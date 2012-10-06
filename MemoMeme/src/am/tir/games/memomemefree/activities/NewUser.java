@@ -37,10 +37,13 @@ public class NewUser extends Activity {
 		bSubmit.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				Intent go = new Intent(v.getContext(), Level.class);
-				User user = new ScoreModel(getBaseContext()).add(etNewUser
-						.getText().toString());
+				Intent go = new Intent(v.getContext(), Splash.class);
+				ScoreModel scoreModel = new ScoreModel(getBaseContext());
+				User user = scoreModel.add(etNewUser.getText().toString());
+				scoreModel.close();
 				go.putExtra("user", user);
+				go.putExtra("whichChallenge", 1);
+				go.putExtra("whichLevel", 1);
 				startActivity(go);
 				finish();
 			}

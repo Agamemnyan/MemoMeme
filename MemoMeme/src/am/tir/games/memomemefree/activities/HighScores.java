@@ -9,10 +9,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,6 +20,8 @@ import android.widget.TextView;
  */
 public class HighScores extends Activity {
 	private ScoreModel scoreModel;
+	private static long userId;
+	private static int color;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +29,8 @@ public class HighScores extends Activity {
 		setContentView(R.layout.high_scores);
 
 		scoreModel = new ScoreModel(this);
-
-		Button mainMenuButton = (Button) findViewById(R.id.buttonMainMenu);
-		mainMenuButton.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				finish();
-			}
-		});
+		userId = getIntent().getLongExtra("userId", -1);
+		color = getResources().getColor(R.color.default_dark_red);
 
 		ListView scoreListView = (ListView) findViewById(R.id.scoreListView);
 
@@ -74,24 +69,27 @@ public class HighScores extends Activity {
 		public View getView(int position, View convertView, ViewGroup parent) {
 			View view = null;
 
-			if (convertView == null) {
-				view = inflater.inflate(layoutId, parent, false);
-				TextView scoreTextPosition = (TextView) view
-						.findViewById(R.id.scoreTextPosition);
-				TextView scoreTextPoints = (TextView) view
-						.findViewById(R.id.scoreTextPoints);
-				TextView scoreTextName = (TextView) view
-						.findViewById(R.id.scoreTextName);
-				TextView scoreTextDate = (TextView) view
-						.findViewById(R.id.scoreTextDate);
+			view = inflater.inflate(layoutId, parent, false);
+			TextView scoreTextPosition = (TextView) view
+					.findViewById(R.id.scoreTextPosition);
+			TextView scoreTextPoints = (TextView) view
+					.findViewById(R.id.scoreTextPoints);
+			TextView scoreTextName = (TextView) view
+					.findViewById(R.id.scoreTextName);
+			TextView scoreTextDate = (TextView) view
+					.findViewById(R.id.scoreTextDate);
 
-				scoreTextPosition.setText(String.valueOf(position + 1));
-				scoreTextPoints.setText(String.valueOf(dataSource.get(position)
-						.getPoints()));
-				scoreTextName.setText(dataSource.get(position).getUserName());
-				scoreTextDate.setText(dataSource.get(position).getDate());
-			} else {
-				view = convertView;
+			scoreTextPosition.setText(String.valueOf(position + 1));
+			scoreTextPoints.setText(String.valueOf(dataSource.get(position)
+					.getPoints()));
+			scoreTextName.setText(dataSource.get(position).getUserName());
+			scoreTextDate.setText(dataSource.get(position).getDate());
+
+			if (dataSource.get(position).getId() == userId) {
+				scoreTextPosition.setTextColor(color);
+				scoreTextPoints.setTextColor(color);
+				scoreTextName.setTextColor(color);
+				scoreTextDate.setTextColor(color);
 			}
 
 			return view;

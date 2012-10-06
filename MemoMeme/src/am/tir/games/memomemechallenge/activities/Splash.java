@@ -1,4 +1,4 @@
-package am.tir.games.memomemefree.activities;
+package am.tir.games.memomemechallenge.activities;
 
 import android.app.Activity;
 import android.content.Intent;

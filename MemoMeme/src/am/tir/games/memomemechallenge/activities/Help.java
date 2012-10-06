@@ -1,6 +1,6 @@
-package am.tir.games.memomemefree.activities;
+package am.tir.games.memomemechallenge.activities;
 
-import static am.tir.games.memomemefree.utils.MemeSettings.*;
+import static am.tir.games.memomemechallenge.utils.MemeSettings.*;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;

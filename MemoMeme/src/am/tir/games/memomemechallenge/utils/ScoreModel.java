@@ -1,4 +1,4 @@
-package am.tir.games.memomemefree.utils;
+package am.tir.games.memomemechallenge.utils;
 
 import java.util.ArrayList;
 import java.util.List;

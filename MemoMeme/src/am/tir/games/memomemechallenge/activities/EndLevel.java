@@ -1,20 +1,20 @@
-package am.tir.games.memomemefree.activities;
+package am.tir.games.memomemechallenge.activities;
 
-import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_1_1;
-import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_2_1;
-import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_2_2;
-import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_3_1;
-import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_3_2;
-import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_3_3;
-import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_4_1;
-import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_4_2;
-import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_4_3;
-import static am.tir.games.memomemefree.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_4_4;
+import static am.tir.games.memomemechallenge.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_1_1;
+import static am.tir.games.memomemechallenge.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_2_1;
+import static am.tir.games.memomemechallenge.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_2_2;
+import static am.tir.games.memomemechallenge.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_3_1;
+import static am.tir.games.memomemechallenge.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_3_2;
+import static am.tir.games.memomemechallenge.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_3_3;
+import static am.tir.games.memomemechallenge.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_4_1;
+import static am.tir.games.memomemechallenge.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_4_2;
+import static am.tir.games.memomemechallenge.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_4_3;
+import static am.tir.games.memomemechallenge.utils.MemeSettings.POINTS_FOR_SEC_LEVEL_4_4;
 
 import java.util.Random;
 
-import am.tir.games.memomemefree.utils.ScoreModel;
-import am.tir.games.memomemefree.utils.User;
+import am.tir.games.memomemechallenge.utils.ScoreModel;
+import am.tir.games.memomemechallenge.utils.User;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.TypedArray;

@@ -84,11 +84,12 @@
                     android:id="@+id/valueLast"
                     android:text="1600"
                     android:textSize="@dimen/endlevel_scores_points_text_size" />
-
+
                 <TextView
                     android:id="@+id/valueForSeconds"
-                    android:text="16x500=50000"
+                    android:text="16x500=500000"
                     android:textSize="@dimen/endlevel_scores_points_text_size" />
+
             </TableRow>
 
             <TableRow

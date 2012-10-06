@@ -1,7 +1,7 @@
-package am.tir.games.memomemefree.activities;
+package am.tir.games.memomemechallenge.activities;
 
-import am.tir.games.memomemefree.utils.ScoreModel;
-import am.tir.games.memomemefree.utils.User;
+import am.tir.games.memomemechallenge.utils.ScoreModel;
+import am.tir.games.memomemechallenge.utils.User;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

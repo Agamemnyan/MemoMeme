@@ -1,4 +1,4 @@
-package am.tir.games.memomemefree.utils;
+package am.tir.games.memomemechallenge.utils;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

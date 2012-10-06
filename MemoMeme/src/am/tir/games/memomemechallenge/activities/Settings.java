@@ -1,7 +1,7 @@
-package am.tir.games.memomemefree.activities;
+package am.tir.games.memomemechallenge.activities;
 
-import static am.tir.games.memomemefree.utils.MemeSettings.*;
-import am.tir.games.memomemefree.utils.SoundMode;
+import static am.tir.games.memomemechallenge.utils.MemeSettings.*;
+import am.tir.games.memomemechallenge.utils.SoundMode;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;

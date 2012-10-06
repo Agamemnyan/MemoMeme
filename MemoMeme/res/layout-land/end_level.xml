@@ -15,15 +15,16 @@
         app:adSize="BANNER"
         app:adUnitId="@string/admob_id" >
     </com.google.ads.AdView>
-
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/ad"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/margin_for_ad" >
 
         <TextView
             android:id="@+id/tvGameOver"

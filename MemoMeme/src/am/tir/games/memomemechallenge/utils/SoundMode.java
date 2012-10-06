@@ -1,7 +1,7 @@
 /**
  * 
  */
-package am.tir.games.memomemefree.utils;
+package am.tir.games.memomemechallenge.utils;
 
 /**
  * @author Artak.Gevorgyan

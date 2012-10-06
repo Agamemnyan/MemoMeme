@@ -29,6 +29,6 @@
     <dimen name="help_text_size">36sp</dimen>
     <dimen name="help_title_size">42sp</dimen>
     <dimen name="help_table_margin">20dp</dimen>
-    <dimen name="help_table_headers_padding">20dp</dimen>
+    <dimen name="help_table_headers_padding">150dp</dimen>
 
 </resources>

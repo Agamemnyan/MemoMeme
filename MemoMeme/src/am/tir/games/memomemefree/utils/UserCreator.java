@@ -5,7 +5,7 @@ import android.os.Parcelable.Creator;
 
 /**
  * @author Artak.Gevorgyan
- *
+ * 
  */
 public class UserCreator implements Creator<User> {
 
@@ -16,5 +16,4 @@ public class UserCreator implements Creator<User> {
 	public User[] newArray(int size) {
 		return new User[size];
 	}
-
 }

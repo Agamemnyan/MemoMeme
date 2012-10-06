@@ -43,10 +43,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/ibPlayPause"
+        android:layout_alignParentBottom="true"
         android:layout_below="@+id/textScore"
         android:gravity="center"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/game_board_portrait_bottom_margin" >
 
         <TableLayout
             android:id="@+id/tableBoard"

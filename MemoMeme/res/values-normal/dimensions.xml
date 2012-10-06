@@ -30,5 +30,6 @@
     <dimen name="help_title_size">24sp</dimen>
     <dimen name="help_table_margin">10dp</dimen>
     <dimen name="help_table_headers_padding">10dp</dimen>
+    <dimen name="game_board_portrait_bottom_margin">90dp</dimen>
 
 </resources>

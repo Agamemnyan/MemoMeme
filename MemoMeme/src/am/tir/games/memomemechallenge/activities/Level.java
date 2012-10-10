@@ -550,6 +550,10 @@ public class Level extends Activity {
 				scoreModel.close();
 				go.putExtra("user", user);
 				go.putExtra("isWin", false);
+				if (editor == null) {
+					editor = preferences.edit();
+				}
+				editor.putInt("minusScore", score);
 				startActivity(go);
 				finish();
 			}
@@ -633,6 +637,10 @@ public class Level extends Activity {
 			go.putExtra("user", user);
 			go.putExtra("isWin", true);
 			go.putExtra("milliSeconds", gameTotalTime);
+			if (editor == null) {
+				editor = preferences.edit();
+			}
+			editor.putInt("minusScore", 0);
 			startActivity(go);
 			finish();
 		}

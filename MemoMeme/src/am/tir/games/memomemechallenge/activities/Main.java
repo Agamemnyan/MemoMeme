@@ -113,6 +113,8 @@ public class Main extends Activity implements OnClickListener {
 
 				public void onClick(View arg0) {
 					Intent go = new Intent(getBaseContext(), Splash.class);
+					int minusScore = preferences.getInt("minusScore", 0);
+					user.setPoints(user.getPoints() - minusScore);
 					go.putExtra("user", user);
 					go.putExtra("whichChallenge", user.getLevel() > 6 ? 2 : 1);
 					go.putExtra("whichLevel", user.getLevel() + 1);

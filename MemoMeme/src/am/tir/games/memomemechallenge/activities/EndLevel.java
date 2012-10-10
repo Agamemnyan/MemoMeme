@@ -148,6 +148,11 @@ public class EndLevel extends Activity {
 				if (isWin) {
 					user.setLevel(level - 1);
 				}
+				ScoreModel scoreModel = new ScoreModel(getBaseContext());
+				scoreModel.update(user);
+				scoreModel.close();
+
+				go.putExtra("whichLevel", isWin ? level : level + 1);
 				go.putExtra("user", user);
 				go.putExtra("whichChallenge", level > 7 ? 2 : 1);
 				startActivity(go);

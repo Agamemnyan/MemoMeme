@@ -15,180 +15,185 @@
         app:adSize="BANNER"
         app:adUnitId="@string/admob_id" >
     </com.google.ads.AdView>
-
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tvGameOver"
         android:gravity="center"
-        android:orientation="vertical"
         android:paddingBottom="@dimen/margin_for_ad" >
 
-        <TextView
-            android:id="@+id/tvGameOver"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/gameOver"
-            android:textSize="@dimen/endlevel_game_over_text_size"
-            android:textStyle="bold" />
-
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center" >
-
-            <ImageView
-                android:id="@+id/gameoverImage"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.9"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textRecord"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:text="@string/new_record"
+                android:textColor="@color/default_dark_red"
+                android:textSize="@dimen/endlevel_game_over_text_size" />
+
+            <ImageView
+                android:id="@+id/gameoverImage"
+                android:layout_width="wrap_content"
+                android:layout_height="0dip"
+                android:layout_weight="0.9"
                 android:contentDescription="@string/imgGameOver"
                 android:scaleType="fitCenter"
                 android:src="@integer/won_all" />
-
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.8"
-                android:gravity="center"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/textRecord"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/new_record"
-                    android:textColor="@color/default_dark_red"
-                    android:textSize="@dimen/endlevel_game_over_text_size" />
+                android:layout_weight="0.1"
+                android:gravity="center" >
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center" >
+                    android:layout_marginRight="@dimen/endlevel_scores_margin"
+                    android:background="@drawable/common_bg"
+                    android:orientation="vertical"
+                    android:padding="@dimen/endlevel_scores_padding" >
 
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/headerBefore"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/endlevel_scores_margin"
-                        android:background="@drawable/common_bg"
-                        android:orientation="vertical"
-                        android:padding="@dimen/endlevel_scores_padding" >
+                        android:text="@string/tableHeaderBefore"
+                        android:textSize="@dimen/endlevel_scores_title_text_size"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/headerBefore"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/tableHeaderBefore"
-                            android:textSize="@dimen/endlevel_scores_title_text_size"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/valueBefore"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="16000"
-                            android:textSize="@dimen/endlevel_scores_points_text_size" />
-
-                        <TextView
-                            android:id="@+id/headerLast"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/tableHeaderLastLevel"
-                            android:textSize="@dimen/endlevel_scores_title_text_size"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/valueLast"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="1600"
-                            android:textSize="@dimen/endlevel_scores_points_text_size" />
-
-                        <TextView
-                            android:id="@+id/headerForSeconds"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/tableHeaderForSeconds"
-                            android:textSize="@dimen/endlevel_scores_title_text_size"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/valueForSeconds"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="16x500=50000"
-                            android:textSize="@dimen/endlevel_scores_points_text_size" />
-
-                        <TextView
-                            android:id="@+id/headerTotal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/tableHeaderTotal"
-                            android:textSize="@dimen/endlevel_scores_title_text_size"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/valueTotal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="160000"
-                            android:textColor="@color/default_dark_red"
-                            android:textSize="@dimen/endlevel_scores_points_total_text_size" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/game_over_layout"
+                    <TextView
+                        android:id="@+id/valueBefore"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
-                        android:orientation="vertical" >
+                        android:text="16000"
+                        android:textSize="@dimen/endlevel_scores_points_text_size" />
 
-                        <Button
-                            android:id="@+id/nextButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/button_height"
-                            android:background="@drawable/button_bg"
-                            android:padding="@dimen/button_text_padding"
-                            android:text="@string/next_button"
-                            android:textColor="@color/default_dark_red"
-                            android:textSize="@dimen/button_text_size"
-                            android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/headerLast"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tableHeaderLastLevel"
+                        android:textSize="@dimen/endlevel_scores_title_text_size"
+                        android:textStyle="bold" />
 
-                        <Button
-                            android:id="@+id/highScoresButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/button_height"
-                            android:background="@drawable/button_bg"
-                            android:padding="@dimen/button_text_padding"
-                            android:text="@string/highScores"
-                            android:textColor="@color/default_dark_red"
-                            android:textSize="@dimen/button_text_size"
-                            android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/valueLast"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1600"
+                        android:textSize="@dimen/endlevel_scores_points_text_size" />
 
-                        <Button
-                            android:id="@+id/restartButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/button_height"
-                            android:background="@drawable/button_bg"
-                            android:padding="@dimen/button_text_padding"
-                            android:text="@string/buttonRestart"
-                            android:textSize="@dimen/button_text_size" />
+                    <TextView
+                        android:id="@+id/headerForSeconds"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tableHeaderForSeconds"
+                        android:textSize="@dimen/endlevel_scores_title_text_size"
+                        android:textStyle="bold" />
 
-                        <Button
-                            android:id="@+id/buttonMainMenu"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/button_height"
-                            android:background="@drawable/button_bg"
-                            android:padding="@dimen/button_text_padding"
-                            android:text="@string/buttonMainMenu"
-                            android:textSize="@dimen/button_text_size" />
-                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/valueForSeconds"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="16x500=50000"
+                        android:textSize="@dimen/endlevel_scores_points_text_size" />
+
+                    <TextView
+                        android:id="@+id/headerTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tableHeaderTotal"
+                        android:textSize="@dimen/endlevel_scores_title_text_size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/valueTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="160000"
+                        android:textColor="@color/default_dark_red"
+                        android:textSize="@dimen/endlevel_scores_points_total_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/game_over_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:orientation="vertical" >
+
+                    <Button
+                        android:id="@+id/nextButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/button_height"
+                        android:background="@drawable/button_bg"
+                        android:padding="@dimen/button_text_padding"
+                        android:text="@string/next_button"
+                        android:textColor="@color/default_dark_red"
+                        android:textSize="@dimen/button_text_size"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/highScoresButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/button_height"
+                        android:background="@drawable/button_bg"
+                        android:padding="@dimen/button_text_padding"
+                        android:text="@string/highScores"
+                        android:textColor="@color/default_dark_red"
+                        android:textSize="@dimen/button_text_size"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/restartButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/button_height"
+                        android:background="@drawable/button_bg"
+                        android:padding="@dimen/button_text_padding"
+                        android:text="@string/buttonRestart"
+                        android:textSize="@dimen/button_text_size" />
+
+                    <Button
+                        android:id="@+id/buttonMainMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/button_height"
+                        android:background="@drawable/button_bg"
+                        android:padding="@dimen/button_text_padding"
+                        android:text="@string/buttonMainMenu"
+                        android:textSize="@dimen/button_text_size" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvGameOver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/gameOver"
+        android:textSize="@dimen/endlevel_game_over_text_size"
+        android:textStyle="bold" />
 
 </RelativeLayout>
